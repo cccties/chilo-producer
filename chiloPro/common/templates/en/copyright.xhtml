@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>Copyright</title>
+        <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../../common/styles/index.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+        <h1>Copyright</h1>
+        <div>
+
+  <p class="subtitle">Name of Series</p>
+
+  <p>$!series-name</p>
+
+  <p class="subtitle">Title</p>
+
+  <p>$!series-name vol-$!vol $!series-title</p>
+
+  <div style="clear:both;"/>
+</div>
+        <div>
+  <p class="subtitle">Author</p>
+
+  <p>$!author-name</p>
+
+  <div style="clear:both;"/>
+
+  #if ( $publisher && $publisher != "" )
+  <p class="subtitle">Issued</p>
+
+  <p>$!publisher</p>
+  #end
+
+  #if ( $editor && $editor != "" )
+  <p class="subtitle">Edited</p>
+
+  <p>$!editor</p>
+  #end
+
+  <p>$!published First edition<br/>
+     $!update Revised edition</p>
+
+  <div style="clear:both;"/>
+
+  <p>Copyright (c) $!rights</p>
+
+</div>
+    </body>
+</html>

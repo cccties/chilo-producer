@@ -1,0 +1,196 @@
+﻿body {
+	padding: 0;
+	margin:0;
+}
+
+h2 { 
+	font-size:1.5em; 
+	color:#4A6EA8;
+	margin-bottom: 1em;
+	margin-top: 0;
+	text-align: left;
+	line-height: 0.9em;
+}
+.subtitle {
+	font-size:1.1em; 
+	color:#4A6EA8; 
+	padding-top: 0.5em;
+	padding-bottom: 0.1em;
+	margin: 0.0em;
+}
+
+.subtitle1{
+	font-size: 1.6000em;
+	color: #235c9d;
+ 	display:inline;
+	line-height: 60px;
+}
+
+.subtitle2 {
+	font-size:1.4000em; 
+	color:#4A6EA8; 
+	padding-top: 0.5000em;
+	padding-bottom: 0.1000em;
+	margin: 0.0000em;
+}
+
+.subtitle3 {
+	font-size:1.1000em; 
+	color:#4A6EA8; 
+	padding-top: 0.5000em;
+	padding-bottom: 0.1000em;
+	margin: 0.0000em;
+}
+
+p{
+	font-size:1em; 
+	color:#444444;
+	/*line-height: 1.4em;*/
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+	margin: 0;
+}
+a {
+	color: #0000FF;
+	font-size: 1em;
+	font-weight: bold;
+}
+img{
+	width: 100%;
+}
+
+/* button */
+.community {
+	float: right;
+	width: 30%;
+}
+.skip {
+	float: right;
+ 	width: 25%;
+}
+
+
+/* haiti */
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}
+.clear {
+	clear:both;
+}
+.hidden {
+	display: none;
+}
+
+.t_right {
+	text-align: right;
+}
+
+.t_left {
+	text-align: left;
+}
+
+.t_center {
+	text-align: center;
+}
+
+/* size */
+.ll_content {
+	text-align: center;
+	width: 100%;
+	margin: 2em auto 2em auto; 
+}
+.l_content {
+	text-align: center;
+	width: 90%;
+	margin: 2em auto 2em auto; 
+}
+.m_content {
+	text-align: center;
+	width: 70%;
+	margin: 1em auto 2em auto; 
+}
+.s_content {
+	text-align: center;
+	width: 50%;
+	margin: 1em auto 2em auto; 
+}
+div.width5 {
+	width: 5%;
+}
+div.width10 {
+	width: 10%;
+}
+div.width20 {
+	width: 20%;
+}
+div.width30 {
+	width: 30%;
+}
+
+/* math */
+.sup1 {
+  /* 上付*/
+  font-size: 0.8em;
+  position: relative;
+  top: -0.6em;
+}
+.sub1 {
+   /* 下付 */
+  font-size: 0.8em;
+  position: relative;
+  top: 0.4em;
+  left: -0.2em;
+}
+.overline{
+	text-decoration:overline;
+}
+.math {
+	position: relative;
+	bottom:5px;
+	width: 3.5%;
+	right:2px;
+	display:inline-block;
+}
+.img-middle{
+	vertical-align: middle;
+}
+
+.video {
+	text-align: center;
+	margin: 1em auto 2em auto;
+}
+
+.link_icon{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.img-middle{
+	vertical-align: middle;
+}
+
+.padding{
+	padding-left: 18.0000%;
+}
+
+/* Ver. 2のセクションのスタイル*/
+.subject {
+}
+
+/* Ver. 2のページのスタイル*/
+.subsubject {
+}
+
+/* Ver. 2 セクション・ページを囲むスタイル*/
+.subject-all {
+	width: 70%;
+	float: left;
+}

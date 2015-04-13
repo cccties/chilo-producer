@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$chapter</title>
+    <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+    <link href="../../common/styles/document.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+	#if ( $chapter && $chapter != "" )
+    <div class="subject">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
+		#if ( $chapter-rect && $chapter-rect != "" )
+        <rect $chapter-rect/>
+		#end
+        <text fill="$chapter-fill" font-family="$chapter-font-family"
+			  font-size="$chapter-font-size" stroke="$chapter-stroke"
+			  text-anchor="$chapter-text-anchor"
+			  x="$chapter-x" y="$chapter-y">$chapter</text>
+      </svg>
+    </div>
+	#end	
+    <div class="community">
+      <img src="../../common/images/space.png"/>
+    </div>
+    <div class="s_content">
+	  <a href="$!main">
+        <img alt="" src="../../common/images/b_quiz.png"/>
+      </a>
+	</div>
+    <p>Move to web version CHiLO Book for utilization of online function.</p>
+    <p>Tap the icon and challenge the test at the end of the book.</p>
+    <div>
+	  <p class="link_icon">
+        <a href="$!back-to-readme">Return to READ ME</a>
+      </p>
+	  <div class="width10 link_icon">
+        <a href="$!back-to-readme">
+          <img src="../../common/images/b_ts.png"/>
+        </a>
+      </div>
+	</div>
+    <div>
+	  #if ( $cc-link && $cc-link != "" )
+	  <div class="width20 right">
+		<a href="$cc-link"> <img alt="$cc-alt" src="$cc-img"/></a>
+	  </div>
+	  #end
+	</div>
+  </body>
+</html>

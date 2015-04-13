@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>$!chapter</title>
+        <link href="../styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/document.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="subject-all">
+		#if ( $chapter && $chapter != "" )
+        <div class="subject">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
+			#if ( $chapter-rect && $chapter-rect != "" )
+            <rect $chapter-rect/>
+			#end
+            <text fill="$chapter-fill" font-family="$chapter-font-family"
+				  font-size="$chapter-font-size" stroke="$chapter-stroke"
+				  text-anchor="$chapter-text-anchor"
+				  x="$chapter-x" y="$chapter-y">$chapter</text>
+          </svg>
+        </div>
+		#end		
+
+		#if ( $section && $section != "" )
+        <h2 class="subsubject">
+		  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+			#if ( $section-rect && $section-rect != "" )
+            <rect $section-rect/>
+			#end
+            <text fill="$section-fill" font-family="$section-font-family"
+				  font-size="320" stroke="$section-stroke"
+				  text-anchor="$section-text-anchor"
+				  x="$section-x" y="$section-y">$section</text>
+          </svg>
+        </h2>
+		#end
+		</div>
+		
+        <div class="community">
+                <img src="../images/space.png"/>
+        </div>
+
+        <div style="clear:both;"/>
+
+        <div>
+  <p class="subtitle">Recommended Ebook Reader</p>
+
+  <p>Make sure you have installed the eBook Reader on your device before browsing CHiLO Book. The recommended eBook Reader for CHiLO Books is as follows.
+</p>
+
+  <ul>
+    <li>iOS,Mac OS: iBooks</li>
+
+    <li>Android: Gitden EPUB3 Book Reader</li>
+
+    <li>Windows: Readium</li>
+  </ul>
+
+  <p>If you use eBook readers other than the ones shown above, the videos may not play normally.</p>
+
+  <p class="subtitle">About CHiLO Book</p>
+
+  <p>You can study offline. However, internet connection is necessary for the online tests.</p>
+
+  <p>It is necessary to install an eBook Reader.</p>
+
+  <p>By using the features of the eBook Reader app, memos and bookmarks can be saved.</p>
+</div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="compile" basedir=".">
+    <property file="build.properties"/>
+    <property name="dest.dir" value="classes"/>
+    <property name="src.dir" value="src"/>
+    <target name="prepare">
+        <mkdir dir="${dest.dir}"/>
+        <mkdir dir="${outputBase.dir}"/>
+    </target>
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${dest.dir}" encoding="${srcencode}" 
+        	excludesfile="${exfile}" debug="on" includeantruntime="false">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+    <target name="jar" depends="compile">
+    	<copy todir="${dest.dir}">
+    		<fileset dir="${src.dir}"
+    			includes="strings*"
+    			excludes="*.java"
+    		/>
+    	</copy>
+		<path id="libraries">
+			<fileset dir="lib">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+		<pathconvert property="classpath" refid="libraries" targetos="unix" pathsep=" ">
+			<map from="${basedir}/lib" to="lib"/>
+			<map from="\" to="/"/>
+		</pathconvert>
+        <jar jarfile="${runtime.jar}" basedir="${dest.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main.class}"/>
+				<attribute name="Class-Path" value="${classpath}"/>
+			</manifest>
+        </jar>
+    </target>
+    <target name="java.clean">
+        <delete dir="${dest.dir}"/>
+    </target>
+    <target name="jar.clean">
+        <delete file="${runtime.jar}"/>
+    </target>
+    <target name="output.clean">
+        <delete includeEmptyDirs="true">
+    		<fileset dir="${outputBase.dir}" />
+    	</delete>
+    </target>
+    <!-- CAUTION: they are clean tasks -->
+    <target name="clean" depends="java.clean, jar.clean"/>
+	<target name="runall" depends="jar">
+		<java jar="${runtime.jar}" fork="true">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+		</java>
+	</target>
+	<target name="run" depends="jar">
+		<java jar="${runtime.jar}" fork="true">
+			<!-- course.dir は ant 実行時に -D course.dir=hoge で指定される -->
+			<!-- arg value="-c ${course.dir}" / -->
+			<arg value="-course 'sample-course-02'" />
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>                	
+                </fileset>
+            </classpath>
+		</java>
+	</target>
+	<target name="release" depends="jar">
+		<zip destfile="${release.zip}" basedir="."
+			includes="lib/** chilo-epub3-maker.jar chilo-epub3-maker.xml run* ${courseBase.dir}/common/** ${courseBase.dir}/${sampleCourse.dir}/**" />
+	</target>
+</project>

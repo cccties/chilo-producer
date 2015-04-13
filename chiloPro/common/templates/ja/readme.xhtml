@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$chapter</title>
+    <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+    <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+	#if ( $chapter && $chapter != "" )
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
+		#if ( $chapter-rect && $chapter-rect != "" )
+        <rect $chapter-rect/>
+		#end
+        <text fill="$chapter-fill" font-family="$chapter-font-family"
+			  font-size="$chapter-font-size" stroke="$chapter-stroke"
+			  text-anchor="$chapter-text-anchor"
+			  x="$chapter-x" y="$chapter-y">$chapter</text>
+      </svg>
+    </div>
+	#end
+
+	  <div class="skip">
+		<a href="$!document-start-page">
+          <img src="../../common/images/skip.png"/>
+        </a>
+      </div>
+	  <div style="clear:both;"/>
+
+    <div>
+
+	  <p class="subtitle">認定バッジ獲得</p>
+  
+	  　<p>本書の課題に合格すると、学習修了認定バッジを獲得することができます。</p>
+	  　<p>$!series-nameシリーズ全$!volumes章の学習修了認定バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</p>
+  
+	</div>
+    <div>
+
+	  <div>
+		#foreach( $test in $testList )
+		<div>
+		  <p class="link_icon">・<a href="$!{test.link}">
+			  $!{test.title}を見てみる</a></p>
+		  <div class="width10 link_icon">
+			<a href="$!{test.link}">
+			  <img src="$!{test-image}"/> </a>
+		  </div>
+		</div>
+		#end
+	  </div>
+	  
+	  <div style="clear:both;"/>
+	  
+	</div>
+    <div>
+
+	  <p class="subtitle" style="margin-top:1em;">学習コミュニティ参加</p>
+  
+	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
+#if ( $community-url && $community-url != "" )
+	  <p class="link_icon">・<a href="$!community-url">学習コミュニティを見てみる</a>
+      </p>
+	  <div class="width20 link_icon">
+        <a href="$!community-url">
+          <img src="../../common/images/b_portal.png"/>
+        </a>
+      </div>
+#end
+	</div>
+  </body>
+</html>
