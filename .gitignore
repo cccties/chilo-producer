@@ -1,0 +1,17 @@
+.DS_Store
+.classpath
+~*
+.idea
+bin/*
+/classes/
+/chilo-epub3-maker.zip
+/sample-output/
+/OutputBase
+/support
+/velocity.log*
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+
