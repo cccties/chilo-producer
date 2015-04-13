@@ -9,7 +9,7 @@ CHiLO Producerは、[CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki)
 ### 動作環境
 
 ・Java 8 が動作する環境  
-・xlsx ファイルが編集できる環境（動作確認：Microsoft Office, LibreOffice, OpenOffice)
+・xlsx ファイルが編集できる環境（推奨：Microsoft Office 動作確認：LibreOffice)
 
 ### 利用方法
 
