@@ -441,6 +441,12 @@ public class PageSetting {
     	return settings.get(key).get(0).get(PageSetting.KEY_ATTR_ATTRIBUTE);
     }
 
+    public boolean isCommunity() {
+        List<Map<String, String>> list = settings.get(PageSetting.KEY_COMMUNITY);
+        if (list == null)
+            return false;
+        return "true".equalsIgnoreCase(list.get(0).get(PageSetting.KEY_ATTR_VALUE));
+    }
 
     private int volume, page;
     private Map<String, List<Map<String, String>>> settings;

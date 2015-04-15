@@ -316,6 +316,8 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
         	
         	if (key.equals(PageSetting.KEY_COMMUNITY) && value != null && value.equalsIgnoreCase("true")) {
         		communityPage = true;
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "community");
+        		pageSetting.put(PageSetting.KEY_ATTR_VALUE, "true");
         	}
         	
     		if (key.equals(PageSetting.KEY_SUBJECT)) {

@@ -488,10 +488,10 @@ public class Epub3MakerV2 extends Epub3Maker {
     void contentSetSVGnode(Content content, String prefix, String subject,
     		String boxWidth, String boxHeight, String bgColor, 
     		boolean withRect, String fontBasePos,
-    		String textRatio, String align, String fontFamily, String fontStroke, 
-    		String fgColor, int magni) {
+    		String widthRatio, String textRatio, String align, String fontFamily, 
+    		String fontStroke, String fgColor, int magni) {
     	content.put(prefix + "view-box", "0 0 " + boxWidth + " " + boxHeight);
-    	content.put(prefix + "width", Config.getChapterWidthRatio() + "%");
+    	content.put(prefix + "width", widthRatio + "%");
         
         /*
          * rect element
@@ -553,15 +553,15 @@ public class Epub3MakerV2 extends Epub3Maker {
     		magni = Integer.parseInt(attr.substring(PageSetting.VALUE_ATTR_ATTRIBUTE_TEXT_SVG.length()));
     		contentSetSVGnode(content, type, pageSetting.getChapter(),
     				Const.ChapterViewBoxWidth, Const.ChapterViewBoxHeight, Config.getChapterBGColor(),
-    				true, Const.ChapterFontBasePos, Config.getChapterTextRatio(), Config.getChapterTextAlign(),
-    				Config.getChapterFontFamily(), Config.getChapterFontStroke(), Config.getChapterFGColor(), magni);
+    				true, Const.ChapterFontBasePos, Config.getChapterWidthRatio(), Config.getChapterTextRatio(),
+    				Config.getChapterTextAlign(), Config.getChapterFontFamily(), Config.getChapterFontStroke(), Config.getChapterFGColor(), magni);
     	} else if (type.startsWith("section")) {
     		attr = pageSetting.getAttribute(PageSetting.KEY_SUBSUBJECT);
     		magni = Integer.parseInt(attr.substring(PageSetting.VALUE_ATTR_ATTRIBUTE_TEXT_SVG.length()));
     		contentSetSVGnode(content, type, pageSetting.getSection(), 
     				Const.SectionViewBoxWidth, Const.SectionViewBoxHeight, Config.getSectionBGColor(),
-    				false, Const.SectionFontBasePos, Config.getSectionTextRatio(), Config.getSectionTextAlign(),
-    				Config.getSectionFontFamily(), Config.getSectionFontStroke(), Config.getSectionFGColor(), magni);
+    				false, Const.SectionFontBasePos, Config.getSectionWidthRatio(), Config.getSectionTextRatio(),
+    				Config.getSectionTextAlign(), Config.getSectionFontFamily(), Config.getSectionFontStroke(), Config.getSectionFGColor(), magni);
     	}
     }
     
@@ -600,7 +600,7 @@ public class Epub3MakerV2 extends Epub3Maker {
     	appendMeta(course, content);
     	
     	// book-list sheet
-    	appendBookList(course, volume, content);
+    	appendBookList(course, volume, pageSetting, content);
 
     	// Author
     	AppendAuthor(course, content, authorImages);
@@ -723,6 +723,10 @@ public class Epub3MakerV2 extends Epub3Maker {
     }
 
     void appendBookList(Course course, Volume volume, Content content) {
+        appendBookList(course, volume, null, content);
+    }
+    
+    void appendBookList(Course course, Volume volume, PageSetting pageSetting, Content content) {
     	String volStr = volume.getVolumeStr();
     	content.put(Course.KEY_BOOKLIST_VOL, Integer.toString(volume.getVolume()));
     	content.put(Course.KEY_BOOKLIST_SERIES_TITLE, course.bookSeriesTitle(volStr));
@@ -738,7 +742,10 @@ public class Epub3MakerV2 extends Epub3Maker {
             content.put(Course.KEY_BOOKLIST_BOOK_SUMMARY, sb.toString());
     	}
         content.put(Course.KEY_BOOKLIST_EPUB_DOWNLOAD_URL, course.bookEpubDownloadUrl(volStr));
-    	content.put(Course.KEY_BOOKLIST_COMMUNITY_URL, course.bookCommunityUrl(volStr));
+//        Util.infoPrintln(LogLevel.LOG_DEBUG, "CommunityURL : " + course.bookCommunityUrl(volStr));
+        if (pageSetting != null && pageSetting.isCommunity()) {
+            content.put(Course.KEY_BOOKLIST_COMMUNITY_URL, course.bookCommunityUrl(volStr));
+        }
     }
     
 	void appendMain(PageSetting pageSetting, Content content) throws Epub3MakerException {

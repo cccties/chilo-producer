@@ -73,9 +73,10 @@ public class Epub3Archiver {
     public void archive(Course course, Volume volume, List<Path> inputFilePaths, String OutputTempDir)
             throws Exception {
 
+        String outputName = course.getMeta(Course.KEY_OUTPUT_NAME);
         Path output = Paths.get(
                 course.getMeta().get(Course.KEY_OUTPUT_PATH),
-                course.getMeta(Course.KEY_OUTPUT_NAME) + 
+                (outputName != null ? outputName : "") + 
                 course.getMeta().get(Course.KEY_COURSE_NAME) + "-vol-"
                         + volume.getVolume() + ".epub");
         ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(
