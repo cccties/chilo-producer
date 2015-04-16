@@ -69,3 +69,73 @@ ApacheLicense2.0. ライセンスの元、提供しております。 (see [LICE
 ### Copyright
 
 Copyright © 2015 NPO CCC-TIES All Right Reserved.
+
+===
+
+# CHiLO Producer V1
+
+### About CHiLO Producer
+
+CHiLO Producer is a JAVA based software optimized for producing [CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki), meaning that it is an exclusive software for producing CHiLO Books. Hybrid CHiLO Book(EPUB3 format) and Web CHiLO Book(HTML5 format) can be produced  with the current version, however _"Embedded CHiLO Book is not embedded"_ 
+
+This software is provided as a part of [_CHiLO_](http://www.cccties.org/activities/chilo/)Ⓡ.
+
+### 動作環境
+
+・Java 8 が動作する環境  
+・xlsx ファイルが編集できる環境（推奨：Microsoft Office 動作確認：LibreOffice)
+
+### How to Use CHiLO Producer
+
+1. Install Java 8(https://java.com/ja/download/). 
+1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer )from GitHub and unzip.
+
+If the file has been successfully unziped, _chiloPro_ folder will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
+```
+chiloPro    
+│ run.bat　＊Badge file for outputting CHiLOBook.
+│ (The rest is omitted.)
+│ 
+├─common　＊Files used in common for all.
+│
+├─sample-series　＊Sample
+│    
+└─templete-series　＊Template of the folder of the series(copy this folder for creating).
+    │   structure-books.xlsx ＊Structure file of CHiLO Book
+    │
+    ├─common　＊Folder for saving materials utilized in the series
+    │
+    └─vol-n　＊Folder for saving materials of each Book
+```
+
+### Workflow of creating CHiLO Books
+
+1. Prepare materials to be embedded in CHiLO Book _"essensial materials"_ .
+1. Copy _chiloPro/templete-series_ and save essential materials.
+1. Create configuration information _"configuration file"_ utilizing excel.
+1. Output of CHiLO Book.
+
++More details can be found here ->[Production of CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki/01.CHiLO-Book%E3%81%AE%E5%88%B6%E4%BD%9C)
+
+### Configuration of CHiLO Book
+
+Before the production of CHiLO Book, understand the structure of CHiLO Book.
+-> [Configuration of CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki/00.CHiLO-Book%E3%81%AE%E6%A7%8B%E9%80%A0)
+
+### Usage Tips
+
+CHiLO Producer is made exclusively for producing CHiLO Books, but by modifing templates, CSS files, and configuration fils, an original CHiLO Book can be produced.
+-> [Usage Tips](https://github.com/cccties/CHiLO-Producer/wiki/03.%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%AE%E3%82%B3%E3%83%84)
+
+### Problems and Inquiries
+
+If there are any problems, questions, or requests related to this software, enter here -> [Issues](https://github.com/cccties/CHiLO-Producer/issues)
+
+### Licensing
+
+We offer CHiLO Producer under the license of ApacheLicense2.0. (See [LICENSE.txt](LICENSE.txt)) 
+
+### Copyright
+
+Copyright © 2015 NPO CCC-TIES All Right Reserved.
+
