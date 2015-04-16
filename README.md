@@ -1,7 +1,5 @@
 English version is [HERE](#english).
 
-===
-
 # CHiLO Producer
 
 ### CHiLO Producerとは
