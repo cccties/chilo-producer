@@ -82,15 +82,16 @@ CHiLO Producer is a JAVA based software optimized for producing [CHiLO Book](htt
 
 This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activities/chilo/)Ⓡ.
 
-### 動作環境
+### Operating environment
 
-・Java 8 が動作する環境  
-・xlsx ファイルが編集できる環境（推奨：Microsoft Office 動作確認：LibreOffice)
+* Environment for Java 8 to operate
+* Environment to edit xlsx files（Recommended：Microsoft Office operation check：LibreOffice)
 
 ### How to Use CHiLO Producer
 
 1. Install Java 8(https://java.com/ja/download/). 
-1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer )from GitHub and unzip.
+1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.   
+-> For overall structure, refer to：[dir.md](dir.md)
 
 If the file has been successfully unziped, _chiloPro_ folder will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
 ```
