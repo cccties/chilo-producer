@@ -96,19 +96,19 @@ This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activ
 If the file has been successfully unziped, _chiloPro_ folder will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
 ```
 chiloPro    
-│ run.bat　＊Badge file for outputting CHiLOBook.
+│ run.bat　*Badge file for outputting CHiLOBook.
 │ (The rest is omitted.)
 │ 
-├─common　＊Files used in common for all.
+├─common　*Files used in common for all.
 │
-├─sample-series　＊Sample
+├─sample-series　*Sample
 │    
-└─templete-series　＊Template of the folder of the series(copy this folder for creating).
-    │   structure-books.xlsx ＊Structure file of CHiLO Book
+└─templete-series　*Template of the folder of the series(copy this folder for creating).
+    │   structure-books.xlsx *Structure file of CHiLO Book
     │
-    ├─common　＊Folder for saving materials utilized in the series
+    ├─common　*Folder for saving materials utilized in the series
     │
-    └─vol-n　＊Folder for saving materials of each Book
+    └─vol-n　*Folder for saving materials of each Book
 ```
 
 ### Workflow of creating CHiLO Books
