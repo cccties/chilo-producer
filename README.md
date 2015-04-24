@@ -91,7 +91,7 @@ This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activ
 
 1. Install Java 8(https://java.com/ja/download/). 
 1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.   
--> For overall structure, refer to：[dir.md](dir.md)
+-> For overall structure, refer to：[dir.md](dir_en.md)
 
 If the file has been successfully unziped, _chiloPro_ folder will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
 ```
