@@ -120,7 +120,7 @@ chiloPro
 
 +More details can be found here ->[Production of CHiLO Book](https://github.com/cccties/chilo-producer/wiki/e01.Production-of-CHiLO-Book)
 
-### Configuration of CHiLO Book
+### Structure of CHiLO Book
 
 Before the production of CHiLO Book, understand the structure of CHiLO Book.
 -> [Structure of CHiLO Book](https://github.com/cccties/chilo-producer/wiki/e00.Structure-of-CHiLO-Book)
