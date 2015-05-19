@@ -11,13 +11,13 @@
 	<meta property="og:site_name" content="$og-site_name" />
 	<meta property="book:tag"  content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
-	<meta property="book:tag"  content="" />
+	<meta property="book:tag" content="$series-name" />
 	<meta property="book:tag"  content="vol-$vol" />
 	<meta property="book:tag"  content="${series-name}_vol-$vol" />
   
 	<meta property="og:title" content="$series-name | vol-$vol" />
 	<meta property="og:description" content="" />
-	<meta property="og:url" content="$series-url/$vol/$file-name" />
+	<meta property="og:url" content="$deploy-url/vol-${vol}-html/common/text/$file-name" />
 #if ( $picture && $picture != "" )
       <meta property="og:image" content="$picture" />
 
@@ -52,7 +52,7 @@
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-$google-analytics-id, 'auto');
+	  ga('create', '$google-analytics-id', 'auto');
 	  ga('require', 'displayfeatures');
 	  ga('send', 'pageview');
 	</script>
@@ -129,7 +129,6 @@ $(function(){
 			<!-- PageComm -->
 			<div class="sns_d">
 			  <div class="sns_e">
-				<!-- change from http://proxy.chilos.jp/pi00301 to ../../nav.html-->
 			 	<a href="../../nav.html"><img id="p_mokuji" style="display:block;" src="../../common/images/b_index.png"  onmouseover="this.src='../../common/images/b_index_mover.png'" onmouseout="this.src='../../common/images/b_index.png'"/></a>
               </div>
 #if ( $epub-download-url && $epub-download-url != "" )
