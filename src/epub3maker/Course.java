@@ -43,6 +43,7 @@ public class Course {
     public static final String KEY_OUTPUT_NAME= "output-name";
     public static final String KEY_EDITOR = "editor";
     public static final String KEY_PUBLISHED = "published";
+    public static final String KEY_REVISED = "revised";
     public static final String KEY_SERIES_INTRODUCTION = "series-introduction";
     public static final String KEY_SERIES_URL = "series-url";
     public static final String KEY_COVER = "cover";
@@ -52,11 +53,13 @@ public class Course {
     public static final String KEY_GOOGLE_ANALYTICS_ID = "google-analytics-id";
     public static final String KEY_FB_APP_ID = "fb-app-id";
 
+    public static final String KEY_BOOKLIST_ID = "identifier"; // contentpf.xhtml
     public static final String KEY_BOOKLIST_VOL = "vol";
     public static final String KEY_BOOKLIST_SERIES_TITLE = "series-title";
     public static final String KEY_BOOKLIST_BOOK_SUMMARY = "book-summary";
 //    public static final String KEY_BOOKLIST_BREADCRUMBS = "breadcrumbs";
 //    public static final String KEY_BOOKLIST_BREADCRUMBS_URL = "breadcrumbs-url";
+    public static final String KEY_BOOKLIST_COVER = "cover";
   public static final String KEY_BOOKLIST_EPUB_DOWNLOAD_URL = "epub-download-url";
     public static final String KEY_BOOKLIST_COMMUNITY_URL = "community-url";
 
@@ -124,11 +127,19 @@ public class Course {
     public String bookSeriesTitle(String vol) {
     	return getBookListElement(vol, KEY_BOOKLIST_SERIES_TITLE);
     }
+
+    public String bookIdentifier(String vol) {
+        return getBookListElement(vol, KEY_BOOKLIST_ID);
+    }
     
     public String bookBookSummary(String vol) {
     	return getBookListElement(vol, KEY_BOOKLIST_BOOK_SUMMARY);
     }
     
+    public String bookCover(String vol) {
+        return getBookListElement(vol, KEY_BOOKLIST_COVER);
+    }
+
     public String bookEpubDownloadUrl(String vol) {
         return getBookListElement(vol, KEY_BOOKLIST_EPUB_DOWNLOAD_URL);
     }

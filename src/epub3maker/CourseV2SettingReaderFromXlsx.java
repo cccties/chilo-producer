@@ -106,7 +106,10 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
         	}
         }
         if (Util.isValueValid(val)) {
-        	meta.put(Course.KEY_COURSE_ID, val);
+            /*
+             * #2768 により仕様変更．booklistで「のみ」定義する
+             */
+//        	meta.put(Course.KEY_COURSE_ID, val);
         	meta.remove(Course.KEY_COURSE_ID2);
         }
         
@@ -131,11 +134,13 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
     {
     	bookListKeyNames = new ArrayList<String>();
     	
+        bookListKeyNames.add(Course.KEY_BOOKLIST_ID);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_VOL);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_SERIES_TITLE);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_BOOK_SUMMARY);
 //    	bookListKeyNames.add(Course.KEY_BOOKLIST_BREADCRUMBS);
 //    	bookListKeyNames.add(Course.KEY_BOOKLIST_BREADCRUMBS_URL);
+        bookListKeyNames.add(Course.KEY_BOOKLIST_COVER);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_COMMUNITY_URL);
         bookListKeyNames.add(Course.KEY_BOOKLIST_EPUB_DOWNLOAD_URL);
     	
@@ -181,18 +186,48 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
 //            Iterator<Row> rowIte = sheet.iterator();
 //            if (rowIte.hasNext())
 //            	rowIte.next(); // skip key
-            
+
+            /*
+             * #2769 vol-nのcoverをbook-listで定義する
+             * vol-n からは削除
+             */
             int page = VOLUME_COVER_PAGE;
+            String sheetName = sheet.getSheetName();
+            String volStr = sheetName.substring(prefix.length());
+            int vol = Integer.parseInt(volStr);
+            Map<String, String> bookInfo = this.bookList.get(vol - 1);
+            String bookCover = bookInfo.get(Course.KEY_BOOKLIST_COVER);
+            String bookId = bookInfo.get(Course.KEY_BOOKLIST_ID);
+            if (bookCover != null && bookCover.length() != 0) {
+
+                Util.infoPrintln(LogLevel.LOG_DEBUG, "Found cover in BookList: " + bookCover +  " for " + sheetName);
+                
+                PageSetting setting = createBookCoverPage(vol, page, bookCover, bookId);
+
+                if (currentVolume != setting.getVolume()) {
+                    volumes.put((setting.getVolume()),
+                            new Volume(setting.getVolume()));
+
+                    currentVolume = setting.getVolume();
+                }
+
+                volumes.get(currentVolume).getPageSettings().add(setting);
+            } else {
+                Util.infoPrintln(LogLevel.LOG_DEBUG, "NO cover in BookList: for " + sheetName);
+            }
+            page = DOCUMENT_START_PAGE;
+            
             String curChapter = null;
             int lastrow = sheet.getLastRowNum();
             for (int rownum = 1; rownum <= lastrow ; rownum++) {
-                // 1 行目はスキップ
+                // 1 行目はヘッダ
             	PageSetting sectionCover = null;
             	Row row = sheet.getRow(rownum);
             	if (row == null) {
                     Util.infoPrintln(LogLevel.LOG_INFO, "readVolSheets done, because empty Row found !!!");
                     break;
             	}
+            	
             	PageSetting setting = readPageSetting(row, prefix, page);
             	if (setting == null) {
             		break;
@@ -205,8 +240,9 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
             	    Util.infoPrintln(LogLevel.LOG_INFO, "readVolSheets done, because empty page-type found.");
             	    break;
             	}
+
             	String chapter = setting.getChapter();
-            	if (curChapter != null && !chapter.equals(curChapter) && !setting.getPageType().equals(PageSetting.VALUE_KEY_PAGE_TYPE_TEST)) {
+            	if ((curChapter == null || !chapter.equals(curChapter)) && !setting.getPageType().equals(PageSetting.VALUE_KEY_PAGE_TYPE_TEST)) {
             		// then create section cover page
             		sectionCover = createSectionCover(setting.getVolume(), page, chapter);
             	}
@@ -228,11 +264,7 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
             	}
             	volumes.get(currentVolume).getPageSettings().add(setting);
             	
-            	if (page == Epub3MakerV2.VOLUME_COVER_PAGE) {
-            		page = DOCUMENT_START_PAGE;
-            	} else {
-            		page++;
-            	}
+            	page++;
             }
         }
         return volumes;
@@ -266,7 +298,7 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
     	Map<String, List<Map<String, String>>> settings = new HashMap<>();
         String key, value;
         Cell cell;
-        String coverFile = null;
+//        String coverFile = null;
         boolean communityPage = false;
         boolean hasJavaScript = false;
         boolean hasSvg = false;
@@ -297,9 +329,10 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
         		    Util.infoPrintln(LogLevel.LOG_INFO, "readPageSettingsRow: no page type !!!");
         		    return null;
         		}
-            	if (settings.get(PageSetting.KEY_PAGE_TYPE).get(0).get(PageSetting.KEY_ATTR_VALUE).equals(PageSetting.VALUE_KEY_PAGE_TYPE_COVER)) {
-            		coverFile = value;
-            	}
+        		// #2769 booklist に移動
+//            	if (settings.get(PageSetting.KEY_PAGE_TYPE).get(0).get(PageSetting.KEY_ATTR_VALUE).equals(PageSetting.VALUE_KEY_PAGE_TYPE_COVER)) {
+//            		coverFile = value;
+//            	}
             	pageSetting.put(PageSetting.KEY_ATTR_TYPE, where);
             	
             	String ext = getExt(value);
@@ -341,7 +374,7 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
         		if (value != null) {
         			String type = "string";
         			String ext = getExt(value);
-        			if (ext == null || !ext.equals("xhtml")) {
+        			if (ext == null || (!ext.equals("xhtml") && !ext.equals("txt"))) {
         				throw new Epub3MakerException("不正なファイルフォーマットです: " + ext);
         			}
         			type = "preformat";
@@ -387,11 +420,12 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
            		pageSetting.put(PageSetting.KEY_ATTR_VALUE, meta.get(PageSetting.KEY_PUBLISHED)); 
            	}
 
-        	if (key.equals(PageSetting.KEY_COVER)) {
-        		pageSetting.put(PageSetting.KEY_ATTR_VALUE, coverFile);
-        		pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
-        		pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "image");
-        	}
+           	// #2769 booklist に移動
+//        	if (key.equals(PageSetting.KEY_COVER)) {
+//        		pageSetting.put(PageSetting.KEY_ATTR_VALUE, coverFile);
+//        		pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
+//        		pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "image");
+//        	}
         	
         	if (key.equals(PageSetting.KEY_COVER_PAGE)) {
         		pageSetting.put(PageSetting.KEY_ATTR_TYPE, "common");
@@ -538,5 +572,121 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
     		}
     	}
     	return null;
+    }
+    
+    private PageSetting createBookCoverPage(int vol, int page, String bookCover, String bookId) {
+        Map<String, List<Map<String, String>>> settings = new HashMap<>();
+        String key;
+
+        /*
+         * まず "main" カラム相当を作成
+         */
+        for (int i = 0; i < ver2VolKeys; i++) {
+            /*
+             * とりあえず loop を回して，定義された項目分キーを入れておかないといけないらしい
+             */
+            Map<String, String> pageSetting = new HashMap<>();
+            key = pageSettingKeyNames.get(i);
+
+
+            pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "string");
+            pageSetting.put(PageSetting.KEY_ATTR_TYPE, null);
+            pageSetting.put(PageSetting.KEY_ATTR_VALUE, null);
+            pageSetting.put(PageSetting.KEY_ATTR_CLASS, null);
+            pageSetting.put(PageSetting.KEY_ATTR_OPTION, null);
+            
+            if (key.equals(PageSetting.KEY_PAGE_TYPE)) {
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, PageSetting.KEY_COVER);
+            }
+            
+            if (key.equals(PageSetting.KEY_OBJECT) && bookCover != null && bookCover.length() > 0) {
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "string");
+                pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, bookCover);
+                pageSetting.put(PageSetting.KEY_ATTR_CLASS, null);
+                pageSetting.put(PageSetting.KEY_ATTR_OPTION, null);
+
+                String ext = getExt(bookCover);
+                if (ext != null) {
+                    String type = "string";
+                    if (ext.equals("jpg") || ext.equals("png")) {
+                        type = "image";
+                    } else if (ext.equals("mp4")) {
+                        type = "video";
+                    }
+                    pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, type);
+                }
+            }
+            
+            if (key.equals(PageSetting.KEY_SUBJECT)) {
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "svg2");
+                pageSetting.put(PageSetting.KEY_ATTR_CLASS, "subject");
+            }
+
+            if (key.equals(PageSetting.KEY_SUBSUBJECT)) {
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "svg0");
+                pageSetting.put(PageSetting.KEY_ATTR_CLASS, "subsubject");
+            }
+            
+            if (key.equals(PageSetting.KEY_TEXT)) {
+                pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
+            }
+            
+            if (key.equals(PageSetting.KEY_JAVASCRIPT_FILE)) {
+                pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "file");
+            }
+
+            List<Map<String, String>> list = new ArrayList<>();
+            list.add(pageSetting);
+            settings.put(key, list);
+        }
+
+        /*
+         * 次にpage-type情報を作成
+         */
+        for (int i = ver2VolKeys; i < pageSettingKeyNames.size(); i++) {
+            Map<String, String> pageSetting = new HashMap<>();
+            
+            key = pageSettingKeyNames.get(i);
+        
+            pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "string");
+            pageSetting.put(PageSetting.KEY_ATTR_TYPE, null);
+            pageSetting.put(PageSetting.KEY_ATTR_VALUE, null);
+            pageSetting.put(PageSetting.KEY_ATTR_CLASS, null);
+            pageSetting.put(PageSetting.KEY_ATTR_OPTION, null);
+            
+            if (key.equals(PageSetting.KEY_IDENTIFIER)) {
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, bookId);
+            }
+            
+            if (key.equals(PageSetting.KEY_SHOW_TOC)) {
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, "true");
+            }
+            
+            if (key.equals(PageSetting.KEY_PUBLISHED)) {
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, meta.get(PageSetting.KEY_PUBLISHED)); 
+            }
+
+            // #2769 booklist に移動
+            if (key.equals(PageSetting.KEY_COVER)) {
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "image");
+                pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
+                pageSetting.put(PageSetting.KEY_ATTR_VALUE, bookCover);
+                pageSetting.put(PageSetting.KEY_ATTR_CLASS, null);
+                pageSetting.put(PageSetting.KEY_ATTR_OPTION, null);
+            }
+            
+            if (key.equals(PageSetting.KEY_COVER_PAGE)) {
+                pageSetting.put(PageSetting.KEY_ATTR_TYPE, "common");
+                pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "file");
+            }
+            
+            List<Map<String, String>> list = new ArrayList<>();
+            list.add(pageSetting);
+            settings.put(key, list);
+        }
+
+        return new PageSetting(vol, page, settings);
     }
 }

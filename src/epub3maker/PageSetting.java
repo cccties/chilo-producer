@@ -348,7 +348,16 @@ public class PageSetting {
 
     public boolean getShowToc()
     {
-    	return this.settings.get(PageSetting.KEY_SHOW_TOC).get(0).get(PageSetting.KEY_ATTR_VALUE).toLowerCase().equals("true");
+        boolean ret = false;
+        Map<String, String> setting = this.settings.get(PageSetting.KEY_SHOW_TOC).get(0);
+        if (setting != null) {
+            String attr = setting.get(PageSetting.KEY_ATTR_VALUE);
+            if (attr != null) {
+                ret = attr.toLowerCase().equals("true");
+            }
+        }
+//    	return this.settings.get(PageSetting.KEY_SHOW_TOC).get(0).get(PageSetting.KEY_ATTR_VALUE).toLowerCase().equals("true");
+        return ret;
     }
 
     public String getItemProperty()
@@ -510,6 +519,7 @@ public class PageSetting {
     public static final String KEY_YOUTUBE_ID = "youtube-id";
     public static final String KEY_QUIZ_PAGE = "quiz-page";
     public static final String KEY_CC = "CC";
+    public static final String KEY_DOCUMENT_TEXT = "document-text";
     
     public static final String VALUE_KEY_PAGE_TYPE_COVER = "cover";
     public static final String VALUE_KEY_PAGE_TYPE_DOCUMENT = "document";

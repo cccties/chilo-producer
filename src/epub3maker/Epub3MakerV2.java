@@ -54,8 +54,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
+
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -342,7 +346,10 @@ public class Epub3MakerV2 extends Epub3Maker {
     	Content content = new Content();
 
     	String fnamePrefix = String.format("vol-%03d-", volume.getVolume());
-    	content.put("prev-page", volume.getVolumeStr() + "/text/" + fnamePrefix + "001.html");
+    	String coverImg = volume.getCoverImage();
+    	if (coverImg != null && coverImg.length() > 0) {
+            content.put("prev-page", volume.getVolumeStr() + "/text/" + fnamePrefix + "001.html");
+    	}
         content.put("next-page", "common/text/" + fnamePrefix  + "002.html");
     	
     	content.put("chapters", chapters);
@@ -401,10 +408,13 @@ public class Epub3MakerV2 extends Epub3Maker {
 		
 		List<String> items = super.makeItemrefsListForSpine(course, volume);
 
-        String cover = items.get(1); // 1ページ目はVolume Cover
-        items.remove(1);
-        
-        items.add(0, cover); // もくじの前に移動
+		String coverImg = volume.getCoverImage(); // coverは必ず画像という前提
+		if (coverImg != null && coverImg.length() > 0) {
+	        String cover = items.get(1); // 1ページ目はVolume Cover
+	        items.remove(1);
+	        
+	        items.add(0, cover); // もくじの前に移動
+		}
 
         return items;
     }
@@ -683,6 +693,7 @@ public class Epub3MakerV2 extends Epub3Maker {
                 Course.KEY_EDITOR, 
     			Course.KEY_PUBLISHER, 
     			Course.KEY_PUBLISHED, 
+                Course.KEY_REVISED,
     	    	Course.KEY_RIGHTS, 
 //    	    	Course.KEY_SERIES_INTRODUCTION, 
     	    	Course.KEY_SERIES_URL, 
@@ -728,6 +739,10 @@ public class Epub3MakerV2 extends Epub3Maker {
     
     void appendBookList(Course course, Volume volume, PageSetting pageSetting, Content content) {
     	String volStr = volume.getVolumeStr();
+    	
+        content.put(Course.KEY_BOOKLIST_ID, course.bookIdentifier(volStr));
+//        Util.infoPrintln(LogLevel.LOG_DEBUG, "identifier from booklist : " + course.bookIdentifier(volStr));
+        
     	content.put(Course.KEY_BOOKLIST_VOL, Integer.toString(volume.getVolume()));
     	content.put(Course.KEY_BOOKLIST_SERIES_TITLE, course.bookSeriesTitle(volStr));
     	String summary = course.bookBookSummary(volStr);
@@ -741,6 +756,10 @@ public class Epub3MakerV2 extends Epub3Maker {
             sb.append(summaries[summaries.length - 1]);
             content.put(Course.KEY_BOOKLIST_BOOK_SUMMARY, sb.toString());
     	}
+    	/*
+    	 * templateで $cover に埋め込まれる．今の所「章末情報」の chapter ページにしか使われていない
+    	 */
+        content.put(Course.KEY_COVER, commonImagePath(course.getMeta(Course.KEY_COVER)));
         content.put(Course.KEY_BOOKLIST_EPUB_DOWNLOAD_URL, course.bookEpubDownloadUrl(volStr));
 //        Util.infoPrintln(LogLevel.LOG_DEBUG, "CommunityURL : " + course.bookCommunityUrl(volStr));
         if (pageSetting != null && pageSetting.isCommunity()) {
@@ -805,6 +824,11 @@ public class Epub3MakerV2 extends Epub3Maker {
 					sr.write(str + "\n");
 				}
 				content.put(PageSetting.KEY_TEXT, sr.toString());
+				if (isPublishHtml()) {
+				    String regex = "<.+?>";
+				    String after = sr.toString().replace('\n', ' ').replaceAll(regex, "");
+	                content.put(PageSetting.KEY_DOCUMENT_TEXT, after.replaceAll("\"", "&quote;"));
+				}
 				sr.close();
 				br.close();
 			}
@@ -922,7 +946,7 @@ public class Epub3MakerV2 extends Epub3Maker {
      */
     private void validateSeriesInformation(Course course) throws Epub3MakerException {
         String meta;
-        boolean isIdentifier = true,
+        boolean /* isIdentifier = true, */
                 isLanguage = true,
                 isCreator = true,
                 isPublished = true,
@@ -930,11 +954,11 @@ public class Epub3MakerV2 extends Epub3Maker {
                 isAllValid = true;
         
         
-        meta = course.getMeta(Course.KEY_COURSE_ID);
-        if (!Util.isValueValid(meta)) {
-            isIdentifier = false;
-            isAllValid = false;
-        }
+//        meta = course.getMeta(Course.KEY_COURSE_ID);
+//        if (!Util.isValueValid(meta)) {
+//            isIdentifier = false;
+//            isAllValid = false;
+//        }
         
         meta = course.getMeta(Course.KEY_LANGUAGE);
         if (!Util.isValueValid(meta)) {
@@ -964,9 +988,9 @@ public class Epub3MakerV2 extends Epub3Maker {
 
             StringBuilder msg = new StringBuilder();
             msg.append("必須項目が未設定です\n");
-            if (!isIdentifier) {
-                msg.append("\t" + Course.KEY_COURSE_ID2 + "\n");
-            }
+//            if (!isIdentifier) {
+//                msg.append("\t" + Course.KEY_COURSE_ID2 + "\n");
+//            }
             if (!isLanguage) {
                 msg.append("\t" + Course.KEY_LANGUAGE + "\n");
             }
