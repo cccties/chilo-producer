@@ -157,7 +157,10 @@ $(function(){
   #end
 
   <p>$!published First edition<br/>
-     $!update Revised edition</p>
+      #if ( $revised && $revised != "")
+      $!revised Revised edition<br/>
+      #end
+      $!update Reprinted</p>
 
   <div style="clear:both;"/>
 
