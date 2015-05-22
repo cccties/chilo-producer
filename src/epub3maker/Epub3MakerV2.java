@@ -366,7 +366,7 @@ public class Epub3MakerV2 extends Epub3Maker {
         appendBookList(course, volume, content);
     	
     	Path outputFileName;
-    	content.put("start-page", Volume.KEY_VOLUME_PREFIX + "1/text/" + pageFileName(1, DOCUMENT_START_PAGE + 1));
+    	content.put("start-page", volume.getVolumeStr() + "/text/" + pageFileName(volume.getVolume(), DOCUMENT_START_PAGE + 1));
     	if (isPublishHtml()) {
     		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME.replace("xhtml", "html"));
     	} else {

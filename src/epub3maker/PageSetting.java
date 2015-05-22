@@ -354,9 +354,14 @@ public class PageSetting {
             String attr = setting.get(PageSetting.KEY_ATTR_VALUE);
             if (attr != null) {
                 ret = attr.toLowerCase().equals("true");
+            } else {
+                Util.infoPrintln(LogLevel.LOG_DEBUG, "SHOW_TOC: NO ATTRIBUTE");
             }
+        } else {
+            Util.infoPrintln(LogLevel.LOG_DEBUG, "SHOW_TOC: NO SETTING");
         }
 //    	return this.settings.get(PageSetting.KEY_SHOW_TOC).get(0).get(PageSetting.KEY_ATTR_VALUE).toLowerCase().equals("true");
+        Util.infoPrintln(LogLevel.LOG_DEBUG, "SHOW_TOC: " + ret);
         return ret;
     }
 

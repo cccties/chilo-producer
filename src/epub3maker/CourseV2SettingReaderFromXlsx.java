@@ -134,13 +134,13 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
     {
     	bookListKeyNames = new ArrayList<String>();
     	
-        bookListKeyNames.add(Course.KEY_BOOKLIST_ID);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_VOL);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_SERIES_TITLE);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_BOOK_SUMMARY);
 //    	bookListKeyNames.add(Course.KEY_BOOKLIST_BREADCRUMBS);
 //    	bookListKeyNames.add(Course.KEY_BOOKLIST_BREADCRUMBS_URL);
         bookListKeyNames.add(Course.KEY_BOOKLIST_COVER);
+        bookListKeyNames.add(Course.KEY_BOOKLIST_ID);
     	bookListKeyNames.add(Course.KEY_BOOKLIST_COMMUNITY_URL);
         bookListKeyNames.add(Course.KEY_BOOKLIST_EPUB_DOWNLOAD_URL);
     	
@@ -198,23 +198,29 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
             Map<String, String> bookInfo = this.bookList.get(vol - 1);
             String bookCover = bookInfo.get(Course.KEY_BOOKLIST_COVER);
             String bookId = bookInfo.get(Course.KEY_BOOKLIST_ID);
+            
+            PageSetting overSetting = null;
             if (bookCover != null && bookCover.length() != 0) {
 
                 Util.infoPrintln(LogLevel.LOG_DEBUG, "Found cover in BookList: " + bookCover +  " for " + sheetName);
                 
-                PageSetting setting = createBookCoverPage(vol, page, bookCover, bookId);
+                overSetting = createBookCoverPage(vol, page, bookCover, bookId);
 
-                if (currentVolume != setting.getVolume()) {
-                    volumes.put((setting.getVolume()),
-                            new Volume(setting.getVolume()));
-
-                    currentVolume = setting.getVolume();
-                }
-
-                volumes.get(currentVolume).getPageSettings().add(setting);
             } else {
+                /*
+                 * このなかで TOC の設定などもしているので呼び出しは必要
+                 */
+                overSetting = createBookCoverPage(vol, page, null, bookId);
                 Util.infoPrintln(LogLevel.LOG_DEBUG, "NO cover in BookList: for " + sheetName);
             }
+            if (currentVolume != overSetting.getVolume()) {
+                volumes.put((overSetting.getVolume()),
+                        new Volume(overSetting.getVolume()));
+
+                currentVolume = overSetting.getVolume();
+            }
+            volumes.get(currentVolume).getPageSettings().add(overSetting);
+            
             page = DOCUMENT_START_PAGE;
             
             String curChapter = null;
@@ -669,7 +675,7 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
             }
 
             // #2769 booklist に移動
-            if (key.equals(PageSetting.KEY_COVER)) {
+            if (Util.isValueValid(bookCover) && key.equals(PageSetting.KEY_COVER)) {
                 pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "image");
                 pageSetting.put(PageSetting.KEY_ATTR_TYPE, "volume");
                 pageSetting.put(PageSetting.KEY_ATTR_VALUE, bookCover);
