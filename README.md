@@ -22,7 +22,7 @@ CHiLO Producerは、[CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki)
 CHiLO Bookを作成するときは、展開した先にある _chiloPro_ フォルダを開き、シリーズ毎に _chiloPro/templete-series_  をコピーしていきます。
 ```
 (root)
-　│  run.bat　＊CHiLOBook書き出し用のバッジファイル
+　│  run.bat / run-html.bat　＊CHiLOBook書き出し用のバッジファイル
 　│  （省略）
 　│
 　└─chiloPro
@@ -96,7 +96,7 @@ This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activ
 If the file has been successfully unziped, _chiloPro_ folder will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
 ```
 chiloPro    
-│ run.bat　*Badge file for outputting CHiLOBook.
+│ run.bat / run-html.bat　*Badge file for outputting CHiLOBook.
 │ (The rest is omitted.)
 │ 
 ├─common　*Files used in common for all.
