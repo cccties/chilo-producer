@@ -151,6 +151,9 @@ $(function(){
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
+                  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                  stroke-width="$chapter-stroke-width"
+                  #end
 			  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
@@ -164,6 +167,9 @@ $(function(){
 		#end
         <text fill="$section-fill" font-family="$section-font-family"
 			  font-size="$section-font-size" stroke="$section-stroke"
+              #if ( $section-stroke-width && $section-stroke-width != "" )
+              stroke-width="$section-stroke-width"
+              #end
 			  text-anchor="$section-text-anchor"
 			  x="$section-x" y="$section-y">$section</text>
       </svg>

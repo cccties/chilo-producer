@@ -47,10 +47,14 @@ public class Config {
     public static final String ChapterWidthRatioKey = "ChapterWidthRatio";
     public static final String ChapterTextRatioKey = "ChapterTextRatio";
     public static final String ChapterFontFamilyKey = "CahpterFontFamily";
-    public static final String ChapterFontStrokeKey = "CahpterFontStroke";
+    public static final String ChapterFontStrokeKey = "ChapterFontStroke";
+    public static final String ChapterFontStrokeWidthKey = "ChapterFontStrokeWidth";
     public static final String ChapterTextAlignKey = "ChapterTextAlign";
     public static final String PublishStyleKey = "PublishStyle";
     public static final String CourseVersionKey = "CourseVersion";
+    public static final String InputPathKey = "InputPath";
+    public static final String OutputPathKey = "OutputPath";
+    public static final String OutputNameKey = "OutputName";
     
     public static final String SectionFGColorKey = "SectionFGColor";
     public static final String SectionBGColorKey = "SectionBGColor";
@@ -58,6 +62,7 @@ public class Config {
     public static final String SectionTextRatioKey = "SectionTextRatio";
     public static final String SectionFontFamilyKey = "SectionFontFamily";
     public static final String SectionFontStrokeKey = "SectionFontStroke";
+    public static final String SectionFontStrokeWidthKey = "SectionFontStrokeWidth";
     public static final String SectionTextAlignKey = "SectionTextAlign";
 
     public static final String SVGTextZenkakuRatioKey = "SVGTextZenkakuRatio";
@@ -146,6 +151,10 @@ public class Config {
         return prop.getProperty(ChapterFontStrokeKey, "none");
     }
 
+    public static String getChapterFontStrokeWidth() {
+        return prop.getProperty(ChapterFontStrokeWidthKey, "1");
+    }
+
     public static String getChapterTextAlign() {
         return prop.getProperty(ChapterTextAlignKey, "center");
     }
@@ -174,6 +183,10 @@ public class Config {
         return prop.getProperty(SectionFontStrokeKey, "none");
     }
 
+    public static String getSectionFontStrokeWidth() {
+        return prop.getProperty(SectionFontStrokeWidthKey, "1");
+    }
+
     public static String getSectionTextAlign() {
         return prop.getProperty(SectionTextAlignKey, "left");
     }
@@ -196,7 +209,31 @@ public class Config {
         String s = prop.getProperty(SVGTextHankakuRatioKey, "0.5");
         return Double.parseDouble(s);
     }
+   
+    public static void setInputPath(String path) {
+        prop.setProperty(InputPathKey, path);
+    }
     
+    public static String getInputPath() {
+        return prop.getProperty(InputPathKey, "./");
+    }
+
+    public static void setOutputPath(String path) {
+        prop.setProperty(OutputPathKey, path);
+    }
+    
+    public static String getOutputPath() {
+        return prop.getProperty(OutputPathKey, "./");
+    }
+
+    public static void setOutputName(String name) {
+        prop.setProperty(OutputNameKey, name);
+    }
+    
+    public static String getOutputName() {
+        return prop.getProperty(OutputNameKey, "default");
+    }
+
     /**
      * 現在のLogLevelを返す．デフォルトは LOG_INFO．
      * @return

@@ -97,6 +97,13 @@ public class CourseV2SettingReaderFromXlsx extends CourseSettingReaderFromXlsx i
     protected Map<String, String> readMetaSheet(Workbook workBook)
             throws FileNotFoundException, IOException {
         Map<String, String> meta = readSheetVKey(workBook, META_SHEET_NAME);
+        
+        /*
+         * input-path, output-path, output-name はコマンドライン引数から
+         */
+        meta.put(Course.KEY_INPUT_PATH, Config.getInputPath());
+        meta.put(Course.KEY_OUTPUT_PATH, Config.getOutputPath());
+        meta.put(Course.KEY_OUTPUT_NAME, Config.getOutputName());
 
         String val = "";
         for (Map.Entry<String, String> e: meta.entrySet()) {

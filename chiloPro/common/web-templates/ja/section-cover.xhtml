@@ -150,6 +150,9 @@ $(function(){
 			#end
             <text fill="$chapter-fill" font-family="$chapter-font-family"
 				  font-size="$chapter-font-size" stroke="$chapter-stroke"
+                  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                  stroke-width="$chapter-stroke-width"
+                  #end
 				  text-anchor="$chapter-text-anchor"
 				  x="$chapter-x" y="$chapter-y">$chapter</text>
           </svg>

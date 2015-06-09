@@ -10,6 +10,7 @@
 <entry key="ChapterTextRatio">80</entry> <!-- % -->
 <entry key="ChapterFontFamily">serif</entry>
 <entry key="ChapterFontStroke">none</entry>
+<entry key="ChapterFontStrokeWidth">0</entry>
 <entry key="ChapterTextAlign">center</entry> <!-- left, right, center -->
 <entry key="SectionFGColor">#4A6EA8</entry>
 <entry key="SectionBGColor">white</entry>
@@ -17,6 +18,7 @@
 <entry key="SectionTextRatio">90</entry>
 <entry key="SectionFontFamily">serif</entry>
 <entry key="SectionFontStroke">none</entry>
+<entry key="SectionFontStrokeWidth">0</entry>
 <entry key="SectionTextAlign">left</entry>
 <entry key="SVGTextZenkakuRatio">1.0</entry>
 <entry key="SVGTextHankakuRatio">0.5</entry>

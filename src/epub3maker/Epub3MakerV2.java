@@ -499,7 +499,7 @@ public class Epub3MakerV2 extends Epub3Maker {
     		String boxWidth, String boxHeight, String bgColor, 
     		boolean withRect, String fontBasePos,
     		String widthRatio, String textRatio, String align, String fontFamily, 
-    		String fontStroke, String fgColor, int magni) {
+    		String fontStroke, String fontStrokeWidth, String fgColor, int magni) {
     	content.put(prefix + "view-box", "0 0 " + boxWidth + " " + boxHeight);
     	content.put(prefix + "width", widthRatio + "%");
         
@@ -550,6 +550,7 @@ public class Epub3MakerV2 extends Epub3Maker {
         content.put(prefix + "font-size", "" + fontsize);
         content.put(prefix + "font-family", fontFamily);
         content.put(prefix + "stroke", fontStroke);
+        content.put(prefix + "stroke-width", fontStrokeWidth);
         content.put(prefix + "fill", fgColor);
         content.put(prefix + "text-anchor", textAnchor);
     }
@@ -564,14 +565,14 @@ public class Epub3MakerV2 extends Epub3Maker {
     		contentSetSVGnode(content, type, pageSetting.getChapter(),
     				Const.ChapterViewBoxWidth, Const.ChapterViewBoxHeight, Config.getChapterBGColor(),
     				true, Const.ChapterFontBasePos, Config.getChapterWidthRatio(), Config.getChapterTextRatio(),
-    				Config.getChapterTextAlign(), Config.getChapterFontFamily(), Config.getChapterFontStroke(), Config.getChapterFGColor(), magni);
+    				Config.getChapterTextAlign(), Config.getChapterFontFamily(), Config.getChapterFontStroke(), Config.getChapterFontStrokeWidth(), Config.getChapterFGColor(), magni);
     	} else if (type.startsWith("section")) {
     		attr = pageSetting.getAttribute(PageSetting.KEY_SUBSUBJECT);
     		magni = Integer.parseInt(attr.substring(PageSetting.VALUE_ATTR_ATTRIBUTE_TEXT_SVG.length()));
     		contentSetSVGnode(content, type, pageSetting.getSection(), 
     				Const.SectionViewBoxWidth, Const.SectionViewBoxHeight, Config.getSectionBGColor(),
     				false, Const.SectionFontBasePos, Config.getSectionWidthRatio(), Config.getSectionTextRatio(),
-    				Config.getSectionTextAlign(), Config.getSectionFontFamily(), Config.getSectionFontStroke(), Config.getSectionFGColor(), magni);
+    				Config.getSectionTextAlign(), Config.getSectionFontFamily(), Config.getSectionFontStroke(), Config.getSectionFontStrokeWidth(), Config.getSectionFGColor(), magni);
     	}
     }
     
@@ -819,15 +820,18 @@ public class Epub3MakerV2 extends Epub3Maker {
 			if (textPath.toFile().isFile()) {
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(textPath.toFile()), "UTF-8"));
 				StringWriter sr = new StringWriter();
+                StringWriter plane = new StringWriter();
+                String regex = "<.+?>";
 				String str;
 				while ((str = br.readLine()) != null) {
 					sr.write(str + "\n");
+					plane.write(str.replaceAll(regex, "").trim() + "\n");
+//                    plane.write(str.replaceAll(regex, "") + "\n");
 				}
 				content.put(PageSetting.KEY_TEXT, sr.toString());
 				if (isPublishHtml()) {
-				    String regex = "<.+?>";
-				    String after = sr.toString().replace('\n', ' ').replaceAll(regex, "");
-	                content.put(PageSetting.KEY_DOCUMENT_TEXT, after.replaceAll("\"", "&quote;"));
+				    String after = plane.toString().replaceAll("(\n)+", " ");
+	                content.put(PageSetting.KEY_DOCUMENT_TEXT, after.replaceAll("\"", "'"));
 				}
 				sr.close();
 				br.close();

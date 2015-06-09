@@ -76,6 +76,9 @@ public class Epub3Maker {
         String courseDir = null;
         String publishStyle= "epub3";
         String courseVersion = "2";
+        String inputPath = "./";
+        String outputPath = "./";
+        String outputName = "default";
         for (int ai = 0; ai < args.length && args[ai].startsWith("-"); ai++) {
             if (args[ai].equals("-config")) {
                 if (ai < args.length - 1) {
@@ -98,6 +101,24 @@ public class Epub3Maker {
             			usage();
             		}
             	}
+            } else if (args[ai].equals("-input-path")) {
+                if (ai < args.length - 1) {
+                    inputPath = args[++ai];
+                } else {
+                    usage();
+                }
+            } else if (args[ai].equals("-output-path")) {
+                if (ai < args.length - 1) {
+                    outputPath = args[++ai];
+                } else {
+                    usage();
+                }
+            } else if (args[ai].equals("-output-name")) {
+                if (ai < args.length - 1) {
+                    outputName = args[++ai];
+                } else {
+                    usage();
+                }
             } else if (args[ai].equals("-1")) {
             	courseVersion = "1";
             } else if (args[ai].equals("-2")) {
@@ -117,6 +138,9 @@ public class Epub3Maker {
             Config.setProcessAllMeta(courseDir == null);
             Config.setPublishStyle(publishStyle);
             Config.setCourseVersion(courseVersion);
+            Config.setInputPath(inputPath);
+            Config.setOutputPath(outputPath);
+            Config.setOutputName(outputName);
 
             ArrayList<Path> coursesList = new ArrayList<Path>();
             Path courseBasePath = Paths.get(Config.getCourseBaseDir());
@@ -180,7 +204,7 @@ public class Epub3Maker {
          * meta file (現状は xlsx）は，course dir 直下にある前提
          */
         System.err
-                .println("Epub3Maker -course <course dir> -config <config file> -publish [epub3|html]");
+                .println("Epub3Maker -course <course dir> -config <config file> -publish [epub3|html] -input-path <path> -output-path <path> -output-name <string>");
         System.exit(1);
     }
 
