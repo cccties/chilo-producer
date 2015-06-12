@@ -49,6 +49,7 @@ p{
 	padding-top: 0.3em;
 	padding-bottom: 0.3em;
 	margin: 0;
+	word-wrap: break-word;
 }
 a {
 	color: #0000FF;
@@ -183,10 +184,17 @@ div.width30 {
 
 /* Ver. 2のセクションのスタイル*/
 .subject {
+	height: 3em;
 }
 
 /* Ver. 2のページのスタイル*/
 .subsubject {
+	height: 2em;
+}
+
+/* Ver. 2のページのスタイル*/
+.subject_cover {
+	height: 4em;
 }
 
 /* Ver. 2 セクション・ページを囲むスタイル*/
