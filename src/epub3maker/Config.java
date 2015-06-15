@@ -231,7 +231,7 @@ public class Config {
     }
     
     public static String getOutputName() {
-        return prop.getProperty(OutputNameKey, "default");
+        return prop.getProperty(OutputNameKey, "");
     }
 
     /**

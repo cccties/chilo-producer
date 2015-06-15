@@ -78,7 +78,7 @@ public class Epub3Maker {
         String courseVersion = "2";
         String inputPath = "./";
         String outputPath = "./";
-        String outputName = "default";
+        String outputName = "";
         for (int ai = 0; ai < args.length && args[ai].startsWith("-"); ai++) {
             if (args[ai].equals("-config")) {
                 if (ai < args.length - 1) {
