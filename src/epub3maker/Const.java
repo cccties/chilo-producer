@@ -56,16 +56,16 @@ public class Const {
     /*
      * Chapter Title 関連 
      */
-    final public static String ChapterViewBoxWidth = "5000";
-    final public static String ChapterViewBoxHeight = "600";
-    final public static String ChapterFontBasePos = "50";
+    final public static String ChapterViewBoxWidth = "3000";
+    final public static String ChapterViewBoxHeight = "360";
+    final public static String ChapterFontBasePos = "30";
     final public static String ChapterTextAlignLeft = "left";
     final public static String ChapterTextAlignCenter = "center";
     final public static String ChapterTextAlignRight = "right";
     
-    final public static String SectionViewBoxWidth = "5000";
-    final public static String SectionViewBoxHeight = "600";
-    final public static String SectionFontBasePos = "50";
+    final public static String SectionViewBoxWidth = "3000";
+    final public static String SectionViewBoxHeight = "360";
+    final public static String SectionFontBasePos = "30";
     final public static String SectionTextAlignLeft = "left";
     final public static String SectionTextAlignCenter = "center";
     final public static String SectionTextAlignRight = "right";
