@@ -763,7 +763,7 @@ public class Epub3MakerV2 extends Epub3Maker {
         content.put(Course.KEY_COVER, commonImagePath(course.getMeta(Course.KEY_COVER)));
         content.put(Course.KEY_BOOKLIST_EPUB_DOWNLOAD_URL, course.bookEpubDownloadUrl(volStr));
 //        Util.infoPrintln(LogLevel.LOG_DEBUG, "CommunityURL : " + course.bookCommunityUrl(volStr));
-        if (pageSetting != null && pageSetting.isCommunity()) {
+        if (pageSetting != null && (pageSetting.isCommunity() || pageSetting.getPage() == README_PAGE)) {
             content.put(Course.KEY_BOOKLIST_COMMUNITY_URL, course.bookCommunityUrl(volStr));
         }
     }
