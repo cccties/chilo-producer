@@ -1,4 +1,4 @@
-﻿/*epub*/
+/*epub*/
 
 body {
 	padding: 0.0000%;
@@ -735,26 +735,6 @@ h4 {
 
 } /* iPhone */
 
-/* Ver. 2のセクションのスタイル*/
-.subject {
-	height:4em;
-}
-
-/* Ver. 2のページのスタイル*/
-.subsubject {
-	height:2em;
-}
-
-/* Ver. 2のページのスタイル*/
-.subject_cover {
-	height:6em;
-}
-
-/* Ver. 2 セクション・ページを囲むスタイル*/
-.subject-all {
-	width: 70%;
-	float: left;
-}
 
 .skip {
 	float: right;
@@ -782,4 +762,24 @@ h4 {
 	padding-top: 0.5em;
 	padding-bottom: 0.1em;
 	margin: 0.0em;
+}
+
+/* Ver. 2のセクションのスタイル*/
+.subject_chapter {
+	height: 4em;
+}
+
+.subject_section {
+	height: 2em;
+}
+
+/* Ver. 2のページのスタイル（内カバー用）*/
+.subject_cover {
+	height: 6em;
+}
+
+/* Ver. 2 セクション・ページを囲むスタイル*/
+.subject-all {
+	width: 70%;
+	float: left;
 }
