@@ -49,6 +49,7 @@ p{
 	padding-top: 0.3em;
 	padding-bottom: 0.3em;
 	margin: 0;
+	word-wrap: break-word;
 }
 a {
 	color: #0000FF;
@@ -199,4 +200,15 @@ div.width30 {
 .subject-all {
 	width: 70%;
 	float: left;
+}
+
+/* Nihongo Starter */
+
+.can_do1 {
+  color: #ff9259;
+  padding-top: 0.0000em;
+  padding-bottom: 0.0000em;
+  margin: 0.0000em;
+  text-align: center;
+  line-height: 0.9em;
 }

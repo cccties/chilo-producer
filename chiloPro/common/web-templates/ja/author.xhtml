@@ -9,11 +9,11 @@
 	#end
 	<meta property="og:type" content="book" />
 	<meta property="og:site_name" content="$og-site_name" />
-	<meta property="book:tag"  content="CHiLOBook" />
+	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
-	<meta property="book:tag"  content="第$vol章" />
-	<meta property="book:tag"  content="${series-name}_第$vol章" />
+	<meta property="book:tag" content="第$vol章" />
+	<meta property="book:tag" content="${series-name}_第$vol章" />
   
 	<meta property="og:title" content="$series-name | 第$vol章" />
 	<meta property="og:description" content="" />
@@ -144,7 +144,7 @@ $(function(){
     <!--main-->
     <div class="subject-all">
 	#if ( $chapter && $chapter != "" )
-    <div class="subject">
+    <div class="subject_chapter">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 		#if ( $chapter-rect && $chapter-rect != "" )
         <rect $chapter-rect />
@@ -160,7 +160,7 @@ $(function(){
     </div>
 	#end
 	#if ( $section && $section != "" )
-    <h2 class="subsubject">
+    <h2 class="subject_section">
 	  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
 		#if ( $section-rect && $section-rect != "" )
         <rect $section-rect/>

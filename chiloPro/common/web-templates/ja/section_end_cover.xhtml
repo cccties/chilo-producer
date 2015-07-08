@@ -9,11 +9,11 @@
 	#end
 	<meta property="og:type" content="book" />
 	<meta property="og:site_name" content="$og-site_name" />
-	<meta property="book:tag"  content="CHiLOBook" />
+	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
-	<meta property="book:tag"  content="第$vol章" />
-	<meta property="book:tag"  content="${series-name}_第$vol章" />
+	<meta property="book:tag" content="第$vol章" />
+	<meta property="book:tag" content="${series-name}_第$vol章" />
   
 	<meta property="og:title" content="$series-name | 第$vol章" />
 	<meta property="og:description" content="" />
@@ -123,7 +123,7 @@ $(function(){
 
     <!--main-->
 	#if ( $chapter && $chapter != "" )
-    <div>
+    <div class="subject_cover">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 		#if ( $chapter-rect && $chapter-rect != "" )
         <rect $chapter-rect/>

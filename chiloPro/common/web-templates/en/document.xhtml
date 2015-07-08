@@ -9,14 +9,14 @@
 	#end
 	<meta property="og:type" content="book" />
 	<meta property="og:site_name" content="$og-site_name" />
-	<meta property="book:tag"  content="CHiLOBook" />
+	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
-	<meta property="book:tag"  content="vol-$vol" />
-	<meta property="book:tag"  content="${series-name}_vol-$vol" />
+	<meta property="book:tag" content="vol-$vol" />
+	<meta property="book:tag" content="${series-name}_vol-$vol" />
   
 	<meta property="og:title" content="$series-name | vol-$vol" />
-	<meta property="og:description" content="" />
+	<meta property="og:description" content="#if ( $document-text )$document-text#end" />
 	<meta property="og:url" content="$deploy-url/vol-${vol}-html/vol-$vol/text/$file-name" />
 #if ( $youtube-id && $youtube-id != "" )
       <meta property="og:image" content="http://img.youtube.com/vi/$youtube-id/0.jpg" />
@@ -148,7 +148,7 @@ $(function(){
         <!--main-->
         <div class="subject-all">
 		#if ( $chapter && $chapter != "" )
-        <div class="subject">
+        <div class="subject_chapter">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 				#if ( $chapter-rect && $chapter-rect != "" )
                 <rect $chapter-rect/>
@@ -158,13 +158,13 @@ $(function(){
                   #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
                   stroke-width="$chapter-stroke-width"
                   #end
-					  text-anchor="$chapter-text-anchor"
+			  text-anchor="$chapter-text-anchor"
 					  x="$chapter-x" y="$chapter-y">$chapter</text>
             </svg>
         </div>
 		#end
 		#if ( $section && $section != "" )
-        <h2 class="subsubject">
+        <h2 class="subject_section">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
 				#if ( $section-rect && $section-rect != "" )
                 <rect $section-rect/>
@@ -174,7 +174,7 @@ $(function(){
               #if ( $section-stroke-width && $section-stroke-width != "" )
               stroke-width="$section-stroke-width"
               #end
-					  text-anchor="$section-text-anchor"
+			  text-anchor="$section-text-anchor"
 					  x="$section-x" y="$section-y">$section</text>
             </svg>
         </h2>

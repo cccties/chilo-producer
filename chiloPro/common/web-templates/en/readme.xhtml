@@ -9,11 +9,11 @@
 	#end
 	<meta property="og:type" content="book" />
 	<meta property="og:site_name" content="$og-site_name" />
-	<meta property="book:tag"  content="CHiLOBook" />
+	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
-	<meta property="book:tag"  content="vol-$vol" />
-	<meta property="book:tag"  content="${series-name}_vol-$vol" />
+	<meta property="book:tag" content="vol-$vol" />
+	<meta property="book:tag" content="${series-name}_vol-$vol" />
   
 	<meta property="og:title" content="$series-name | vol-$vol" />
 	<meta property="og:description" content="" />
@@ -163,7 +163,7 @@ $(function(){
 		#foreach( $test in $testList )
 		<div>
 		  <p class="link_icon">・<a href="$!{test.link}">
-			 Browse $!{test.title}</a></p>
+			 See $!{test.title}</a></p>
 		  <div class="width10 link_icon">
 			<a href="$!{test.link}">
 			  <img src="$!{test-image}"/> </a>
@@ -177,15 +177,16 @@ $(function(){
 	</div>
     <div>
 
+#if ( $community-url && $community-url != "" )
 	  <p class="subtitle" style="margin-top:1em;">Join in the Learning Community</p>
   
-	  <p>Join in the online learning community and study along with community peers for badges.</p>
-#if ( $community-url && $community-url != "" )
-	  <p class="link_icon">・<a href="$!community-url" target="_blank">Browse the community</a>
+	  <p>Join in the online learning community of this book and study along with community peers for badges.</p>
+
+	  <p class="link_icon">・<a href="$!community-url" target="_blank">See the community</a>
       </p>
 	  <div class="width20 link_icon">
         <a href="$!community-url" target="_blank">
-		   <img  style="width:100%" alt="b_portal" src="../../common/images/community2.png" onmouseover="this.src='../../common/images/community2_mover.png'" onmouseout="this.src='../../common/images/community2.png'" />
+		   <img alt="b_portal" src="../../common/images/community2.png" onmouseover="this.src='../../common/images/community2_mover.png'" onmouseout="this.src='../../common/images/community2.png'" />
         </a>
       </div>
 #end

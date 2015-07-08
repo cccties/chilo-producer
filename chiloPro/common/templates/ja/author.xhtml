@@ -9,16 +9,16 @@
         <!--Header-->
         <div class="subject-all">
 		#if ( $chapter && $chapter != "" )
-        <div class="subject">
+        <div class="subject_chapter">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 			#if ( $chapter-rect && $chapter-rect != "" )
             <rect $chapter-rect/>
 			#end
             <text fill="$chapter-fill" font-family="$chapter-font-family"
 				  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                  stroke-width="$chapter-stroke-width"
-                  #end
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
 				  text-anchor="$chapter-text-anchor"
 				  x="$chapter-x" y="$chapter-y">$chapter</text>
           </svg>
@@ -26,17 +26,17 @@
 		#end
 
 		#if ( $section && $section != "" )
-        <h2 class="subsubject">
+        <h2 class="subject_section">
 		  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
 			#if ( $section-rect && $section-rect != "" )
             <rect $section-rect/>
 			#end
             <text fill="$section-fill" font-family="$section-font-family"
 				  font-size="$section-font-size" stroke="$section-stroke"
-              #if ( $section-stroke-width && $section-stroke-width != "" )
-              stroke-width="$section-stroke-width"
-              #end
-				  text-anchor="$section-text-anchor"
+				#if ( $section-stroke-width && $section-stroke-width != "" )
+				stroke-width="$section-stroke-width"
+				#end
+					  text-anchor="$section-text-anchor"
 				  x="$section-x" y="$section-y">$section</text>
           </svg>
         </h2>

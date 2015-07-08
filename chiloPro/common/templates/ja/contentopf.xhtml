@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="3.0" xml:lang="ja">
     <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
-        <dc:identifier id="BookId">#if ( $course-id && $vol )${course-id}-$vol#end</dc:identifier>
+        <dc:identifier id="BookId">#if ( $identifier )${identifier}#end</dc:identifier>
         <dc:title>#if ( $series-name && $vol && $series-title )$series-name 第$vol章 $series-title#end</dc:title>
         <dc:language>#if ( $language )$language#end</dc:language>
         <meta property="dcterms:modified">#if ( $update )$update#end</meta>

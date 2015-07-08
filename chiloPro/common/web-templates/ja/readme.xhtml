@@ -9,11 +9,11 @@
 	#end
 	<meta property="og:type" content="book" />
 	<meta property="og:site_name" content="$og-site_name" />
-	<meta property="book:tag"  content="CHiLOBook" />
+	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
-	<meta property="book:tag"  content="第$vol章" />
-	<meta property="book:tag"  content="${series-name}_第$vol章" />
+	<meta property="book:tag" content="第$vol章" />
+	<meta property="book:tag" content="${series-name}_第$vol章" />
   
 	<meta property="og:title" content="$series-name | 第$vol章" />
 	<meta property="og:description" content="" />
@@ -177,15 +177,16 @@ $(function(){
 	</div>
     <div>
 
+#if ( $community-url && $community-url != "" )
 	  <p class="subtitle" style="margin-top:1em;">学習コミュニティ参加</p>
   
 	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
-#if ( $community-url && $community-url != "" )
+
 	  <p class="link_icon">・<a href="$!community-url" target="_blank">学習コミュニティを見てみる</a>
       </p>
 	  <div class="width20 link_icon">
         <a href="$!community-url" target="_blank">
-		   <img  style="width:100%" alt="b_portal" src="../../common/images/community2.png" onmouseover="this.src='../../common/images/community2_mover.png'" onmouseout="this.src='../../common/images/community2.png'" />
+		   <img alt="b_portal" src="../../common/images/community2.png" onmouseover="this.src='../../common/images/community2_mover.png'" onmouseout="this.src='../../common/images/community2.png'" />
         </a>
       </div>
 #end

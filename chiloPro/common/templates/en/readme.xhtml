@@ -15,10 +15,10 @@
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                  stroke-width="$chapter-stroke-width"
-                  #end
-			  text-anchor="$chapter-text-anchor"
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
+				  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
     </div>
@@ -59,10 +59,11 @@
 	</div>
     <div>
 
+#if ( $community-url && $community-url != "" )
 	  <p class="subtitle" style="margin-top:1em;">Join in the Learning Community</p>
   
 	  <p>Join in the online learning community and study along with community peers for badges.</p>
-#if ( $community-url && $community-url != "" )
+
 	  <p class="link_icon">・<a href="$!community-url">Browse the community</a>
       </p>
 	  <div class="width20 link_icon">
