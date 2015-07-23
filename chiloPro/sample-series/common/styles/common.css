@@ -55,6 +55,11 @@ a {
 	color: #0000FF;
 	font-size: 1em;
 	font-weight: bold;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration: underline;
+	cursor: pointer;
 }
 img{
 	width: 100%;
