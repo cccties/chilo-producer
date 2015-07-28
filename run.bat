@@ -25,10 +25,10 @@ goto MAIN
 	set RUNMODE=
 	set COURSE=
 	set DRYRUN=
-	set SETCOURSE=
-	set SETINPUTDIR=
-	set SETOUTPUTDIR=
-	set SETOUTPUTNAME=
+	set COURSE=
+	set INPUTDIR=
+	set OUTPUTDIR=
+	set OUTPUTNAME=
 	exit /b
 
 :DRYRUN
