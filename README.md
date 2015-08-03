@@ -15,7 +15,7 @@ CHiLO Producerは、[CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki)
 
 ### 利用方法
 
-1. Java 8（ https://java.com/ja/download/ ）をインストールします。
+1. Java 8（ https://java.com/ja/download/ ）をインストールします。<br />※Macユーザーの方は、JDK8 （  http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html ） をインストールしてください。
 1. GitHubからCHiLO Producer( https://github.com/cccties/CHiLO-Producer )をダウンロードし、展開します。<br>
 -> 全体の構成はこちらを参照：[dir.md](dir.md)
 
