@@ -26,7 +26,7 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ フォ�
 　│  （省略）
 　│
 　└─chiloPro
-  　　│
+　    │
 　    ├─common　＊全体の共通ファイル群
 　    │
 　    ├─sample-series　＊サンプル
@@ -100,7 +100,7 @@ If the file has been successfully unziped, _chiloPro_ folder will be created. Wh
 　│  (The rest is omitted.)
 　│
 　└─chiloPro
-  　　│
+　    │
 　    ├─common *Files used in common for all.
 　    │
 　    ├─sample-series *Sample
