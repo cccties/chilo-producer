@@ -127,7 +127,7 @@ Before the production of CHiLO Book, understand the structure of CHiLO Book.
 
 ### Usage Tips
 
-CHiLO Producer is made exclusively for producing CHiLO Books, but by modifing templates, CSS files, and construction files, an original CHiLO Book can be produced.
+CHiLO Producer is made exclusively for producing CHiLO Books, but by modifing templates, CSS files, and configuration files, an original CHiLO Book can be produced.
 -> [Usage Tips](https://github.com/cccties/chilo-producer/wiki/e03.Usage-Tips)
 
 ### Problems and Inquiries
