@@ -1,0 +1,19 @@
+<string>
+	<nav.title>目次</nav.title>
+	<readme>
+		<chapter>はじめにお読みください</chapter>
+		<section1>シリーズの紹介</section1>
+		<section2>ブック概要</section2></readme>
+	<appendix>
+		<chapter>章末情報</chapter>
+		<section1>使用上の注意</section1>
+		<section2>著者紹介</section2>
+	</appendix>
+	<copyright>Copyright</copyright>
+	<cclink-by>http://creativecommons.org/licenses/by/3.0/</cclink-by>
+	<cclink-by-sa>http://creativecommons.org/licenses/by-sa/3.0/</cclink-by-sa>
+	<cclink-by-nd>http://creativecommons.org/licenses/by-nd/3.0/</cclink-by-nd>
+	<cclink-by-nc>http://creativecommons.org/licenses/by-nc/3.0/</cclink-by-nc>
+	<cclink-by-nc-sa>http://creativecommons.org/licenses/by-nc-sa/3.0/</cclink-by-nc-sa>
+	<cclink-by-nc-nd>http://creativecommons.org/licenses/by-nc-nd/3.0/</cclink-by-nc-nd>
+  </string>
