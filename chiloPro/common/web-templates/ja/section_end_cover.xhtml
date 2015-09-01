@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="target-densitydpi=device-dpi">
 	#if ( $fb-admins )
 	#foreach ( $admin in $fb-admins )
 	<meta property="fb:admins" content="$admin" />
@@ -24,8 +25,7 @@
     <link href="../styles/common.css" rel="stylesheet" type="text/css"/>
     <link href="../styles/cover.css" rel="stylesheet" type="text/css"/>
 
-    <script type="text/javascript" charset="utf-8" src="../../common/scripts/comm.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../common/scripts/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../common/scripts/jquery_web.js"></script>
 
 	#if ( $google-analytics-id )<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -112,10 +112,10 @@ $(function(){
 			  <div class="sns_e">
 			 	<a href="../../nav.html"><img id="p_mokuji" style="display:block;" src="../../common/images/b_index.png"  onmouseover="this.src='../../common/images/b_index_mover.png'" onmouseout="this.src='../../common/images/b_index.png'"/></a>
 			  </div>
-#if ( $epub-download-url && $epub-download-url != "" )
-			  <div class="sns_f">
-				<a onclick="epubgo_ja('$epub-download-url')"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png"  onmouseover="this.src='../../common/images/b_epub_mover.png'" onmouseout="this.src='../../common/images/b_epub.png'"/></a>
-			  </div>
+#if ( $series-url && $series-url != "" )
+              <div class="sns_f">
+                <a href="$series-url"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png"  onmouseover="this.src='../../common/images/b_epub_mover.png'" onmouseout="this.src='../../common/images/b_epub.png'"/></a>
+              </div>
 #end
 		    </div>
 			<div style="clear:both;"></div>
@@ -172,14 +172,14 @@ $(function(){
 		<div class="sns_c">
 		  <a href="javascript:location.href='mailto:?body=' + document.URL;void(0);"><img class="mailto" src="../../common/images/email.png" /></a>
 		</div>
-		<!--<div class="sns_b" style="width:40px;">
+		<div class="sns_b" style="width:40px;">
 		  <span>
 			<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
-			<script type="text/javascript">
+			<!--<script type="text/javascript">
 			  new media_line_me.LineButton({"pc":false,"lang":"en","type":"e"});
-			</script>
+			</script>-->
 		  </span>
-		</div>-->
+		</div>
 	  </div>
 	</div>
   </div>

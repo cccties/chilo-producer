@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="target-densitydpi=device-dpi">
 	#if ( $fb-admins )
 	#foreach ( $admin in $fb-admins )
 	<meta property="fb:admins" content="$admin" />
@@ -24,8 +25,9 @@
     <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
     <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
 
-    <script type="text/javascript" charset="utf-8" src="../../common/scripts/comm.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../common/scripts/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../common/scripts/chiloapi_web.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../common/scripts/jquery_web.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../common/scripts/jquery.cookie.js"></script>
 
 	#if ( $google-analytics-id )<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -40,7 +42,7 @@
 	#end
   </head>
 
-<body>
+<body #if ( $community-url && $community-url != "" )onLoad="chiloreadercheckFunc('$!{community-url}r1','学習コミュニティを見てみる','70')"#end>
 
 #if ( $fb-app-id )
 	<div id="fb-root"></div>
@@ -112,10 +114,10 @@ $(function(){
 			  <div class="sns_e">
 			 	<a href="../../nav.html"><img id="p_mokuji" style="display:block;" src="../../common/images/b_index.png"  onmouseover="this.src='../../common/images/b_index_mover.png'" onmouseout="this.src='../../common/images/b_index.png'"/></a>
 			  </div>
-#if ( $epub-download-url && $epub-download-url != "" )
-			  <div class="sns_f">
-				<a onclick="epubgo_ja('$epub-download-url')"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png"  onmouseover="this.src='../../common/images/b_epub_mover.png'" onmouseout="this.src='../../common/images/b_epub.png'"/></a>
-			  </div>
+#if ( $series-url && $series-url != "" )
+              <div class="sns_f">
+                <a href="$series-url"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png"  onmouseover="this.src='../../common/images/b_epub_mover.png'" onmouseout="this.src='../../common/images/b_epub.png'"/></a>
+              </div>
 #end
 		    </div>
 			<div style="clear:both;"></div>
@@ -153,8 +155,10 @@ $(function(){
 
 	  <p class="subtitle">認定バッジ獲得</p>
   
-	  　<p>本書の課題に合格すると、学習修了認定バッジを獲得することができます。</p>
-      　<p>$!series-nameシリーズ全$!volumes章の学習修了認定バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</p>
+		<ol>
+			<li>本書の課題に合格すると、合格バッジを獲得することができます。</li>
+			<li>$!series-nameシリーズ全$!volumes章の合格バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</li>
+		</ol>
   
 	</div>
     <div>
@@ -182,13 +186,14 @@ $(function(){
   
 	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
 
-	  <p class="link_icon">・<a href="$!community-url" target="_blank">学習コミュニティを見てみる</a>
-      </p>
-	  <div class="width20 link_icon">
-        <a href="$!community-url" target="_blank">
-		   <img alt="b_portal" src="../../common/images/community2.png" onmouseover="this.src='../../common/images/community2_mover.png'" onmouseout="this.src='../../common/images/community2.png'" />
-        </a>
-      </div>
+	<div class="link_icon">
+	  	<div id="community_str_naka"></div>
+		<div id="community_str_soto"></div>
+	</div>
+	<div class="width20 link_icon">
+	    <div id="community_naka"></div>
+	    <div id="community_soto"></div>
+    </div>
 #end
 	  </div>
       </div>
@@ -215,14 +220,14 @@ $(function(){
 		<div class="sns_c">
 		  <a href="javascript:location.href='mailto:?body=' + document.URL;void(0);"><img class="mailto" src="../../common/images/email.png" /></a>
 		</div>
-		<!--<div class="sns_b" style="width:40px;">
+		<div class="sns_b" style="width:40px;">
 		  <span>
 			<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script>
-			<script type="text/javascript">
+			<!--<script type="text/javascript">
 			  new media_line_me.LineButton({"pc":false,"lang":"en","type":"e"});
-			</script>
+			</script>-->
 		  </span>
-		</div>-->
+		</div>
 	  </div>
 	</div>
   </div>
