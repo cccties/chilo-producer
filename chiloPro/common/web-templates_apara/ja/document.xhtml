@@ -190,7 +190,10 @@ $(function(){
           <div itemprop="description">
 		#if ( $youtube-id && $youtube-id != "" )
 		<div class="video">
-          <iframe class="$movie-width" src="http://www.aparat.com/video/video/embed/videohash/$youtube-id/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" ></iframe>
+          <video class="$movie-width" width="320" height="240" controls >
+            <source src="http://hn.lon.asset.aparat.com/aparat-video${youtube-id}-360p__76834.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
         </div>
 		#else
 			#if ( $main-type == "video" )
