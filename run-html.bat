@@ -18,7 +18,7 @@ if not (%1)==() goto GETOPTS
 goto MAIN
 
 :usage
-	echo "%PROG% -c <course name> [ -i <input dir> -o <output_dir> -f <output_name> ]"
+	echo "%PROG% -c <name of your folder> [ -i <input dir> -o <output_dir> -f <output_name> ]"
 	goto ALLDONE
 
 :CLEARVALS

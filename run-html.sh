@@ -2,7 +2,7 @@
 
 usage()
 {
-	echo "usage: $0 -c <course name> [ -i <input dir> -o <output_dir> -f <output_name> ]"
+	echo "usage: $0 -c <name of your folder> [ -i <input dir> -o <output_dir> -f <output_name> ]"
 	exit 0
 }
 
