@@ -9,7 +9,9 @@
 	#end
 	#end
 	<meta property="og:type" content="book" />
+#if ( $og-site_name )
 	<meta property="og:site_name" content="$og-site_name" />
+#end
 	<meta property="book:tag" content="CHiLOBook" />
 	<meta property="book:release_date" content="$published" />
 	<meta property="book:tag" content="$series-name" />
@@ -18,7 +20,9 @@
   
 	<meta property="og:title" content="$series-name | 第$vol章" />
 	<meta property="og:description" content="" />
+#if ( $deploy-url )	
 	<meta property="og:url" content="$deploy-url/vol-${vol}-html/common/text/$file-name" />
+#end
 
       <div itemscope itemtype="http://schema.org/Product" />
       <title itemprop="name">$chapter</title>
