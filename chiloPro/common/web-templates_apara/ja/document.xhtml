@@ -195,7 +195,7 @@ $(function(){
 		#if ( $youtube-id && $youtube-id != "" )
 		<div class="video">
           <video class="$movie-width" width="320" height="240" controls >
-            <source src="http://hn.lon.asset.aparat.com/aparat-video/${youtube-id}-360p__76834.mp4" type="video/mp4" poster="$poster">
+            <source src="http://hn.lon.asset.aparat.com/aparat-video/${youtube-id}-360p__76834.mp4" type="video/mp4" >
               Your browser does not support the video tag.
           </video>
         </div>
@@ -206,7 +206,7 @@ $(function(){
 			        #set( $poster = "$video-image" )
 			    #end
 	        <div class="video">
-	            <video class="$movie-width" controls="controls" poster="$poster" src="$main" >video tag not supported</video>
+	            <video class="$movie-width" controls="controls"  src="$main" >video tag not supported</video>
 	        </div>
 			#end
 		#end
