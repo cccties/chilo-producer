@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>$chapter</title>
+        <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../../common/styles/document.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="subject-all">
+		#if ( $chapter && $chapter != "" )
+        <div class="subject_chapter">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
+			#if ( $chapter-rect && $chapter-rect != "" )
+            <rect $chapter-rect/>
+			#end
+            <text fill="$chapter-fill" font-family="$chapter-font-family"
+				  font-size="$chapter-font-size" stroke="$chapter-stroke"
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
+				  text-anchor="$chapter-text-anchor"
+				  x="$chapter-x" y="$chapter-y">$chapter</text>
+          </svg>
+        </div>
+		#end
+		#if ( $section && $section != "" )
+        <h2 class="subject_section">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+			#if ( $section-rect && $section-rect != "" )
+            <rect $section-rect/>
+			#end
+            <text fill="$section-fill" font-family="$section-font-family"
+				  font-size="$section-font-size" stroke="$section-stroke"
+				#if ( $section-stroke-width && $section-stroke-width != "" )
+				stroke-width="$section-stroke-width"
+				#end
+					  text-anchor="$section-text-anchor"
+				  x="$section-x" y="$section-y">$section</text>
+          </svg>
+        </h2>
+		#end
+		</div>
+		<div class="community">
+                <img src="../../common/images/space.png"/>
+        </div>
+
+  <div style="clear:both;"/>
+
+  <div class="skip">
+  <a href="$document-start-page">
+                    <img src="../../common/images/skip.png"/>
+                </a>
+            </div>
+  <div style="clear:both;"/>
+
+        <div>
+<p>$!book-summary</p>
+</div>
+    </body>
+</html>

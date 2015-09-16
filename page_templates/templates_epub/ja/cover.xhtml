@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+	  #if ( $chapter && $chapter != "" )
+	  <title>$chapter</title>
+	  #end
+      <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+      <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+		#if ( $chapter && $chapter != "" )
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
+				#if ( $chapter-rect && $chapter-rect != "" )
+                <rect $chapter-rect/>
+				#end
+                <text fill="$chapter-fill" font-family="$chapter-font-family"
+					  font-size="$chapter-font-size" stroke="$chapter-stroke"
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
+				  text-anchor="$chapter-text-anchor"
+					  x="$chapter-x" y="$chapter-y">$chapter</text>
+            </svg>
+        </div>
+		#end
+		#if ( $main && $main != "")
+        <div>
+            <img alt="" src="$main"/>
+        </div>
+		#end
+    </body>
+</html>
