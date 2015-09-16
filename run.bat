@@ -19,7 +19,7 @@ if not (%1)==() goto GETOPTS
 goto MAIN
 
 :usage
-	echo "%PROG% -c <name of your folder> -t <name of book type> [ -i <input dir> -o <output_dir> -f <output_name> ]"
+	echo "%PROG% -c <name of your folder> -t <book type> [ -i <input dir> -o <output_dir> -f <output_name> ]"
 	goto ALLDONE
 
 :CLEARVALS
