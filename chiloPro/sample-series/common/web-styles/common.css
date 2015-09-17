@@ -338,26 +338,28 @@ td.header {
 }
 .sns_d {
     display:table;
-	width: 100%;
-	padding:20px 0px 10px 0px;
+    margin: 0 auto;
+	width: 80%;
+	/* padding:20px 0px 10px 0px; */
 }
-.sns_e {
-    display:table-cell;
-    vertical-align:middle;
-	padding: 3px;
-	width:60px;
-	height:60px;
-	float:left;
-	cursor:pointer;
+ul.sns_e
+{
+ display:table;
+ table-layout: fixed;
+ width: 100%;
+ margin: 0 auto;
+ padding: 0;
 }
-.sns_f {
-    display:table-cell;
-    vertical-align:middle;
-	padding: 3px;
-	width:60px;
-	height:60px;
-	float:left;
-	cursor:pointer;
+ul.sns_e li
+{
+ display:table-cell;
+ vertical-align:middle;
+ text-align:center;
+}
+ul.sns_e li img
+{
+ max-width:300px !important;
+ margin: 0 auto;
 }
 
 h4 { 
@@ -449,6 +451,8 @@ h4 {
 	background-color:#FFFFFF;
 	padding:45px;
 	box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+	height:1024px;
+	vertical-align: top;
 }
 
 .webchilo_main_top{
@@ -558,7 +562,7 @@ h4 {
 
 	@media only screen and (orientation:landscape) {
 		.device{
-		        Width:80%;
+		        Width:100%;
 		}
 		p{
 			font-size:1.100em; 
@@ -597,7 +601,7 @@ h4 {
 
 	@media only screen and (orientation:portrait) {
 		.device{
-		    Width:80%;
+		        Width:100%;
 		}
 		p{
 			font-size:1.400em; 
@@ -658,7 +662,7 @@ h4 {
 
 	@media only screen and (orientation:landscape) {
 		.device{
-		        Width:80%;
+		        Width:100%;
 		}
 		p{
 			font-size:0.500em ; 
@@ -676,7 +680,7 @@ h4 {
 
 	@media only screen and (orientation:portrait) {
 		.device{
-		        Width:80%;
+		        Width:100%;
 		}
 		p{
 			font-size:2.500em ; 
@@ -737,7 +741,8 @@ h4 {
 
 
 .skip {
-	float: right;
+	margin-top: 1em;
+	margin-left: auto;
  	width: 25%;
 }
 
