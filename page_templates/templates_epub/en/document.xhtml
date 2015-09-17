@@ -4,11 +4,8 @@
         <title>$chapter</title>
         <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
         <link href="../../common/styles/document.css" rel="stylesheet" type="text/css"/>
-		#foreach ( $e in $javascript-file )
-		#if ( $e != "" )
-        <script src="$e" type="text/javascript"/>
-		#end
-		#end
+        <script src="../../common/scripts/jquery_epub.js" type="text/javascript"></script>
+        <script src="../../common/scripts/chiloapi_epub.js" type="text/javascript"></script>
     </head>
     <body>
         <!--Header-->
@@ -21,10 +18,10 @@
 				#end
                 <text fill="$chapter-fill" font-family="$chapter-font-family"
 					  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                stroke-width="$chapter-stroke-width"
-                #end
-				  text-anchor="$chapter-text-anchor"
+				#if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+				stroke-width="$chapter-stroke-width"
+				#end
+					  text-anchor="$chapter-text-anchor"
 					  x="$chapter-x" y="$chapter-y">$chapter</text>
             </svg>
         </div>
@@ -48,7 +45,7 @@
 		</div>
 		#if ( $community-url && $community-url != "" )
         <div class="community">
-            <a href="$community-url">
+            <a onclick="chiloWebFunc('${community-url}','Community');">
                 <img src="../../common/images/b_portal.png"/>
             </a>
         </div>
@@ -63,7 +60,7 @@
 		        #set( $poster = "$video-image" )
 		    #end
         <div class="video">
-            <video controls="controls" height="$video-height" poster="$poster" src="$main" width="$video-width">video tag not supported</video>
+            <video style="max-width: 100%;height:auto;" controls="controls" height="$video-height" poster="$poster" src="$main" width="$video-width">video tag not supported</video>
         </div>
 		#end
 
@@ -80,7 +77,7 @@
 
 	  #if ( $cc-link && $cc-link != "" )
 	  <div class="width20 right">
-		<a href="$cc-link"> <img alt="$cc-alt" src="$cc-img"/></a>
+		<a onclick="chiloWebFunc('$cc-link','Creative Commons');"> <img alt="$cc-alt" src="$cc-img"/></a>
 	  </div>
 	  #end
     </body>

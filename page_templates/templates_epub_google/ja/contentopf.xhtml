@@ -2,18 +2,15 @@
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="3.0" xml:lang="ja">
     <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
         <dc:identifier id="BookId">#if ( $identifier )${identifier}#end</dc:identifier>
-        <dc:title>#if ( $series-name && $vol && $series-title )$series-name vol-$vol $series-title#end</dc:title>
+        <dc:title>#if ( $series-name && $vol && $series-title )$series-name 第$vol章 $series-title#end</dc:title>
         <dc:language>#if ( $language )$language#end</dc:language>
         <meta property="dcterms:modified">#if ( $update )$update#end</meta>
         <dc:date>#if ( $published )$published#end</dc:date>
         <dc:rights>#if ( $rights )$rights#end</dc:rights>
         <dc:creator>#if ( $author-name )$author-name#end</dc:creator>
-#if ( $publisher )
-        <dc:publisher id="publisher0">$publisher</dc:publisher>
-#end
-#if ( $cover-image )
-        <meta content="$cover-image" name="cover"/>
-#end
+        #if ( $publisher )<dc:publisher id="publisher0">$publisher</dc:publisher>#end
+        #if ( $cover-image )<meta content="$cover-image" name="cover"/>#end
+
     </metadata>
 
     <manifest>

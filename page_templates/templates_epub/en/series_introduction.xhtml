@@ -16,10 +16,10 @@
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                stroke-width="$chapter-stroke-width"
-                #end
-				  text-anchor="$chapter-text-anchor"
+        #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+        stroke-width="$chapter-stroke-width"
+        #end
+			  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
     </div>
@@ -32,10 +32,10 @@
 		#end
         <text fill="$section-fill" font-family="$section-font-family"
 			  font-size="$section-font-size" stroke="$section-stroke"
-				#if ( $section-stroke-width && $section-stroke-width != "" )
-				stroke-width="$section-stroke-width"
-				#end
-					  text-anchor="$section-text-anchor"
+        #if ( $section-stroke-width && $section-stroke-width != "" )
+        stroke-width="$section-stroke-width"
+        #end
+			  text-anchor="$section-text-anchor"
 			  x="$section-x" y="$section-y">$section</text>
       </svg>
     </h2>
@@ -57,15 +57,6 @@
     <div>
 	  <p>$!series-introduction</p>
 
-#if ( $series-url && $!series-url != "" )
-	  <p class="link_icon">・<a href="$!series-url">Browse $!series-name</a>
-      </p>
-	  <div class="width10 link_icon">
-        <a href="$!series-url">
-          <img src="../../common/images/b_link.png"/>
-        </a>
-      </div>
-#end
 	</div>
   </body>
 </html>

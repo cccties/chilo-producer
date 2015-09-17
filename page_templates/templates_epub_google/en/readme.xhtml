@@ -15,10 +15,10 @@
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
-		  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-		  stroke-width="$chapter-stroke-width"
-		  #end
-			  text-anchor="$chapter-text-anchor"
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
+				  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
     </div>
@@ -35,10 +35,8 @@
 
 	  <p class="subtitle">How to Get Certified Badges Issued</p>
   
-		<ol>
-			<li>When you pass the assignments of this book, a passing badge will be issued.</li>
-			<li>When you have received all $!volumes passing badges of the $!series-name series, a certified series completion badge (Big Badge) will be issued.</li>
-		</ol>
+	  　<p>When you pass the assignments of each book, a completion badge will be issued.</p>
+	  　<p>When you have received all $!volumes badges of the $!series-name series, a certified series completion badge (Big Badge) will be issued.</p>
   
 	</div>
     <div>
@@ -47,7 +45,7 @@
 		#foreach( $test in $testList )
 		<div>
 		  <p class="link_icon">・<a href="$!{test.link}">
-			  See $!{test.title}</a></p>
+			  Browse $!{test.title}</a></p>
 		  <div class="width10 link_icon">
 			<a href="$!{test.link}">
 			  <img src="$!{test-image}"/> </a>
@@ -64,8 +62,15 @@
 #if ( $community-url && $community-url != "" )
 	  <p class="subtitle" style="margin-top:1em;">Join in the Learning Community</p>
   
-	  <p>Join in the online learning community of this book and study along with community peers for badges.</p>
+	  <p>Join in the online learning community and study along with community peers for badges.</p>
 
+	  <p class="link_icon">・<a href="$!community-url">Browse the community</a>
+      </p>
+	  <div class="width20 link_icon">
+        <a href="$!community-url">
+          <img src="../../common/images/b_portal.png"/>
+        </a>
+      </div>
 #end
 	</div>
   </body>

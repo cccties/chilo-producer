@@ -10,7 +10,7 @@
     <body>
         <!--Header-->
 		#if ( $chapter && $chapter != "" )
-        <div>
+        <div class="subject_cover">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 				#if ( $chapter-rect && $chapter-rect != "" )
                 <rect $chapter-rect/>
@@ -20,13 +20,16 @@
                 #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
                 stroke-width="$chapter-stroke-width"
                 #end
-					  text-anchor="$chapter-text-anchor"
+				  text-anchor="$chapter-text-anchor"
 					  x="$chapter-x" y="$chapter-y">$chapter</text>
             </svg>
         </div>
 		#end
+        <div class="community">
+                <img src="../../common/images/space.png"/>
+        </div>
 		#if ( $main && $main != "")
-        <div>
+        <div class="l_content clear">
             <img alt="" src="$main"/>
         </div>
 		#end

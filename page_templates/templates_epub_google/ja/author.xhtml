@@ -3,7 +3,7 @@
     <head>
         <title>$!chapter</title>
         <link href="../styles/common.css" rel="stylesheet" type="text/css"/>
-        <link href="../styles/document.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/author.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!--Header-->
@@ -16,14 +16,14 @@
 			#end
             <text fill="$chapter-fill" font-family="$chapter-font-family"
 				  font-size="$chapter-font-size" stroke="$chapter-stroke"
-              #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-              stroke-width="$chapter-stroke-width"
-              #end
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
 				  text-anchor="$chapter-text-anchor"
 				  x="$chapter-x" y="$chapter-y">$chapter</text>
           </svg>
         </div>
-		#end		
+		#end
 
 		#if ( $section && $section != "" )
         <h2 class="subject_section">
@@ -33,10 +33,10 @@
 			#end
             <text fill="$section-fill" font-family="$section-font-family"
 				  font-size="$section-font-size" stroke="$section-stroke"
-              #if ( $section-stroke-width && $section-stroke-width != "" )
-              stroke-width="$section-stroke-width"
-              #end
-				  text-anchor="$section-text-anchor"
+				#if ( $section-stroke-width && $section-stroke-width != "" )
+				stroke-width="$section-stroke-width"
+				#end
+					  text-anchor="$section-text-anchor"
 				  x="$section-x" y="$section-y">$section</text>
           </svg>
         </h2>
@@ -50,27 +50,29 @@
         <div style="clear:both;"/>
 
         <div>
-  <p class="subtitle">推奨電子書籍リーダー</p>
+#if ( $picture && $picture != "" )
+  <div class="width30 left">
+                <img alt="" src="$!picture"/>
+            </div>
+#end
+  <p class="subtitle">著者</p>
 
-  <p>CHiLO Bookを閲覧する際は、予め端末に電子書籍リーダーがインストールされていることをご確認ください。 CHiLO Book推奨の電子書籍リーダーは以下の通りです。</p>
+  <p>$!organization<br/>
+     $!author-name #if( $author-name2 ) / $author-name2 #end</p>
 
-  <ul>
-    <li>iOS,Mac OS: iBooks</li>
+  <div style="clear:both;"/>
 
-    <li>Android: Gitden EPUB3 Book Reader</li>
+  #foreach( $e in $introductionList )
+  <div>
+	#if ( $e.title != "" )
+	<p class="subtitle">$e.title</p>
+	#end
+	#if ( $e.content != "" )
+	<p> $e.content </p>
+	#end
+  </div>
+  #end
 
-    <li>Windows: Readium</li>
-  </ul>
-
-  <p>上記以外の電子書籍リーダーでは、動画が正常に再生されない場合がございます。</p>
-
-  <p class="subtitle">CHiLO Bookについて</p>
-
-  <p>オフラインでも学習することが出来ます。ただし、オンラインテストを受けるにはネットワーク環境が必要です。</p>
-
-  <p>電子書籍リーダーのインストールが必要です。</p>
-
-  <p>電子書籍リーダーの機能を使って、しおりやメモをつけることができます。</p>
-</div>
+		</div>
     </body>
 </html>

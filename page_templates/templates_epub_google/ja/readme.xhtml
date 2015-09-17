@@ -3,7 +3,7 @@
   <head>
     <title>$chapter</title>
     <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
-	<link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
+    <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
     <!--Header-->
@@ -15,10 +15,10 @@
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
-		  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-		  stroke-width="$chapter-stroke-width"
-		  #end
-			  text-anchor="$chapter-text-anchor"
+                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+                stroke-width="$chapter-stroke-width"
+                #end
+				  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
     </div>
@@ -35,10 +35,8 @@
 
 	  <p class="subtitle">認定バッジ獲得</p>
   
-		<ol>
-			<li>本書の課題に合格すると、合格バッジを獲得することができます。</li>
-			<li>$!series-nameシリーズ全$!volumes章の合格バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</li>
-		</ol>
+	  　<p>本書の課題に合格すると、学習修了認定バッジを獲得することができます。</p>
+	  　<p>$!series-nameシリーズ全$!volumes章の学習修了認定バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</p>
   
 	</div>
     <div>
@@ -66,6 +64,13 @@
   
 	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
 
+	  <p class="link_icon">・<a href="$!community-url">学習コミュニティを見てみる</a>
+      </p>
+	  <div class="width20 link_icon">
+        <a href="$!community-url">
+          <img src="../../common/images/b_portal.png"/>
+        </a>
+      </div>
 #end
 	</div>
   </body>
