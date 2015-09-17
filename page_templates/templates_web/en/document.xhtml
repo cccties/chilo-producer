@@ -134,14 +134,16 @@ $(function(){
 	  <table align="center" class="device"><tr><td>
 			<!-- PageComm -->
 			<div class="sns_d">
-			  <div class="sns_e">
-			 	<a href="../../nav.html"><img id="p_mokuji" style="display:block;" src="../../common/images/b_index.png"  onmouseover="this.src='../../common/images/b_index_mover.png'" onmouseout="this.src='../../common/images/b_index.png'"/></a>
-			  </div>
+			  <ul class="sns_e">
 #if ( $series-url && $series-url != "" )
-              <div class="sns_f">
-                <a href="$series-url"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png"  onmouseover="this.src='../../common/images/b_epub_mover.png'" onmouseout="this.src='../../common/images/b_epub.png'"/></a>
-              </div>
+			   <li>
+                <a href="$series-url"><img id="p_epub" style="display:block" src="../../common/images/b_epub.png" /></a>
+			   </li>
 #end
+			   <li>
+			 	<a href="../../nav.html"><img id="p_mokuji" style="display:block;z-index:5" src="../../common/images/b_index.png" /></a>
+			   </li>
+			  </ul>
 		    </div>
 			<div style="clear:both;"></div>
 		</td></tr><tr><td class="webchilo_main">
