@@ -63,14 +63,10 @@ if "%COURSE%"=="" goto usage
 
 
 if "%RUNMODE%"=="dry" (
-	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
+	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %OUTPUTTYPE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
 ) else (
 	if "%OUTPUTTYPE%"=="epub" (
 		xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
-		java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
-		rd /s /q chiloPro\common\templates
-	) else if "%OUTPUTTYPE%"=="ext" (
-		xcopy page_templates\templates_ext chiloPro\common\templates  /D /S /R /Y /I /K
 		java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
 		rd /s /q chiloPro\common\templates
 	) else if "%OUTPUTTYPE%"=="web" (

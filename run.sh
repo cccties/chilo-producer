@@ -65,10 +65,6 @@ if [ X${RUNMODE} = Xreal ]; then
 		cp -r ./page_templates/templates_epub ./chiloPro/common/templates
 		java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}
 		rm -rf ./chiloPro/common/templates
-	elif [ X${OUTPUT_TYPE} = Xext ]; then
-		cp -r ./page_templates/templates_ext ./chiloPro/common/templates
-		java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}
-		rm -rf ./chiloPro/common/templates
 	elif [ X${OUTPUT_TYPE} = Xweb ]; then
 		cp -r ./page_templates/templates_epub ./chiloPro/common/templates
 		cp -r ./page_templates/templates_web ./chiloPro/common/web-templates
@@ -79,5 +75,5 @@ if [ X${RUNMODE} = Xreal ]; then
 		usage
 	fi
 else
-	echo "DRY-RUN: java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}"
+	echo "DRY-RUN: java -jar ./chilo-epub3-maker.jar -course ${COURSE} -type ${OUTPUT_TYPE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}"
 fi
