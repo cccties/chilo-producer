@@ -1,0 +1,4 @@
+<p> We conducted a survey of those who got badges during the pilot study. According to answers, to the question "Did you use an EPUB3 or HTML5 format CHiLO Book?"</p>
+
+<p>About 12% of the respondents said "Mainly EPUB3, sometimes HTML5 format", 6% said "Both EPUB3 and HTML5 format at the same rate", and 16% said "Mainly HTML5, sometimes EPUB3 format." Therefore, about 34% of the respondents replied that they used both the HTML5 and EPUB3 format CHiLO Books. </p>
+
