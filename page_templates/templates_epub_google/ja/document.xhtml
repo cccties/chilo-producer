@@ -4,11 +4,11 @@
         <title>$chapter</title>
         <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
         <link href="../../common/styles/document.css" rel="stylesheet" type="text/css"/>
-		#foreach ( $e in $javascript-file )
-		#if ( $e != "" )
-        <script src="$e" type="text/javascript"/>
-		#end
-		#end
+#foreach ( $e in $javascript-file )
+#if ( $e != "" )
+        <script src="$e" type="text/javascript"></script>
+#end
+#end
     </head>
     <body>
         <!--Header-->
