@@ -48,7 +48,7 @@
 		</div>
 		#if ( $community-url && $community-url != "" )
         <div class="community">
-            <a href="$community-url">
+            <a href="${community-url}">
                 <img src="../../common/images/b_portal.png"/>
             </a>
         </div>
@@ -63,7 +63,7 @@
 		        #set( $poster = "$video-image" )
 		    #end
         <div class="video">
-            <video controls="controls" height="$video-height" poster="$poster" src="$main" width="$video-width">video tag not supported</video>
+            <video style="max-width: 100%;height:auto;" controls="controls" height="$video-height" poster="$poster" src="$main" width="$video-width">video tag not supported</video>
         </div>
 		#end
 

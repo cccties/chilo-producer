@@ -8,9 +8,12 @@
         <dc:date>#if ( $published )$published#end</dc:date>
         <dc:rights>#if ( $rights )$rights#end</dc:rights>
         <dc:creator>#if ( $author-name )$author-name#end</dc:creator>
-        #if ( $publisher )<dc:publisher id="publisher0">$publisher</dc:publisher>#end
-        #if ( $cover-image )<meta content="$cover-image" name="cover"/>#end
-
+#if ( $publisher )
+        <dc:publisher id="publisher0">$publisher</dc:publisher>
+#end
+#if ( $cover-image )
+        <meta content="$cover-image" name="cover"/>
+#end
     </metadata>
 
     <manifest>
