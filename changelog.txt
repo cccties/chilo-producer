@@ -1,0 +1,37 @@
+2015-09-28 ccc-ties<tiesinfo@cccties.org>
+
+１．Storage location of page design template has been changed.
+(Before)
+chilo-producer-master/chiloPro/common/templates
+chilo-producer-master/chiloPro/common/template_ext
+chilo-producer-master/chiloPro/common/web-templates
+chilo-producer-master/chiloPro/common/web-templates_apara
+
+(After)
+chilo-producer-master/page_templates/templates_epub (for EPUB)
+chilo-producer-master/page_templates/templates_web (for Web using Youtube)
+chilo-producer-master/page_templates/templates_web_apara　(for Web using apara)
+chilo-producer-master/page_templates/templates_epub_google (for Google Play books)
+
+２．Changes made in structure-books.xlsx
+＜series-information sheet＞
+Delete the following items
+fb:admins
+fb-app-id
+og:site_name
+google-analytics-id
+＜vol-n sheet＞
+Changes in javascript-file items
+(Before) Essential to enter Javascript file name when outputting Ext. EPUB CHiLO Book.
+(After) Unnecessary to enter Javascript file name.
+
+３．Changes in command
+
+(Before)
+To output EPUB CHiLO Book:　run.bat / run.sh (Windows / Unix-like OS)
+To output Web CHiLO Book:　run-html.bat / run-html.sh (Windows / Unix-like OS)
+
+(After)
+Switching output for EPUB and Web using -t option
+To output EPUB CHiLO Book:　run.bat / run.sh -t pub (Windows / Unix-like OS)
+To output Web CHiLO Book:　run.bat / run.sh -t web (Windows / Unix-like OS)
