@@ -28,10 +28,10 @@ Changes in javascript-file items
 ３．Changes in command
 
 (Before)
-To output EPUB CHiLO Book:　run.bat / run.sh (Windows / Unix-like OS)
-To output Web CHiLO Book:　run-html.bat / run-html.sh (Windows / Unix-like OS)
+To output EPUB CHiLO Book:　run.bat / run.sh  -c <name of your folder> (Windows / Unix-like OS)
+To output Web CHiLO Book :　run-html.bat / run-html.sh  -c <name of your folder> (Windows / Unix-like OS)
 
 (After)
 Switching output for EPUB and Web using -t option
-To output EPUB CHiLO Book:　run.bat / run.sh -t pub (Windows / Unix-like OS)
-To output Web CHiLO Book:　run.bat / run.sh -t web (Windows / Unix-like OS)
+To output EPUB CHiLO Book:　run.bat / run.sh -c <name of your folder> -t epub (Windows / Unix-like OS)
+To output Web CHiLO Book :  run.bat / run.sh -c <name of your folder> -t web (Windows / Unix-like OS)
