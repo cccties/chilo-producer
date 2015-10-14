@@ -4,7 +4,7 @@ English version is [HERE](#english).
 
 ### CHiLO Producerとは
 
-CHiLO Producerは、[CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki) に最適化された _"つまりCHiLO Bookしかつくれない"_ JAVAベースのソフトウェアです。なお、現在のバージョンは、Hybrid CHiLO Book（EPUB3形式）とWeb CHiLO Book（HTML5形式）を作成することができますが、_"Embedded CHiLO Bookは未実装"_ です。
+CHiLO Producerは、[CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki) に最適化された _"つまりCHiLO Bookしかつくれない"_ JAVAベースのソフトウェアです。なお、現在のバージョンは、EPUB3 CHiLO BookとWeb CHiLO Book（HTML5形式）を作成することができます。
 
 このソフトウェアは、[_CHiLO_](http://www.cccties.org/activities/chilo/)Ⓡ の一部として提供されています。
 
@@ -82,7 +82,7 @@ Copyright © 2015 NPO CCC-TIES All Right Reserved.
 
 ### About CHiLO Producer
 
-CHiLO Producer is a JAVA based software optimized for producing [CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki), meaning that it is an exclusive software for producing CHiLO Books. Hybrid CHiLO Book(EPUB3 format) and Web CHiLO Book(HTML5 format) can be produced  with the current version, however _"Embedded CHiLO Book is not embedded"_ 
+CHiLO Producer is a JAVA based software optimized for producing [CHiLO Book](https://github.com/cccties/CHiLO-Producer/wiki), meaning that it is an exclusive software for producing CHiLO Books. EPUB3 CHiLO Book and Web CHiLO Book(HTML5 format) can be produced  with the current version.
 
 This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activities/chilo/)Ⓡ.
 
