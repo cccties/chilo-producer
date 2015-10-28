@@ -44,6 +44,7 @@ div.p{
 	padding-top: 0.3000em;
 	padding-bottom: 0.3000em;
 	margin: 0.0000em;
+	word-wrap: break-word;
 }
 
 a{text-decoration:none;}
@@ -748,7 +749,7 @@ h4 {
 
 .video {
 	text-align: center;
-	margin: 1em auto 2em auto;
+	margin: auto;
 }
 
 .link_icon{
@@ -775,7 +776,7 @@ h4 {
 }
 
 .subject_section {
-	height: 2em;
+/*	height: 2em; */
 }
 
 /* Ver. 2のページのスタイル（内カバー用）*/
@@ -788,3 +789,4 @@ h4 {
 	width: 70%;
 	float: left;
 }
+

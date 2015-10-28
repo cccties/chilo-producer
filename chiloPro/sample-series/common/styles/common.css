@@ -71,7 +71,8 @@ img{
 	width: 30%;
 }
 .skip {
-	float: right;
+	margin-top: 1em;
+	margin-left: auto;
  	width: 25%;
 }
 
@@ -171,7 +172,7 @@ div.width30 {
 
 .video {
 	text-align: center;
-	margin: 1em auto 2em auto;
+	margin: auto;
 }
 
 .link_icon{
@@ -193,7 +194,7 @@ div.width30 {
 }
 
 .subject_section {
-	height: 2em;
+/*	height: 2em; */
 }
 
 /* Ver. 2のページのスタイル（内カバー用）*/
@@ -205,15 +206,4 @@ div.width30 {
 .subject-all {
 	width: 70%;
 	float: left;
-}
-
-/* Nihongo Starter */
-
-.can_do1 {
-  color: #ff9259;
-  padding-top: 0.0000em;
-  padding-bottom: 0.0000em;
-  margin: 0.0000em;
-  text-align: center;
-  line-height: 0.9em;
 }
