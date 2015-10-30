@@ -68,7 +68,8 @@ function chiloreadercheckFunc(main,sub,w){
 var chiloData;
 function chiloWebFunc(url,title){
 	//alert(url);
-	top.chiloStep1(url,title);
+	//top.chiloStep1(url,title);
+	window.open(url);
 /*
 	var localhostApiDomain = "http://localhost:8080/";
 	var chiloAPI = "chiloWeb";
