@@ -72,8 +72,6 @@ CHiLO ProducerはCHiLO Bookしか作れませんが、テンプレート、CSS�
 
 ApacheLicense2.0. ライセンスの元、提供しております。 (see [LICENSE.txt](LICENSE.txt)) 
 
-本製品はIPAフォントを含んでおります。(see [IPA_Font_License_Agreement_v1.0.txt](chiloPro/sample-series/common/fonts/IPA_Font_License_Agreement_v1.0.txt))
-
 ### Copyright
 
 Copyright © 2015 NPO CCC-TIES All Right Reserved.
