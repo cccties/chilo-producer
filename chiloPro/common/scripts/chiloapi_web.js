@@ -68,8 +68,20 @@ function chiloreadercheckFunc(main,sub,w){
 var chiloData;
 function chiloWebFunc(url,title){
 	//alert(url);
-	//top.chiloStep1(url,title);
-	window.open(url);
+	
+	if(jQuery.cookie("appchk") == 1){
+    //alert("naka");
+		chiloData = {
+			scheme: url
+		};
+		
+		//callCHiLOjsonp(localhostApiDomain,chiloAPI,chiloData);
+		chiloApiCallback("callUrl2");
+	}else{
+     //alert("soto");
+		window.open(url);
+	}
+
 /*
 	var localhostApiDomain = "http://localhost:8080/";
 	var chiloAPI = "chiloWeb";

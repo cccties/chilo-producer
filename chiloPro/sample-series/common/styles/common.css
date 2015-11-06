@@ -1,4 +1,12 @@
-﻿body {
+﻿@font-face
+{
+	font-family: "ipaexm";
+	src: url('../../common/fonts/ipaexm.ttf')
+	format("truetype");
+}
+
+body{
+	font-family: "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "メイリオ" , "Meiryo" ,"ＭＳ Ｐ明朝" , "MS PMincho" , "ipaexm" , Garamond , "Times New Roman" , serif;
 	padding: 0;
 	margin:0;
 }
@@ -43,13 +51,14 @@ h2 {
 }
 
 p{
-	font-size:1em; 
+	font-size:1em;
 	color:#444444;
 	/*line-height: 1.4em;*/
 	padding-top: 0.3em;
 	padding-bottom: 0.3em;
 	margin: 0;
 	word-wrap: break-word;
+	line-height: 1.2em;
 }
 a {
 	color: #0000FF;
@@ -63,6 +72,10 @@ a:hover, a:active {
 }
 img{
 	width: 100%;
+}
+
+li{
+	line-height: 1.2em;
 }
 
 /* button */
@@ -194,7 +207,7 @@ div.width30 {
 }
 
 .subject_section {
-/*	height: 2em; */
+	height: 2em;
 }
 
 /* Ver. 2のページのスタイル（内カバー用）*/
