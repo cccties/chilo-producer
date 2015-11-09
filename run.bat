@@ -4,6 +4,8 @@ set PROG=%0
 
 call :CLEARVALS
 
+set STR=%~dp0
+
 :GETOPTS
 	if /I "%1" == "" goto usage
 	if /I "%1" == "-h" goto usage
@@ -31,6 +33,10 @@ goto MAIN
 	set OUTPUTTYPE=
 	set OUTPUTDIR=
 	set OUTPUTNAME=
+	set STR=
+	set COURSEBASE=
+	set INPUTDIR2=
+	set FONTDIRECTORY=
 	exit /b
 
 :DRYRUN
@@ -43,6 +49,7 @@ goto MAIN
 
 :SETINPUTDIR
 	set INPUTDIR=-input-path %1
+	set INPUTDIR2=%1
 	exit /b
 
 :SETOUTPUTTYPE
@@ -56,6 +63,7 @@ goto MAIN
 :SETOUTPUTNAME
 	set OUTPUTNAME=-output-name %1
 	exit /b
+	
 
 :MAIN
 
@@ -66,19 +74,33 @@ if "%RUNMODE%"=="dry" (
 	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %OUTPUTTYPE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
 ) else (
 	if "%OUTPUTTYPE%"=="epub" (
-		xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
-		java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
-		rd /s /q chiloPro\common\templates
+		goto EPUB
 	) else if "%OUTPUTTYPE%"=="web" (
-		xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
-		xcopy page_templates\templates_web chiloPro\common\web-templates  /D /S /R /Y /I /K
-		java -jar chilo-epub3-maker.jar -publish html -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
-		rd /s /q chiloPro\common\templates
-		rd /s /q chiloPro\common\web-templates
+		goto WEB
 	) else (
 		goto usage
 	)
 )
+
+:EPUB
+	xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
+	java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
+	rd /s /q chiloPro\common\templates
+	goto ALLDONE
+
+:WEB
+	xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
+	xcopy page_templates\templates_web chiloPro\common\web-templates  /D /S /R /Y /I /K
+	mkdir .\escape
+	for /F "delims=" %%Z IN ('findstr /n /r "." chilo-epub3-maker.xml ^| findstr /r "CourseBaseDir"') DO (SET COURSEBASE=%%Z)
+	call set FONTDIRECTORY=.\%%COURSEBASE:~29,-8%%\%%COURSE%%\%%INPUTDIR2%%\common\fonts
+	if exist "%STR%%FONTDIRECTORY:~2%" (call move %%FONTDIRECTORY%% ".\escape\fonts")
+	java -jar chilo-epub3-maker.jar -publish html -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
+	rd /s /q chiloPro\common\templates
+	rd /s /q chiloPro\common\web-templates
+	if exist "%STR%escape\fonts" (call move ".\escape\fonts" %%FONTDIRECTORY%%)
+	rmdir /S /Q .\escape
+	goto ALLDONE
 
 :ALLDONE
 	call :CLEARVALS
