@@ -68,9 +68,24 @@ if [ X${RUNMODE} = Xreal ]; then
 	elif [ X${OUTPUT_TYPE} = Xweb ]; then
 		cp -r ./page_templates/templates_epub ./chiloPro/common/templates
 		cp -r ./page_templates/templates_web ./chiloPro/common/web-templates
+		mkdir ./escape
+
+		COURSEBASE_DIR=`sed -n '/CourseBaseDir/p' chilo-epub3-maker.xml | sed -e 's/<[^>]*>//g'`
+		FONT_DIR=$(cd $COURSEBASE_DIR/$COURSE && cd $INPUT_DIR/common && pwd)
+
+		if [ -e $FONT_DIR/fonts ]; then
+			mv $FONT_DIR/fonts ./escape/
+		fi
+
 		java -jar ./chilo-epub3-maker.jar -publish html -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}
 		rm -rf ./chiloPro/common/templates
 		rm -rf ./chiloPro/common/web-templates
+
+		if [ -e ./escape/fonts ]; then
+			mv ./escape/fonts $FONT_DIR 
+		fi
+
+		rm -rf ./escape
 	else
 		usage
 	fi
