@@ -151,7 +151,7 @@ If there are any problems, questions, or requests related to this software, ente
 
 We offer CHiLO Producer under the license of ApacheLicense2.0. (See [LICENSE.txt](LICENSE.txt)) 
 
-This product includes IPA font.(see [IPA_Font_License_Agreement_v1.0.txt](chiloPro/template-series/common/fonts/IPA_Font_License_Agreement_v1.0.txt))
+This product includes IPA Fonts.(see [IPA_Font_License_Agreement_v1.0.txt](chiloPro/template-series/common/fonts/IPA_Font_License_Agreement_v1.0.txt))
 
 ### Copyright
 
