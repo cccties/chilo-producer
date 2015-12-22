@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
     <head>
-        <title>$!chapter</title>
-        <link href="../styles/common.css" rel="stylesheet" type="text/css"/>
-        <link href="../styles/cover.css" rel="stylesheet" type="text/css"/>
+	  #if ( $chapter && $chapter != "" )
+	  <title>$chapter</title>
+	  #end
+      <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+      <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!--Header-->
 		#if ( $chapter && $chapter != "" )
-        <div class="subject_cover">
+        <div>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$chapter-view-box" width="$chapter-width">
 				#if ( $chapter-rect && $chapter-rect != "" )
                 <rect $chapter-rect/>
@@ -18,18 +20,15 @@
                 #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
                 stroke-width="$chapter-stroke-width"
                 #end
-				  text-anchor="$chapter-text-anchor"
+					  text-anchor="$chapter-text-anchor"
 					  x="$chapter-x" y="$chapter-y">$chapter</text>
             </svg>
         </div>
 		#end
-        <div class="community">
-                <img src="../images/space.png"/>
+		#if ( $main && $main != "")
+        <div>
+            <img alt="" src="$main"/>
         </div>
-#if ( $cover && $cover != "" )
-        <div class="l_content clear">
-            <img alt="" src="$!cover"/>
-        </div>
-#end
+		#end
     </body>
 </html>

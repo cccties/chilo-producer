@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
   <head>
-    <title>$chapter</title>
-    <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
-    <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
+        <title>$chapter</title>
+        <link href="../../common/styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../../common/styles/cover.css" rel="stylesheet" type="text/css"/>
+        <script src="../../common/scripts/jquery_epub.js" type="text/javascript"></script>
+        <script src="../../common/scripts/chiloapi_epub.js" type="text/javascript"></script>
   </head>
   <body>
     <!--Header-->
@@ -15,10 +17,10 @@
 		#end
         <text fill="$chapter-fill" font-family="$chapter-font-family"
 			  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                stroke-width="$chapter-stroke-width"
-                #end
-				  text-anchor="$chapter-text-anchor"
+		  #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+		  stroke-width="$chapter-stroke-width"
+		  #end
+			  text-anchor="$chapter-text-anchor"
 			  x="$chapter-x" y="$chapter-y">$chapter</text>
       </svg>
     </div>
@@ -26,18 +28,18 @@
 
 	  <div class="skip">
 		<a href="$!document-start-page">
-          <img src="../../common/images/skip_en.png"/>
+          <img src="../../common/images/skip.png"/>
         </a>
       </div>
 	  <div style="clear:both;"/>
 
     <div>
 
-	  <p class="subtitle">How to Get Certified Badges Issued</p>
+	  <p class="subtitle">認定バッジ獲得</p>
   
 		<ol>
-			<li>When you pass the assignments of this book, a passing badge will be issued.</li>
-			<li>When you have received all $!volumes passing badges of the $!series-name series, a certified series completion badge (Big Badge) will be issued.</li>
+			<li>本書の課題に合格すると、合格バッジを獲得することができます。</li>
+			<li>$!series-nameシリーズ全$!volumes章の合格バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</li>
 		</ol>
   
 	</div>
@@ -47,7 +49,7 @@
 		#foreach( $test in $testList )
 		<div>
 		  <p class="link_icon">・<a href="$!{test.link}">
-			  See $!{test.title}</a></p>
+			  $!{test.title}を見てみる</a></p>
 		  <div class="width10 link_icon">
 			<a href="$!{test.link}">
 			  <img src="$!{test-image}"/> </a>
@@ -62,17 +64,10 @@
     <div>
 
 #if ( $community-url && $community-url != "" )
-	  <p class="subtitle" style="margin-top:1em;">Join in the Learning Community</p>
+	  <p class="subtitle" style="margin-top:1em;">学習コミュニティ参加</p>
   
-	  <p>Join in the online learning community of this book and study along with community peers for badges.</p>
+	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
 
-	  <p class="link_icon">・<a href="$!{community-url}">See the community</a>
-      </p>
-	  <div class="width20 link_icon">
-        <a href="$!{community-url}">
-          <img src="../../common/images/b_portal.png"/>
-        </a>
-      </div>
 #end
 	</div>
   </body>

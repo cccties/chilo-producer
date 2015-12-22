@@ -2,7 +2,7 @@
 <package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="3.0" xml:lang="ja">
     <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
         <dc:identifier id="BookId">#if ( $identifier )${identifier}#end</dc:identifier>
-        <dc:title>#if ( $series-name && $vol && $series-title )$series-name 第$vol章 $series-title#end</dc:title>
+        <dc:title>#if ( $series-name && $vol && $series-title )$series-name vol-$vol $series-title#end</dc:title>
         <dc:language>#if ( $language )$language#end</dc:language>
         <meta property="dcterms:modified">#if ( $update )$update#end</meta>
         <dc:date>#if ( $published )$published#end</dc:date>
@@ -19,7 +19,7 @@
     <manifest>
 #foreach( $e in $manifest-items )
 #if( $e != "" )
-        <item href="$e.href" id="$e.id" media-type="$e.media-type"#if ( $e.properties ) properties="$e.properties"#end/>
+        <item href="$e.href" id="$e.id" media-type="$e.media-type"#if ( $e.properties )#if ( $e.properties != "svg") properties="$e.properties"#else properties="$e.properties scripted"#end#end/>
 #end
 #end
     </manifest>

@@ -3,7 +3,9 @@
     <head>
         <title>$!chapter</title>
         <link href="../styles/common.css" rel="stylesheet" type="text/css"/>
-        <link href="../styles/document.css" rel="stylesheet" type="text/css"/>
+        <link href="../styles/author.css" rel="stylesheet" type="text/css"/>
+        <script src="../../common/scripts/jquery_epub.js" type="text/javascript"></script>
+        <script src="../../common/scripts/chiloapi_epub.js" type="text/javascript"></script>
     </head>
     <body>
         <!--Header-->
@@ -16,14 +18,14 @@
 			#end
             <text fill="$chapter-fill" font-family="$chapter-font-family"
 				  font-size="$chapter-font-size" stroke="$chapter-stroke"
-                #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
-                stroke-width="$chapter-stroke-width"
-                #end
+              #if ( $chapter-stroke-width && $chapter-stroke-width != "" )
+              stroke-width="$chapter-stroke-width"
+              #end
 				  text-anchor="$chapter-text-anchor"
 				  x="$chapter-x" y="$chapter-y">$chapter</text>
           </svg>
         </div>
-		#end		
+		#end
 
 		#if ( $section && $section != "" )
         <h2 class="subject_section">
@@ -33,10 +35,10 @@
 			#end
             <text fill="$section-fill" font-family="$section-font-family"
 				  font-size="$section-font-size" stroke="$section-stroke"
-				#if ( $section-stroke-width && $section-stroke-width != "" )
-				stroke-width="$section-stroke-width"
-				#end
-					  text-anchor="$section-text-anchor"
+              #if ( $section-stroke-width && $section-stroke-width != "" )
+              stroke-width="$section-stroke-width"
+              #end
+				  text-anchor="$section-text-anchor"
 				  x="$section-x" y="$section-y">$section</text>
           </svg>
         </h2>
@@ -50,28 +52,29 @@
         <div style="clear:both;"/>
 
         <div>
-  <p class="subtitle">Recommended Ebook Reader</p>
+#if ( $picture && $picture != "" )
+  <div class="width30 left">
+                <img alt="" src="$!picture"/>
+            </div>
+#end
+  <p class="subtitle">著者</p>
 
-  <p>Make sure you have installed the eBook Reader on your device before browsing CHiLO Book. The recommended eBook Reader for CHiLO Books is as follows.
-</p>
+  <p>$!organization<br/>
+     $!author-name #if( $author-name2 ) / $author-name2 #end</p>
 
-  <ul>
-    <li>iOS,Mac OS: iBooks</li>
+  <div style="clear:both;"/>
 
-    <li>Android: Gitden EPUB3 Book Reader</li>
+  #foreach( $e in $introductionList )
+  <div>
+	#if ( $e.title != "" )
+	<p class="subtitle">$e.title</p>
+	#end
+	#if ( $e.content != "" )
+	<p> $e.content </p>
+	#end
+  </div>
+  #end
 
-    <li>Windows: Readium</li>
-  </ul>
-
-  <p>If you use eBook readers other than the ones shown above, the videos may not play normally.</p>
-
-  <p class="subtitle">About CHiLO Book</p>
-
-  <p>You can study offline. However, internet connection is necessary for the online tests.</p>
-
-  <p>It is necessary to install an eBook Reader.</p>
-
-  <p>By using the features of the eBook Reader app, memos and bookmarks can be saved.</p>
-</div>
+		</div>
     </body>
 </html>
