@@ -46,7 +46,7 @@ public class Config {
     public static final String ChapterBGColorKey = "ChapterBGColor";
     public static final String ChapterWidthRatioKey = "ChapterWidthRatio";
     public static final String ChapterTextRatioKey = "ChapterTextRatio";
-    public static final String ChapterFontFamilyKey = "CahpterFontFamily";
+    public static final String ChapterFontFamilyKey = "ChapterFontFamily";
     public static final String ChapterFontStrokeKey = "ChapterFontStroke";
     public static final String ChapterFontStrokeWidthKey = "ChapterFontStrokeWidth";
     public static final String ChapterTextAlignKey = "ChapterTextAlign";

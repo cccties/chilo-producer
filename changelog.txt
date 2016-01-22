@@ -1,3 +1,13 @@
+2016-01-22 ccc-ties<tiesinfo@cccties.org>
+
+１．Typo correction
+chilo-producer/src/epub3maker/Config.java
+(Before)
+public static final String ChapterFontFamilyKey = "CahpterFontFamily";
+(After)
+public static final String ChapterFontFamilyKey = "ChapterFontFamily";
+
+
 2015-09-28 ccc-ties<tiesinfo@cccties.org>
 
 １．Storage location of page design template has been changed.
