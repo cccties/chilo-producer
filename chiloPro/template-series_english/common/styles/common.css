@@ -1,9 +1,11 @@
-﻿@font-face
+﻿/*
+@font-face
 {
 	font-family: "ipaexm";
 	src: url('../../common/fonts/ipaexm.ttf')
 	format("truetype");
 }
+*/
 
 body{
 	font-family: "游明朝" , "Yu Mincho" , "游明朝体" , "YuMincho" , "ヒラギノ明朝 Pro W3" , "Hiragino Mincho Pro" , "HiraMinProN-W3" , "メイリオ" , "Meiryo" ,"ＭＳ Ｐ明朝" , "MS PMincho" , "ipaexm" , Garamond , "Times New Roman" , serif;
