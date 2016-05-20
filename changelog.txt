@@ -1,3 +1,35 @@
+2016-05-16  CCC-TIES  <tiesinfo@cccties.org>
+
+* run.bat (-t): Disable output of web version CHiLO Book
+* run.sh (-t): Disable output of web version CHiLO Book
+
+* run.bat (-s): Add option to select book template in the command to output CHiLO Book 
+* run.sh (-s): Add option to select book template in the command to output CHiLO Book 
+
+/src/epub3maker/
+* Epub3MakerV2.java (createNav): Support the function to highlight the item displayed in the TOC of Cloud CHiLO Reader
+(sectionMap.put. chapterMap.put): id
+
+* Epub3MakerV2.java (createCardView): Display video thumbnail to contents page (cardview.xhtml)
+(sectionMap.put): image-flag, video-image
+
+* Epub3MakerV2.java (createCardView, createContent): Add link to go back to contents page on each page
+(sectionMap.put. chapterMap.put): id
+(content.put): file-basename
+
+* Epub3PackageDocumentV2.java (setManifest): Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+* Epub3Maker.java (NAVIGATION_DOCUMENT_FILE_NAME):Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+(NAVIGATION_DOCUMENT_FILE_NAME, NAVIGATION_DOCUMENT_FILE_NAME2): Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+* Epub3MakerV2.java (process, createNav, createCardView): Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+* Epub3Archiver.java (archive): Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+
+* Epub3Archiver.java (archive): Change from displaying [the name of series and the volume number] to displaying only [the number] of the volume
+
+* Epub3MakerV2.java (createPrefacePageSettings):  Intergration of "READ ME" page, "Introduction" page, "Outline" page
+
+* Epub3MakerV2.java (createAppendixPageSettings): Obsolete "Addendum" section and newly add "About the Author" section
+
+
 2016-01-22 ccc-ties<tiesinfo@cccties.org>
 
 １．Typo correction
