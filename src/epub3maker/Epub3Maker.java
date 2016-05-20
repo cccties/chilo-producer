@@ -1635,7 +1635,8 @@ public class Epub3Maker {
     protected Path outputTempDirectory;
     public static final int DIRECTORY_DEPTH = 3;
     private static final Path COMMUNITY_BUTTON_PATH = Paths.get("..", "..", "common", "images", "community-button.png");
-    public static final String NAVIGATION_DOCUMENT_FILE_NAME = "nav.xhtml";
+    public static final String NAVIGATION_DOCUMENT_FILE_NAME = "cardview.xhtml";
+    public static final String NAVIGATION_DOCUMENT_FILE_NAME2 = "nav.xhtml";
     public static final String MATHJAX_CONFIG_SCRIPT =
     		"\n            MathJax.Hub.Config({\n" + //System.lineSeparator() +
     		"                SVG: { linebreaks: { width: \"100%\" } },\n" + //System.lineSeparator() +
