@@ -147,6 +147,7 @@ public class Epub3MakerV2 extends Epub3Maker {
             sortGeneratedPages(sortedPageSettings);
 
             createNav(course, volume, sortedPageSettings);
+            createCardView(course, volume, sortedPageSettings);
             
             // http://imagedrive.github.io/spec/epub301-publications.xhtml#sec-publication-resources
             if (!isPublishHtml()) {
@@ -241,6 +242,9 @@ public class Epub3MakerV2 extends Epub3Maker {
             targetFilePaths.addAll(commonFilePaths3);
         }
 
+    	    List<Path> commonFilePaths99 = getFilePaths(Paths.get(Config.getCourseBaseDir(), "common", "html"), entry -> !(Files.isDirectory(entry)));
+            targetFilePaths.addAll(commonFilePaths99);
+
         return targetFilePaths;
     }
     
@@ -326,12 +330,14 @@ public class Epub3MakerV2 extends Epub3Maker {
     			chapterMap = new HashMap<String, Object>();
     			chapterMap.put("link", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "/"));
     			chapterMap.put("title", chapter);
+    			chapterMap.put("id", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "-"));
     			curChapter = chapter;
     			continue;
     		}
     		Map<String, Object> sectionMap = new HashMap<String, Object>();
     		sectionMap.put("link", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "/"));
     		sectionMap.put("title", page.getSection());
+    		sectionMap.put("id", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "-"));
     		if (sections == null) {
     			sections = new ArrayList<Map<String, Object>>();
     		}
@@ -368,14 +374,96 @@ public class Epub3MakerV2 extends Epub3Maker {
     	Path outputFileName;
     	content.put("start-page", volume.getVolumeStr() + "/text/" + pageFileName(volume.getVolume(), DOCUMENT_START_PAGE + 1));
     	if (isPublishHtml()) {
-    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME.replace("xhtml", "html"));
+    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME2.replace("xhtml", "html"));
     	} else {
-    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME);
+    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME2);
     	}
     	createTemplatePage(content, "nav.xhtml", outputFileName);
     }
     
-    void createContentOpf(Course course, Volume volume, List<String> authorImages) throws Epub3MakerException, IOException, ParserConfigurationException, SAXException
+    void createCardView(Course course, Volume volume, List<PageSetting> sortedPages) throws IOException {
+    	String curChapter = null;
+    	List<Map<String, Object>> chapters = new ArrayList<Map<String, Object>>();
+    	List<Map<String, Object>> sections = null;
+    	Map<String, Object> chapterMap = null;
+    	
+    	for (PageSetting page : sortedPages) {
+    		String chapter = page.getChapter();
+    		if (!isValueValid(chapter)) {
+    			continue;
+    		}
+    		if (curChapter == null || !curChapter.equals(chapter)) {
+    			if (chapterMap != null) {
+    				chapterMap.put("sections", sections);
+    				sections = null;
+    				chapters.add(chapterMap);
+    				chapterMap = null;
+    			}
+    			chapterMap = new HashMap<String, Object>();
+    			chapterMap.put("link", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "/"));
+    			chapterMap.put("title", chapter);
+	    		chapterMap.put("image-flag", "" + page.getVideoImage());
+	    		chapterMap.put("video-image", "common/images/" + page.getVideoImage());
+				String _str = page.getTextPathForArchiveFile().toString().replace(".xhtml", "");
+				int _len = _str.length();
+				String _right = _str.substring(_len - 11, _len);
+	    		chapterMap.put("id", _right);
+    			curChapter = chapter;
+    			continue;
+    		}
+    		Map<String, Object> sectionMap = new HashMap<String, Object>();
+    		sectionMap.put("link", page.getTextPathForArchiveFile().toString().replaceAll("\\\\", "/"));
+    		sectionMap.put("title", page.getSection());
+	    	sectionMap.put("image-flag", "" + page.getVideoImage());
+    		sectionMap.put("video-image", volume.KEY_VOLUME_PREFIX + page.getVolume() + "/images/" + page.getVideoImage());
+			String _str = page.getTextPathForArchiveFile().toString().replace(".xhtml", "");
+			int _len = _str.length();
+			String _right = _str.substring(_len - 11, _len);
+	   		sectionMap.put("id", _right);
+    		if (sections == null) {
+    			sections = new ArrayList<Map<String, Object>>();
+    		}
+    		sections.add(sectionMap);
+    	}
+		if (chapterMap != null) {
+			chapterMap.put("sections", sections);
+			chapters.add(chapterMap);
+			chapterMap = null;
+		}
+
+    	Content content = new Content();
+
+    	String fnamePrefix = String.format("vol-%03d-", volume.getVolume());
+    	String coverImg = volume.getCoverImage();
+    	if (coverImg != null && coverImg.length() > 0) {
+            content.put("prev-page", volume.getVolumeStr() + "/text/" + fnamePrefix + "001.html");
+    	}
+        content.put("next-page", "common/text/" + fnamePrefix  + "002.html");
+    	
+    	content.put("chapters", chapters);
+    	content.put("index", sReader.get("nav.title"));
+    	content.put(Course.KEY_GOOGLE_ANALYTICS_ID, course.getMeta(Course.KEY_GOOGLE_ANALYTICS_ID));
+
+    	if (isPublishHtml()) {
+    	    // series-information sheet
+    	    appendMeta(course, content);
+            content.put("file-name", "cardview.html");
+    	}
+    	
+        // book-list sheet
+        appendBookList(course, volume, content);
+    	
+    	Path outputFileName;
+    	content.put("start-page", volume.getVolumeStr() + "/text/" + pageFileName(volume.getVolume(), DOCUMENT_START_PAGE + 1));
+    	if (isPublishHtml()) {
+    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME.replace("xhtml", "html"));
+    	} else {
+    		outputFileName = outputTempDirectory.resolve(NAVIGATION_DOCUMENT_FILE_NAME);
+    	}
+    	createTemplatePage(content, "cardview.xhtml", outputFileName);
+    }
+
+	void createContentOpf(Course course, Volume volume, List<String> authorImages) throws Epub3MakerException, IOException, ParserConfigurationException, SAXException
     {
         Epub3PackageDocumentV2 packageDocument = new Epub3PackageDocumentV2(
                 outputTempDirectory.resolve(Paths.get("content.opf")));
@@ -441,17 +529,18 @@ public class Epub3MakerV2 extends Epub3Maker {
 
     PageSetting[] createPrefacePageSettings(Course course, Volume volume) throws IOException {
     	int vol = volume.getVolume();
-    	String[] templateFiles = {"readme.xhtml", "series_introduction.xhtml", "book_summary.xhtml"};
+    	//String[] templateFiles = {"readme.xhtml", "series_introduction.xhtml", "book_summary.xhtml"};
+    	String[] templateFiles = {"readme.xhtml"};
     	String subject = sReader.get("readme/chapter");
     	PageSetting settings[] = new PageSetting[templateFiles.length];
     	settings[0] = new PageSetting(vol, README_PAGE, "common", subject, "", templateFiles[0]);
-        settings[1] = new PageSetting(vol, SERIES_INTRODUCTION_PAGE, "common", subject, sReader.get("readme/section1"), templateFiles[1]);
-        String volStr = volume.getVolumeStr();
-        String bookSummary = course.bookBookSummary(volStr);
-        settings[2] = null;
-        if (isValueValid(bookSummary)) {
-        	settings[2] =new PageSetting(vol, BOOK_SUMMARY_PAGE, "common", subject, sReader.get("readme/section2"), templateFiles[2]);
-        }
+        //settings[1] = new PageSetting(vol, SERIES_INTRODUCTION_PAGE, "common", subject, sReader.get("readme/section1"), templateFiles[1]);
+        //String volStr = volume.getVolumeStr();
+        //String bookSummary = course.bookBookSummary(volStr);
+        //settings[2] = null;
+        //if (isValueValid(bookSummary)) {
+        //	settings[2] =new PageSetting(vol, BOOK_SUMMARY_PAGE, "common", subject, sReader.get("readme/section2"), templateFiles[2]);
+        //}
     	for (int i = 0; i < settings.length; i++) {
     		if (settings[i] != null) {
     			volume.getPageSettings().add(settings[i]);
@@ -472,14 +561,21 @@ public class Epub3MakerV2 extends Epub3Maker {
 
     PageSetting[] createAppendixPageSettings(Course course, Volume volume) throws IOException {
     	int vol = volume.getVolume();
-    	String[] templateFiles = {"section_end_cover.xhtml", "precaution.xhtml", "author.xhtml", "copyright.xhtml"};
+    	//String[] templateFiles = {"section_end_cover.xhtml", "precaution.xhtml", "author.xhtml", "copyright.xhtml"};//章末情報を出す場合はこちらを使う
+    	String[] templateFiles = {"author.xhtml", "copyright.xhtml"}; 
+    	
     	String subject = sReader.get("appendix/chapter");
     	PageSetting settings[] = new PageSetting[templateFiles.length];
     	int maxPage = volume.getMaxPage();
+		/*//章末情報を出す場合はこちらを使う
     	settings[0] = new PageSetting(vol, ++maxPage, "common", subject, "", templateFiles[0]);
     	settings[1] = new PageSetting(vol, ++maxPage, "common", subject, sReader.get("appendix/section1"), templateFiles[1]);
     	settings[2] = new PageSetting(vol, ++maxPage, "common", subject, sReader.get("appendix/section2"), templateFiles[2]);
     	settings[3] = new PageSetting(vol, ++maxPage, "common", sReader.get("copyright"), "", templateFiles[3]);
+		*/
+    	settings[0] = new PageSetting(vol, ++maxPage, "common", subject, "", templateFiles[0]);
+    	settings[1] = new PageSetting(vol, ++maxPage, "common", sReader.get("copyright"), "", templateFiles[1]);
+
     	for (int i = 0; i < settings.length; i++) {
     		volume.getPageSettings().add(settings[i]);
     	}
@@ -680,6 +776,7 @@ public class Epub3MakerV2 extends Epub3Maker {
             }
         }
     	content.put("file-name", outFilePath.getFileName().toString());
+    	content.put("file-basename", outFilePath.getFileName().toString().replace(".xhtml", ""));
     	content.put("volumes", course.getVolumes().size());
     	
         return content;
