@@ -1,3 +1,3 @@
-[submodule "page_templates"]
-	path = page_templates
-	url = http://github.com/cccties/page_templates
+[submodule "book_templates"]
+	path = book_templates
+	url = http://github.com/cccties/book_templates
