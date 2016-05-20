@@ -12,7 +12,7 @@ set STR=%~dp0
 	if /I "%1" == "-d" call :DRYRUN
 	if /I "%1" == "-c" call :SETCOURSE %2; shift
 	if /I "%1" == "-i" call :SETINPUTDIR %2; shift
-	if /I "%1" == "-t" call :SETOUTPUTTYPE %2; shift
+	if /I "%1" == "-s" call :SETBOOKTEMPLATE %2; shift
 	if /I "%1" == "-o" call :SETOUTPUTDIR %2; shift
 	if /I "%1" == "-f" call :SETOUTPUTNAME %2; shift
 	shift
@@ -21,7 +21,7 @@ if not (%1)==() goto GETOPTS
 goto MAIN
 
 :usage
-	echo "%PROG% -c <name of your folder> -t <book type> [ -i <input dir> -o <output_dir> -f <output_name> ]"
+	echo "%PROG% -c <name of your directory> -s <name of the applied book template> [ -i <input dir> -o <output dir> -f <output name> ]"
 	goto ALLDONE
 
 :CLEARVALS
@@ -30,13 +30,13 @@ goto MAIN
 	set DRYRUN=
 	set COURSE=
 	set INPUTDIR=
-	set OUTPUTTYPE=
+	set BOOKTEMPLATE=
 	set OUTPUTDIR=
 	set OUTPUTNAME=
 	set STR=
-	set COURSEBASE=
 	set INPUTDIR2=
-	set FONTDIRECTORY=
+	set COURSEBASE_DIR=
+	set COURSEBASE_DIR2=
 	exit /b
 
 :DRYRUN
@@ -52,8 +52,8 @@ goto MAIN
 	set INPUTDIR2=%1
 	exit /b
 
-:SETOUTPUTTYPE
-	set OUTPUTTYPE=%1
+:SETBOOKTEMPLATE
+	set BOOKTEMPLATE=%1
 	exit /b
 
 :SETOUTPUTDIR
@@ -71,35 +71,32 @@ if "%COURSE%"=="" goto usage
 
 
 if "%RUNMODE%"=="dry" (
-	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %OUTPUTTYPE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
+	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %BOOKTEMPLATE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
 ) else (
-	if "%OUTPUTTYPE%"=="epub" (
-		goto EPUB
-	) else if "%OUTPUTTYPE%"=="web" (
-		goto WEB
-	) else (
+	if "%BOOKTEMPLATE%"=="" (
 		goto usage
+	) else if "%BOOKTEMPLATE%"=="shift" (
+		goto usage
+	)else (
+		goto EPUB
 	)
 )
 
 :EPUB
-	xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
-	java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
-	rd /s /q chiloPro\common\templates
-	goto ALLDONE
+	for /F "delims=" %%Z IN ('findstr /n /r "." chilo-epub3-maker.xml ^| findstr /r "CourseBaseDir"') DO (SET COURSEBASE_DIR=%%Z)
+rem	Remove xml tags
+	for %%Y IN ( %COURSEBASE_DIR:~29,-8% ) DO (SET COURSEBASE_DIR2=%%Y)
 
-:WEB
-	xcopy page_templates\templates_epub chiloPro\common\templates  /D /S /R /Y /I /K
-	xcopy page_templates\templates_web chiloPro\common\web-templates  /D /S /R /Y /I /K
-	mkdir .\escape
-	for /F "delims=" %%Z IN ('findstr /n /r "." chilo-epub3-maker.xml ^| findstr /r "CourseBaseDir"') DO (SET COURSEBASE=%%Z)
-	call set FONTDIRECTORY=.\%%COURSEBASE:~29,-8%%\%%COURSE%%\%%INPUTDIR2%%\common\fonts
-	if exist "%STR%%FONTDIRECTORY:~2%" (call move %%FONTDIRECTORY%% ".\escape\fonts")
-	java -jar chilo-epub3-maker.jar -publish html -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
-	rd /s /q chiloPro\common\templates
-	rd /s /q chiloPro\common\web-templates
-	if exist "%STR%escape\fonts" (call move ".\escape\fonts" %%FONTDIRECTORY%%)
-	rmdir /S /Q .\escape
+	xcopy book_templates\%BOOKTEMPLATE%\page_templates %COURSEBASE_DIR2%\common\templates /D /S /R /Y /I /K
+	xcopy book_templates\%BOOKTEMPLATE%\styles %COURSEBASE_DIR2%\%COURSE%\%INPUTDIR2%\common\styles /D /S /R /Y /I /K
+	xcopy book_templates\%BOOKTEMPLATE%\images %COURSEBASE_DIR2%\common\images /D /S /R /Y /I /K
+
+	java -jar chilo-epub3-maker.jar -course %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%
+
+	rd /s /q %COURSEBASE_DIR2%\common\templates
+	rd /s /q %COURSEBASE_DIR2%\%COURSE%\%INPUTDIR2%\common\styles
+	rd /s /q %COURSEBASE_DIR2%\common\images
+
 	goto ALLDONE
 
 :ALLDONE
