@@ -57,6 +57,9 @@ public class Epub3Archiver {
         writeNavigationDocumentFile(Paths.get(
                 course.getMeta(Course.KEY_INPUT_PATH), "temp", Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME),
                 zos);
+        writeNavigationDocumentFile(Paths.get(
+                course.getMeta(Course.KEY_INPUT_PATH), "temp", Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME2),
+                zos);
 
         zos.setMethod(ZipOutputStream.DEFLATED);
         // zos.setLevel(9);
@@ -77,8 +80,9 @@ public class Epub3Archiver {
         Path output = Paths.get(
                 course.getMeta().get(Course.KEY_OUTPUT_PATH),
                 (outputName != null ? outputName : "") + 
-                course.getMeta().get(Course.KEY_COURSE_NAME) + "-vol-"
-                        + volume.getVolume() + ".epub");
+                //course.getMeta().get(Course.KEY_COURSE_NAME) + "-vol-"
+                //        + volume.getVolume() + ".epub");
+                String.format("%02d", volume.getVolume()) + ".epub");
         ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(
                 new FileOutputStream(output.toFile())));// charset指定しないと日本語ばける？
 
@@ -87,6 +91,7 @@ public class Epub3Archiver {
                 zos);
         writeContainerFile(Paths.get(OutputTempDir, "container.xml"), zos);
         writeNavigationDocumentFile(Paths.get(OutputTempDir, Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME), zos);
+        writeNavigationDocumentFile(Paths.get(OutputTempDir, Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME2), zos);
 
         zos.setMethod(ZipOutputStream.DEFLATED);
         // zos.setLevel(9);
