@@ -65,6 +65,15 @@ public class Epub3PackageDocumentV2 extends Epub3PackageDocument {
         map.put(TAG_ITEM.ATTR_PROPERTIES.getLabel(), "nav");
         list.add(map);
         content.put("manifest-items", list);
+
+        Map<String, String> map2 = new HashMap<String, String>();
+        final String fileName2 = "cardview.xhtml";
+        map2.put(TAG_ITEM.ATTR_HREF.getLabel(), fileName2);
+        map2.put(TAG_ITEM.ATTR_ID.getLabel(), fileName2);
+        map2.put(TAG_ITEM.ATTR_MEDIA_TYPE.getLabel(), getMediaType(fileName2, mediaTypes));
+        map2.put(TAG_ITEM.ATTR_PROPERTIES.getLabel(), "svg");
+        list.add(map2);
+        content.put("manifest-items", list);
     }
 
     public void setSpine(List<String> paths, Content content) {
