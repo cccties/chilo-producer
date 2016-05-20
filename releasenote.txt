@@ -1,0 +1,45 @@
+リリースノート / Release Notes
+
+/////////
+// 1.2 //
+/////////
+
+新機能追加
+• CHiLO Bookを出力するコマンドに、ブックテンプレート選択オプションの追加
+  （ディフォルトでは、basicとcardviewの2種類のブックテンプレートが用意されています）
+• Cloud CHiLO Readerの目次項目を強調する機能に対応
+
+仕様変更
+cardviewデザインへの対応
+• 目次ページ（cardview.xhtml）にビデオサムネイルを表示
+• 各ページに目次ページに戻るリンクを追加
+• 目次ページ（cardview.xhtml）を EPUB Navigation Document （nav.xhtml）から分離
+既存ページの整理
+• 「はじめにお読みください」ページ、「シリーズの紹介」ページ、「ブック概要」ページを統合
+出力ファイル名のルール変更
+• 「シリーズ名+巻数」を「巻数」の数字だけ出力するように変更
+
+無効化
+• Web 版 CHiLO Book の出力を廃止
+• 「章末情報」チャプターの廃止し、「著者紹介」チャプターを新規追加
+
+---
+
+New features added
+• Add option to select book template in the command to output CHiLO Book 
+  (There are two types of book templates, basic and cardview, available as default settings)
+• Support the function to highlight the item displayed in the TOC of Cloud CHiLO Reader
+
+Specification Changes
+Enable cardview design
+• Display video thumbnail to contents page (cardview.xhtml)
+• Add link to go back to contents page on each page
+• Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+Sort existing page
+• Intergration of "READ ME" page, "Introduction" page, "Outline" page
+Change rules of the name of the output file
+• Change from displaying [the name of series and the volume number] to displaying only [the number] of the volume
+
+Disable
+• Disable output of web version CHiLO Book
+• Obsolete "Addendum" section and newly add "About the Author" section
