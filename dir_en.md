@@ -1,30 +1,28 @@
 ```
 (root)
-　│ 　build.properties *Files necessary to build
+　│ 　build.properties *Files necessary to create jar file
 　│ 
-　│ 　build.xml  *Files necessary to build
+　│ 　build.xml  *Files necessary to create jar file
 　│ 
-　│ 　chilo-epub3-maker.jar *Jar file made after building
+　│ 　chilo-epub3-maker.jar *Jar file for CHiLO Book output
 　│ 
 　│ 　chilo-epub3-maker.xml *Set up file
 　│ 
-　│ 　excludes.lst *Files necessary to build
+　│ 　excludes.lst *Files necessary to create jar file
 　│ 
 　│ 　LICENSE.txt *License file
 　│ 
 　│　 README.md *Readme
 　│ 
-　│ 　run.bat *Batch file for creating ePub
+　│ 　run.bat ＊Batch file for CHiLO Book output
 　│ 
-　│ 　run-html.bat *Batch file for creating HTML
+　│ 　run.sh ＊Shell script for CHiLO Book output
 　│ 
-　│ 　run.sh *Shell file for creating ePub
+　├─chiloPro *CHiLO Book producing directory
 　│ 
-　│ 　run-html.sh *Shell file for creating HTML
+　├─book_templates ＊Directory for book template of CHiLO Book
 　│ 
-　├─chiloPro *CHiLO Book producing folder
+　├─lib *Library directory
 　│ 
-　├─lib *Library folder
-　│ 
-　└─src *Source code folder
+　└─src *Source code directory
 ```
