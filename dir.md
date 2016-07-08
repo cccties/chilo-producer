@@ -22,6 +22,8 @@
 　│ 
 　├─book_templates ＊CHiLO Bookのブックテンプレートのディレクトリ
 　│ 
+　├─extension　＊CHiLO BookをCloud CHiLO Readerで読むためのファイル
+　│ 
 　├─lib ＊ライブラリディレクトリ
 　│ 
 　└─src ＊EPUB出力用のjarファイルのソースコードディレクトリ
