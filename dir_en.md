@@ -22,6 +22,8 @@
 　│ 
 　├─book_templates ＊Directory for book template of CHiLO Book
 　│ 
+　├─extension　＊CHiLO BookをCloud CHiLO Readerで読むためのファイル
+　│ 
 　├─lib *Library directory
 　│ 
 　└─src *Source code directory
