@@ -50,7 +50,7 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 　│   　　│
 　│   　　└─vol-n　＊各ブックの素材を保存するディレクトリ
 　│ 　
-　├─extension　＊CHiLO BookをCloud CHiLO Readerで読むためのファイル
+　├─extension　＊CHiLO Bookオンライン版用のhtmlファイル
 　│   
 　└─src　＊CHiLOBook出力用のjarファイルのソース
 　（省略）
@@ -145,7 +145,7 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│   　　│
 　│   　　└─vol-n　*Directory for saving materials of each Book
 　│ 　
-　├─extension　＊CHiLO BookをCloud CHiLO Readerで読むためのファイル
+　├─extension　＊CHiLO Bookオンライン版用のhtmlファイル
 　│   
 　└─src　＊The source of jar files for CHiLO Book output 
 (The rest is omitted.)
