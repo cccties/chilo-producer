@@ -22,7 +22,7 @@
 　│ 
 　├─book_templates ＊Directory for book template of CHiLO Book
 　│ 
-　├─extension　＊CHiLO BookをCloud CHiLO Readerで読むためのファイル
+　├─extension　＊CHiLO Bookオンライン版用のhtmlファイル
 　│ 
 　├─lib *Library directory
 　│ 
