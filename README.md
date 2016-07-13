@@ -41,8 +41,6 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 　│   │
 　│   ├─common　＊全体の共通ファイル群
 　│   │
-　│   ├─sample-series　＊サンプル
-　│   │
 　│   └─template-series　＊シリーズディレクトリのテンプレート（このディレクトリをコピーして作成していく）
 　│   　　│  structure-books.xlsx　＊CHiLO Bookの構造ファイル
 　│   　　│
@@ -74,6 +72,16 @@ CHiLO Bookを作る前に、CHiLO Bookの構造を理解しましょう。
 
 CHiLO Bookのスタイルを変更したい場合は、 _book_templates/_ のファイルを変更してください。
 -> [スタイルを変更する](http://docs.cccties.org/chilo-producer/03-%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B/)
+
+### CHiLO Book 素材サンプル
+
+CHiLO Bookの素材サンプルを公開しています。
+
+https://github.com/cccties/chilo001
+
+ダウンロードして、展開したファイルを、 _(root)/chiloPro/_ にコピーして、CHiLO Book制作の参考にしてください。
+
+なお、この素材サンプルは、[CHiLO Book Library](http://chilos.jp)で公開している[「はじめての情報ネットワーク」](http://chilos.jp/s/?id=1)の素材となっております。
 
 ### 課題・質問
 
@@ -136,8 +144,6 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│   │
 　│   ├─common *Files used in common for all.
 　│   │
-　│   ├─sample-series *Sample
-　│   │
 　│   └─template-series　*Template of the directory of the series(copy this directory for creating).
 　│   　　│  structure-books.xlsx *Structure file of CHiLO Book
 　│   　　│
@@ -169,6 +175,15 @@ Before the production of CHiLO Book, understand the structure of CHiLO Book.
 
 When you want to change the style of the CHiLO Book, change _book_templates/_ file
 -> [Change the style](http://docs.cccties.org/chilo-producer/03-%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B/)
+
+### Samples of CHiLO Book material
+
+We are publicly disclosing materials for CHiLO Book.
+
+https://github.com/cccties/chilo001
+
+Download and copy the expanded file to _(root)/chiloPro/_ for reference when creating CHiLO Book.
+These sample materials are of those of ["Introduction to Internet Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
 
 ### Problems and Inquiries
 
