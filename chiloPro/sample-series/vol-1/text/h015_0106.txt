@@ -1,2 +1,0 @@
-<p>We conducted a pilot study of CHiLO with the Open University of Japan or OUJ as an OUJ MOOC. We produced a CHiLO Book series called "Nihongo Starter A1" for people learning Japanese. The pilot study lasted 1 year starting from April 2014. We provided CHiLO Books in both EPUB3 and HTML5 formats free of charge from OUJ-MOOC, iBooks Store, and Google Play Books. We also created learning communities on Facebook. </p>
-

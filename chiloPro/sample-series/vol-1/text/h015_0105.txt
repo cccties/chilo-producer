@@ -1,2 +1,0 @@
-<p>This slide shows an example of CHiLO Book. CHiLO Books have a short lecture video embedded inside. When you pass the assessment test, a badge is issued. When the learner collects all the badges of the course, a completion badge is issued. CHiLO Books can also be linked to SNSs. In these learning communities, learners can discuss the content presented in the CHiLO Book.</p>
-

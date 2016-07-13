@@ -1,3 +1,0 @@
-<p>MOOCs are a type of large-scale online course that radically contribute to enhancing opportunities for higher education around the world. However, the MOOC movement has some potential issues that are associated with Digital Divide. The figure on the left is the rate of Internet users by regions and on the right is PC ownership by region. There are also large regional differences. </p>
-
-<p>For example, in North America, 88% of the population uses the Internet, but in Africa, only 27% of the population uses it. In addition, we see that the ownership rate was over 100% in North America, but only 6% in the Middle East and Africa. </p>
