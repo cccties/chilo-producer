@@ -71,7 +71,8 @@ if "%COURSE%"=="" goto usage
 
 
 if "%RUNMODE%"=="dry" (
-	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %BOOKTEMPLATE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
+	echo "dry-run:java -jar chilo-epub3-maker.jar -c %COURSE% %INPUTDIR% %OUTPUTDIR% %OUTPUTNAME%"
+	goto ALLDONE
 ) else (
 	if "%BOOKTEMPLATE%"=="" (
 		goto usage
