@@ -62,7 +62,7 @@ fi
 
 
 if [ X${RUNMODE} = Xdry ]; then
-		echo "DRY-RUN: java -jar ./chilo-epub3-maker.jar -course ${COURSE} -type ${BOOK_TEMPLATE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}"
+		echo "DRY-RUN: java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}"
 		
 elif [ X${RUNMODE} = Xreal ]; then
 #	if [ X${BOOK_TEMPLATE} = Xepub ]; then
