@@ -183,7 +183,7 @@ We are publicly disclosing materials for CHiLO Book.
 https://github.com/cccties/chilo001
 
 Download and copy the expanded file to _(root)/chiloPro/_ for reference when creating CHiLO Book.
-These sample materials are of those of ["Introduction to Internet Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
+These sample materials are of those of ["Introduction to Information Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
 
 ### Problems and Inquiries
 
