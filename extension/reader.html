@@ -21,11 +21,12 @@
     </style>
 
     <link rel="stylesheet" type="text/css" href="//dev.chilos.jp/reader_script/css/readium-all.css">
+    <link rel="stylesheet" type="text/css" href="//dev.chilos.jp/reader_script/chilo/readium.css">
 
-    <!-- NPO CCC-TIES 2016.02.26 add -->
-    <script> var readerscripturl = "//dev.chilos.jp/reader_script/" ;</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="//dev.chilos.jp/reader_script/chilo/chilo_reader_head.js"> </script>
 
-    <script type="text/javascript" src="//dev.chilos.jp/reader_script/scripts/readium-js-viewer_all.js"> </script>
+    <script type="text/javascript" src="//dev.chilos.jp/reader_script/scripts/readium-js-viewer_all_CHILO.js"> </script>
 
 <script type="text/javascript">
 
@@ -40,17 +41,16 @@ path = path.charAt(path.length-1) == '/'
           : path;
 
                            <!-- NPO CCC-TIES 2016.02.26 add -->
-var HTTPServerRootFolder = "//dev.chilos.jp/reader_script/";
-/*
+var HTTPServerRootFolder = 
 window.location ? (
   window.location.protocol
   + "//"
   + window.location.hostname
   + (window.location.port ? (':' + window.location.port) : '')
   + path
-  ) : ''
-;
-*/
+  ) : '';
+
+HTTPServerRootFolder = "//dev.chilos.jp/reader_script/";
 console.log(HTTPServerRootFolder);
 
 
@@ -74,7 +74,6 @@ var getURLQueryParams = function() {
 };
 
 var urlParams = getURLQueryParams();
-console.log(urlParams);
 
 
 
@@ -97,7 +96,7 @@ require.config({
 
             'epubLibraryPath': urlParams['epubs'] ? urlParams['epubs'] : undefined, // defaults to /epub_content/epub_library.json relative to the application's root index.html
 
-            'imagePathPrefix': undefined,
+            'imagePathPrefix': HTTPServerRootFolder,
 
             'canHandleUrl' : false,
             'canHandleDirectory' : false,
@@ -121,6 +120,6 @@ require.config({
     </body>
 
 <!-- NPO CCC-TIES 2016.01.25 add -->
-<script type="text/javascript" src="//dev.chilos.jp/reader_script/chilo/chilo_index.js"> </script>
+<script type="text/javascript" src="//dev.chilos.jp/reader_script/chilo/chilo_reader_body.js"> </script>
 
 </html>
