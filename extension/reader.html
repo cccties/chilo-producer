@@ -40,7 +40,6 @@ path = path.charAt(path.length-1) == '/'
           ? path.substr(0, path.length-1)
           : path;
 
-                           <!-- NPO CCC-TIES 2016.02.26 add -->
 var HTTPServerRootFolder = 
 window.location ? (
   window.location.protocol
@@ -50,6 +49,7 @@ window.location ? (
   + path
   ) : '';
 
+<!-- NPO CCC-TIES 2016.02.26 add -->
 HTTPServerRootFolder = "//dev.chilos.jp/reader_script/";
 console.log(HTTPServerRootFolder);
 
