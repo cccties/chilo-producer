@@ -16,11 +16,12 @@
                 </fileset>
             </classpath>
         </javac>
+        <copy file="${src.dir}/log4j.properties" tofile="${dest.dir}/log4j.properties" />
     </target>
     <target name="jar" depends="compile">
     	<copy todir="${dest.dir}">
     		<fileset dir="${src.dir}"
-    			includes="strings*"
+    			includes="META-INF/*"
     			excludes="*.java"
     		/>
     	</copy>

@@ -2,26 +2,26 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Runtime Properties for chilo-epub3-maker</comment>
-<entry key="CourseBaseDir">chiloPro</entry>
+<entry key="SeriesBaseDir">chiloPro</entry>
 <entry key="OutputBaseDir">OutputBase</entry>
-<entry key="ChapterFGColor">white</entry>
-<entry key="ChapterBGColor">#3b5998</entry>
-<entry key="ChapterWidthRatio">100</entry> <!-- % -->
-<entry key="ChapterTextRatio">80</entry> <!-- % -->
-<entry key="ChapterFontFamily">serif</entry>
-<entry key="ChapterFontStroke">none</entry>
-<entry key="ChapterFontStrokeWidth">0</entry>
-<entry key="ChapterTextAlign">center</entry> <!-- left, right, center -->
-<entry key="SectionFGColor">#4A6EA8</entry>
-<entry key="SectionBGColor">white</entry>
-<entry key="SectionWidthRatio">100</entry>
-<entry key="SectionTextRatio">90</entry>
+<entry key="TemplateBaseDir">book_templates</entry>
+<entry key="SectionFGColor">white</entry>
+<entry key="SectionBGColor">#3b5998</entry>
+<entry key="SectionWidthRatio">100</entry> <!-- % -->
+<entry key="SectionTextRatio">80</entry> <!-- % -->
 <entry key="SectionFontFamily">serif</entry>
 <entry key="SectionFontStroke">none</entry>
 <entry key="SectionFontStrokeWidth">0</entry>
-<entry key="SectionTextAlign">left</entry>
+<entry key="SectionTextAlign">center</entry> <!-- left, right, center -->
+<entry key="TopicFGColor">#4A6EA8</entry>
+<entry key="TopicBGColor">white</entry>
+<entry key="TopicWidthRatio">100</entry>
+<entry key="TopicTextRatio">90</entry>
+<entry key="TopicFontFamily">serif</entry>
+<entry key="TopicFontStroke">none</entry>
+<entry key="TopicFontStrokeWidth">0</entry>
+<entry key="TopicTextAlign">left</entry>
 <entry key="SVGTextZenkakuRatio">1.0</entry>
 <entry key="SVGTextHankakuRatio">0.5</entry>
-<entry key="LogLevel">LOG_DEBUG</entry>
 
 </properties>

@@ -33,13 +33,16 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import javax.activation.FileTypeMap;
 import javax.imageio.ImageIO;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * ユーティリティクラス．
@@ -50,36 +53,7 @@ import javax.imageio.ImageIO;
  */
 public class Util {
 
-    /**
-     * Debug 用 println<br>
-     * log level:<br>
-     * LOG_EMERG       0       system is unusable<br>
-     * LOG_ALERT       1       action must be taken immediately<br>
-     * LOG_CRIT        2       critical conditions<br>
-     * LOG_ERR         3       error conditions<br>
-     * LOG_WARNING     4       /* warning conditions<br>
-     * LOG_NOTICE      5       /* normal but significant condition<br>
-     * LOG_INFO        6       /* informational<br>
-     * LOG_DEBUG       7       /* debug-level messages<br>
-     *
-     * @param level log level.
-     * @param str log文字列
-     */
-    public static void infoPrintln(LogLevel level, String str) {
-        Calendar cal = Calendar.getInstance();
-
-        int year = cal.get(Calendar.YEAR);        //(2)現在の年を取得
-        int month = cal.get(Calendar.MONTH) + 1;  //(3)現在の月を取得
-        int day = cal.get(Calendar.DATE);         //(4)現在の日を取得
-        int hour = cal.get(Calendar.HOUR_OF_DAY); //(5)現在の時を取得
-        int minute = cal.get(Calendar.MINUTE);    //(6)現在の分を取得
-        int second = cal.get(Calendar.SECOND);    //(7)現在の秒を取得
-
-        if (level.compareTo(LogLevel.valueOf(Config.getCurrentLogLevel())) <= 0) {
-            System.err.printf("[%4d/%02d/%02d %02d:%02d:%02d] %s (%s)\n",
-                    year, month, day, hour, minute, second, str, level);
-        }
-    }
+	private static Log log = LogFactory.getLog(Util.class);
 
     /**
      * コピー元のファイルから、コピー先のファイルへ ファイルのコピーを行います。
@@ -91,8 +65,7 @@ public class Util {
      * @throws IOException
      *             IOException
      */
-    public static void copyTransfer(final Path src, final Path dest)
-            throws IOException {
+    public static void copyTransfer(final Path src, final Path dest) throws IOException {
 
         if (Files.isDirectory(src)) {
             // ディレクトリがない場合、作成
@@ -113,8 +86,7 @@ public class Util {
             stream.close();
         } else {
             // ファイルのコピー
-            Files.copy(src, dest, StandardCopyOption.COPY_ATTRIBUTES,
-                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(src, dest, StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
         }
     }
 
@@ -129,8 +101,7 @@ public class Util {
                 List<Path> filePaths = new ArrayList<>();
 
                 // rootDirectory以下にあるディレクトリ以外のファイルをすべてitemsにaddしていく。
-                stream.filter(entry -> !(Files.isDirectory(entry))).forEach(
-                        filePaths::add);
+                stream.filter(entry -> !(Files.isDirectory(entry))).forEach(filePaths::add);
                 for (Path file : filePaths) {
                     Files.delete(file);
                 }
@@ -138,19 +109,13 @@ public class Util {
         }
     }
 
-    public static void initializeDirectory(Path targetDirectory) throws IOException {
-        /*
-         * directory があるかチェック
-         */
-        if (Files.exists(targetDirectory)) {
-            Util.cleanUpDirectory(targetDirectory);
-        } else {
-            Files.createDirectories(targetDirectory);
+    public static void createDirectory(Path targetPath) throws IOException {
+        if (!Files.exists(targetPath)) {
+            Files.createDirectories(targetPath);
         }
     }
 
-    public static List<Path> getFilePaths(Path rootDirectory,
-    	    Predicate<? super Path> predicate) throws IOException {
+    public static List<Path> getFilePaths(Path rootDirectory, Predicate<? super Path> predicate) throws IOException {
         List<Path> filePaths = new ArrayList<>();
         if(!Files.exists(rootDirectory))
         {
@@ -167,8 +132,7 @@ public class Util {
         return getFilePaths(rootDirectory, entry -> !(Files.isDirectory(entry)));
     }
 
-    public static List<Path> findFilesIn(Path targetDirectory,
-            BiPredicate<Path, BasicFileAttributes> matcher) throws IOException {
+    public static List<Path> findFilesIn(Path targetDirectory, BiPredicate<Path, BasicFileAttributes> matcher) throws IOException {
 
         List<Path> files = new ArrayList<Path>();
         if (Files.exists(targetDirectory)) {
@@ -176,8 +140,7 @@ public class Util {
                 stream.forEach(files::add);
             }
         } else {
-            Util.infoPrintln(LogLevel.LOG_DEBUG, "findFilesIn: ### NOTICE ### : Not exists : "
-                    + targetDirectory);
+            log.warn("findFilesIn: Not exists: " + targetDirectory);
         }
         return files;
     }
@@ -189,10 +152,9 @@ public class Util {
      * @return
      * @throws IOException
      */
-    public static List<Path> findFilesPrefix(Path targetDirectory,
-            String prefix) throws IOException {
-        return findFilesIn(targetDirectory, (file, attrs) -> file.getFileName()
-                .toString().startsWith(prefix)
+    public static List<Path> findFilesPrefix(Path targetDirectory, String prefix) throws IOException {
+        return findFilesIn(targetDirectory,
+        		(file, attrs) -> file.getFileName().toString().startsWith(prefix)
                 && !attrs.isDirectory());
     }
 
@@ -203,67 +165,25 @@ public class Util {
      * @return
      * @throws IOException
      */
-    public static List<Path> findFilesIn(Path targetDirectory,
-            String extension) throws IOException {
+    public static List<Path> findFilesIn(Path targetDirectory, String extension) throws IOException {
         return findFilesIn(targetDirectory, (file, attrs) -> file.getFileName()
                 .toString().endsWith(extension)
                 && !attrs.isDirectory());
     }
 
-    public static List<Path> findCssFilesIn(Path targetDirectory) throws IOException {
-        return findFilesIn(targetDirectory, ".css");
-    }
-
-    public static List<Path> findStaticsFilesIn(Path targetDirectory)
-            throws IOException {
+    public static List<Path> findStaticsFilesIn(Path targetDirectory) throws IOException {
         return findFilesIn(targetDirectory, ".xhtml");
-    }
-
-    public static List<Path> findImagesFilesIn(Path targetDirectory)
-            throws IOException {
-        return findFilesIn(targetDirectory, (file, attrs) -> !file
-                .getFileName().toString().startsWith(".")
-                && !attrs.isDirectory());
-    }
-
-    public static List<Path> findVideosFilesIn(Path targetDirectory)
-            throws IOException {
-        return findFilesIn(targetDirectory, ".mp4");
-    }
-
-    public static List<Path> findScriptFilesIn(Path targetDirectory) throws IOException {
-        return findFilesIn(targetDirectory, ".js");
-    }
-    
-    public static boolean isPublishHtml() {
-    	if (Config.getPublishStyle().equalsIgnoreCase("html")) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
-
-    public static String pageFileName(int vol, int page)
-    {
-    	if (isPublishHtml()) {
-    		return String.format("vol-%03d-%03d.html", vol, page);	
-    	} else {
-    		return String.format("vol-%03d-%03d.xhtml", vol, page);	
-    	}
-    	
     }
     
     public static String getModifiedTime()
     {
-        DateTimeFormatter dtf = DateTimeFormatter
-        		.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         return LocalDateTime.now(Clock.systemUTC()).format(dtf);
     }
     
     public static String getModifiedTime2()
     {
-        DateTimeFormatter dtf = DateTimeFormatter
-        		.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return LocalDateTime.now(Clock.systemUTC()).format(dtf);
     }
     
@@ -285,19 +205,25 @@ public class Util {
     				ret = IMAGE_SIZE_4_3;
     			}
     		} catch (IOException e) {
-    			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
     	}
     	return ret;
     }
 
+	public static String path2str(Path path){
+		if(path != null){
+			return path.toString().replaceAll("\\\\", "/");
+		}
+		return null;
+	}
+
     public static String getRelativePath(Path ps1, Path ps2)
     {
     	if (ps1 == null || ps2 == null)
     		return null;
     	
-    	return ps1.relativize(ps2).toString().replaceAll("\\\\", "/");
+    	return path2str(ps1.relativize(ps2));
     }
 
     public static String getRelativePath(PageSetting ps1, PageSetting ps2)
@@ -308,11 +234,11 @@ public class Util {
     	return Util.getRelativePath(ps1.getTextPathForArchiveFile().getParent(), ps2.getTextPathForArchiveFile());
     }
     
-    public static String volumeImagePath(int volume, String fileName) {
+    public static String volumeImagePath(Book book, String fileName) {
     	if (!Util.isValueValid(fileName))
     		return null;
     	else 
-    		return "../../" + Volume.KEY_VOLUME_PREFIX + volume + "/images/" + fileName;
+    		return "../../" + book.getVolumeStr() + "/images/" + fileName;
     }
     
     public static String commonImagePath(String fileName) {
@@ -351,10 +277,31 @@ public class Util {
             }
         }
         
-        infoPrintln(LogLevel.LOG_DEBUG, "stringLengthRelative: [" + s + "] zen=" + zencount + ", han=" + hancount);
+//      log.debug("stringLengthRelative: [" + s + "] zen=" + zencount + ", han=" + hancount);
         
         len = zencount * zenRatio + hancount * hanRatio;
         
         return (int)Math.ceil(len);
+    }
+
+    //
+    // mime type
+    //
+	static FileTypeMap filetypeMap;
+
+    public static String getContentType(String filename){
+    	if(filetypeMap == null) {
+    		filetypeMap = FileTypeMap.getDefaultFileTypeMap();
+    	}
+
+    	return filetypeMap.getContentType(filename);
+    }
+
+    public static String getMainContentType(String filename){
+    	String type = Util.getContentType(filename);
+    	if(type != null) {
+    		type = type.substring(0, type.indexOf('/'));
+    	}
+    	return type;
     }
 }

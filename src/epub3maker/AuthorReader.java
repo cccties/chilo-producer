@@ -35,11 +35,10 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class AuthorReader {
+public class AuthorReader extends ExcelReader {
 	static final String KEY_PICTURE = "picture";
     static final String KEY_NAME = "name";
     static final String KEY_NAME2 = "name2";
@@ -59,8 +58,6 @@ public class AuthorReader {
 	}
 	
 	public void read() {
-		XSSFWorkbook workBook = null;
-		
 		try {
 			workBook = new XSSFWorkbook(new FileInputStream(filePath.toString()));
 			
@@ -68,15 +65,13 @@ public class AuthorReader {
 			
 			while (sheetIte.hasNext()) {
 				Sheet sheet = sheetIte.next();
-				Map<String, List<String>> map = readSheet(workBook, sheet);
+				Map<String, List<String>> map = readSheet(sheet);
 				object.put(sheet.getSheetName(), map);
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -87,7 +82,7 @@ public class AuthorReader {
 		}
 	}
 	
-	Map<String, List<String>> readSheet(Workbook wb, Sheet sheet) {
+	Map<String, List<String>> readSheet(Sheet sheet) {
         Map<String, List<String>> map = new HashMap<>();
         List<String> additionalTitles = new ArrayList<>();
         List<String> additionalValues = new ArrayList<>();
@@ -100,8 +95,8 @@ public class AuthorReader {
             if (key == null || value == null) {
                 continue;
             }
-            String keyStr = CourseSettingReaderFromXlsx.getStringValue(wb, key);
-            String valStr = CourseSettingReaderFromXlsx.getStringValue(wb, value);
+            String keyStr = getStringValue(key);
+            String valStr = getStringValue(value);
             
             if (keyStr == null || isAdditional(keyStr)) {
             	additionalTitles.add(keyStr);

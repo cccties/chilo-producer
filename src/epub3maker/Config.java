@@ -25,9 +25,13 @@
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
-import java.util.ResourceBundle;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * 外部 XML ファイルから設定を読み込むクラス
@@ -36,170 +40,161 @@ import java.util.ResourceBundle;
  *
  */
 public class Config {
-    public static Properties prop = new Properties();
 
-    public static final String CourseBaseDirKey = "CourseBaseDir";
+	private static Log log = LogFactory.getLog(Config.class);
+	
+    public static final String SeriesBaseDirKey = "SeriesBaseDir";
     public static final String OutputBaseDirKey = "OutputBaseDir";
-    public static final String LogLevelKey = "LogLevel";
-    public static final String ProcessAllMetaKey = "ProcessAllMeta";
-    public static final String ChapterFGColorKey = "ChapterFGColor";
-    public static final String ChapterBGColorKey = "ChapterBGColor";
-    public static final String ChapterWidthRatioKey = "ChapterWidthRatio";
-    public static final String ChapterTextRatioKey = "ChapterTextRatio";
-    public static final String ChapterFontFamilyKey = "ChapterFontFamily";
-    public static final String ChapterFontStrokeKey = "ChapterFontStroke";
-    public static final String ChapterFontStrokeWidthKey = "ChapterFontStrokeWidth";
-    public static final String ChapterTextAlignKey = "ChapterTextAlign";
-    public static final String PublishStyleKey = "PublishStyle";
-    public static final String CourseVersionKey = "CourseVersion";
     public static final String InputPathKey = "InputPath";
     public static final String OutputPathKey = "OutputPath";
     public static final String OutputNameKey = "OutputName";
-    
-    public static final String SectionFGColorKey = "SectionFGColor";
-    public static final String SectionBGColorKey = "SectionBGColor";
-    public static final String SectionWidthRatioKey = "SectionWidthRatio";
-    public static final String SectionTextRatioKey = "SectionTextRatio";
-    public static final String SectionFontFamilyKey = "SectionFontFamily";
-    public static final String SectionFontStrokeKey = "SectionFontStroke";
-    public static final String SectionFontStrokeWidthKey = "SectionFontStrokeWidth";
-    public static final String SectionTextAlignKey = "SectionTextAlign";
+
+    public static final String TemplateBaseDirKey = "TemplateBaseDir";
+    public static final String TemplateKey = "Template";
+
+    public static final String ExtensionBaseDirKey = "ExtensionBaseDir";
+
+    public static final String Section = "Section";
+    public static final String Topic = "Topic";
+
+    public static final String FGColorKey = "FGColor";
+    public static final String BGColorKey = "BGColor";
+    public static final String WidthRatioKey = "WidthRatio";
+    public static final String TextRatioKey = "TextRatio";
+    public static final String FontFamilyKey = "FontFamily";
+    public static final String FontStrokeKey = "FontStroke";
+    public static final String FontStrokeWidthKey = "FontStrokeWidth";
+    public static final String TextAlignKey = "TextAlign";
 
     public static final String SVGTextZenkakuRatioKey = "SVGTextZenkakuRatio";
     public static final String SVGTextHankakuRatioKey = "SVGTextHankakuRatio";
     
-    private static final String defaultConfigFile = "chilo-epub3-maker.xml";
-    
-    public static ResourceBundle localStrings = ResourceBundle.getBundle("strings");
-    
-    private void read(String filename) throws InvalidPropertiesFormatException,
-            IOException, Epub3MakerException {
-        InputStream stream = new FileInputStream(filename);
+    private static String defaultFilename = "chilo-epub3-maker.xml";
+	private static Properties prop = new Properties();
+	private static Path homePath = null;
+
+    private void read(Path path) throws InvalidPropertiesFormatException, IOException, Epub3MakerException {
+        InputStream stream = new FileInputStream(path.toFile());
         prop.loadFromXML(stream);
         stream.close();
 
-        if (LogLevel.LOG_DEBUG.compareTo(LogLevel.valueOf(Config.getCurrentLogLevel())) <= 0) {
+        if (log.isDebugEnabled()) {
+        	log.debug("show settings in " + path);
             prop.list(System.out);
         }
 
-        if (prop.getProperty(CourseBaseDirKey) == null) {
-            throw new Epub3MakerException("!!! CourseBaseDir is not set !!!");
+        if (prop.getProperty(SeriesBaseDirKey) == null) {
+            throw new Epub3MakerException("!!! SeriesBaseDir is not set !!!");
         }
         if (prop.getProperty(OutputBaseDirKey) == null) {
             throw new Epub3MakerException("!!! OutputBaseDir is not set !!!");
         }
-    }
-
-    public Config(String filename) throws InvalidPropertiesFormatException,
-            IOException, Epub3MakerException {
-        if (filename == null) {
-            filename = defaultConfigFile;
+        if (prop.getProperty(TemplateBaseDirKey) == null) {
+            throw new Epub3MakerException("!!! TemplateBaseDir is not set !!!");
         }
-        read(filename);
     }
 
-    public Config() throws InvalidPropertiesFormatException, IOException,
-            Epub3MakerException {
-        read(defaultConfigFile);
+    public Config(String filename, String homeDir) throws InvalidPropertiesFormatException, IOException, Epub3MakerException {
+    	if(homeDir != null){
+    		homePath = Paths.get(homeDir);
+    	}
+
+    	Path path = null;
+    	if(filename != null){
+			path = Paths.get(filename);
+    	} else if(homePath != null){
+    		path = homePath.resolve(defaultFilename);
+    	} else {
+    		path = Paths.get(defaultFilename);
+    	}
+
+    	read(path);
+
+    	if(homePath != null){
+    		String str = prop.getProperty(TemplateBaseDirKey);
+    		str = homePath.resolve(str).toString();
+    		prop.setProperty(TemplateBaseDirKey, str);
+
+    		prop.setProperty(ExtensionBaseDirKey, homePath.toString());
+    	}
     }
 
-    public static void setProcessAllMeta(boolean is) {
-        prop.setProperty(ProcessAllMetaKey, is ? "true" : "false");
-    }
-    
-    public static void setPublishStyle(String format) {
-    	prop.setProperty(PublishStyleKey, format);
-    }
-    
-    public static void setCourseVersion(String version) {
-    	prop.setProperty(CourseVersionKey, version);
-    }
-
-    public static boolean isProcessAllMeta() {
-        return prop.getProperty(ProcessAllMetaKey).equalsIgnoreCase("true") ? true : false;
-    }
-
-    public static String getCourseBaseDir() {
-        return prop.getProperty(CourseBaseDirKey);
+    public static String getSeriesBaseDir() {
+        return prop.getProperty(SeriesBaseDirKey);
     }
     
     public static String getOutputBaseDir() {
         return prop.getProperty(OutputBaseDirKey);
     }
     
-    public static String getChapterFGColor() {
-        return prop.getProperty(ChapterFGColorKey, "white");
-    }
-
-    public static String getChapterBGColor() {
-        return prop.getProperty(ChapterBGColorKey, "orange");
-    }
-    
-    public static String getChapterWidthRatio() {
-        return prop.getProperty(ChapterWidthRatioKey, "100");
-    }
-
-    public static String getChapterTextRatio() {
-        return prop.getProperty(ChapterTextRatioKey, "90");
-    }
-
-    public static String getChapterFontFamily() {
-        return prop.getProperty(ChapterFontFamilyKey, "serif");
-    }
-    
-    public static String getChapterFontStroke() {
-        return prop.getProperty(ChapterFontStrokeKey, "none");
-    }
-
-    public static String getChapterFontStrokeWidth() {
-        return prop.getProperty(ChapterFontStrokeWidthKey, "1");
-    }
-
-    public static String getChapterTextAlign() {
-        return prop.getProperty(ChapterTextAlignKey, "center");
+    public static String getTemplateBaseDir() {
+        return prop.getProperty(TemplateBaseDirKey);
     }
     
     public static String getSectionFGColor() {
-        return prop.getProperty(SectionFGColorKey, "blue");
+        return prop.getProperty(Section + FGColorKey, "white");
     }
-    
+
     public static String getSectionBGColor() {
-        return prop.getProperty(SectionBGColorKey, "white");
+        return prop.getProperty(Section + BGColorKey, "orange");
     }
     
     public static String getSectionWidthRatio() {
-        return prop.getProperty(SectionWidthRatioKey, "100");
+        return prop.getProperty(Section + WidthRatioKey, "100");
     }
 
     public static String getSectionTextRatio() {
-        return prop.getProperty(SectionTextRatioKey, "90");
+        return prop.getProperty(Section + TextRatioKey, "90");
     }
 
     public static String getSectionFontFamily() {
-        return prop.getProperty(SectionFontFamilyKey, "serif");
+        return prop.getProperty(Section + FontFamilyKey, "serif");
     }
     
     public static String getSectionFontStroke() {
-        return prop.getProperty(SectionFontStrokeKey, "none");
+        return prop.getProperty(Section + FontStrokeKey, "none");
     }
 
     public static String getSectionFontStrokeWidth() {
-        return prop.getProperty(SectionFontStrokeWidthKey, "1");
+        return prop.getProperty(Section + FontStrokeWidthKey, "1");
     }
 
     public static String getSectionTextAlign() {
-        return prop.getProperty(SectionTextAlignKey, "left");
+        return prop.getProperty(Section + TextAlignKey, "center");
     }
     
-    public static String getPublishStyle() {
-    	return prop.getProperty(PublishStyleKey, "epub3");
+    public static String getTopicFGColor() {
+        return prop.getProperty(Topic + FGColorKey, "blue");
     }
     
-    public static int getCourseVersion() {
-    	String s = prop.getProperty(CourseVersionKey, "2");
-    	return Integer.parseInt(s); 
+    public static String getTopicBGColor() {
+        return prop.getProperty(Topic + BGColorKey, "white");
+    }
+    
+    public static String getTopicWidthRatio() {
+        return prop.getProperty(Topic + WidthRatioKey, "100");
     }
 
+    public static String getTopicTextRatio() {
+        return prop.getProperty(Topic + TextRatioKey, "90");
+    }
+
+    public static String getTopicFontFamily() {
+        return prop.getProperty(Topic + FontFamilyKey, "serif");
+    }
+    
+    public static String getTopicFontStroke() {
+        return prop.getProperty(Topic + FontStrokeKey, "none");
+    }
+
+    public static String getTopicFontStrokeWidth() {
+        return prop.getProperty(Topic + FontStrokeWidthKey, "1");
+    }
+
+    public static String getTopicTextAlign() {
+        return prop.getProperty(Topic + TextAlignKey, "left");
+    }
+    
     public static double getSVGTextZenkakuRatio() {
         String s = prop.getProperty(SVGTextZenkakuRatioKey, "1");
         return Double.parseDouble(s);
@@ -234,11 +229,33 @@ public class Config {
         return prop.getProperty(OutputNameKey, "");
     }
 
-    /**
-     * 現在のLogLevelを返す．デフォルトは LOG_INFO．
-     * @return
-     */
-    public static String getCurrentLogLevel() {
-        return prop.getProperty(Config.LogLevelKey, "LOG_INFO");
+    public static void setTemplate(String name) {
+    	prop.setProperty(TemplateKey, name);
+    }
+
+    public static String getTemplate() {
+        return prop.getProperty(TemplateKey, "");
+    }
+
+    public static Path getTemplateDir(String name) {
+    	String base = prop.getProperty(TemplateBaseDirKey, "");
+    	String template = prop.getProperty(TemplateKey, ""); 
+        return Paths.get(base, template, name);
+    }
+
+    public static Path getTemplateFile(String lang, String name) {
+    	String template = prop.getProperty(TemplateKey, ""); 
+        return Paths.get(template, "page_templates", lang, name);
+    }
+
+    public static Path getTemplateBaseFile(String lang, String name) {
+    	String base = prop.getProperty(TemplateBaseDirKey, "");
+    	String template = prop.getProperty(TemplateKey, ""); 
+        return Paths.get(base, template, "page_templates", lang, name);
+    }
+
+    public static Path getExtensionBaseDir() {
+    	String base = prop.getProperty(ExtensionBaseDirKey, "");
+        return Paths.get(base);
     }
 }

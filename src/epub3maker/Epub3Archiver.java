@@ -35,78 +35,42 @@ import java.util.zip.CRC32;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class Epub3Archiver {
-    public void archive(Course course, Volume volume, List<Path> inputFilePaths)
-            throws Exception {
 
-        Path output = Paths.get(
-                course.getMeta().get(Course.KEY_OUTPUT_PATH),
-                course.getMeta().get(Course.KEY_COURSE_NAME) + "-vol-"
-                        + volume.getVolume() + ".epub");
-        ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(
-                new FileOutputStream(output.toFile())));// charset指定しないと日本語ばける？
+    @SuppressWarnings("unused")
+	private static Log log = LogFactory.getLog(Epub3Archiver.class);
 
-        writeMimetypeFile(
-                Paths.get(course.getMeta().get(Course.KEY_INPUT_PATH), "temp",
-                        "mimetype"), zos); // mimetypeファイルが最初のエントリーである必要あり
-        writePackageDocumentFile(Paths.get(
-                course.getMeta(Course.KEY_INPUT_PATH), "temp", "content.opf"),
-                zos);
-        writeContainerFile(Paths.get(course.getMeta(Course.KEY_INPUT_PATH),
-                "temp", "container.xml"), zos);
-        writeNavigationDocumentFile(Paths.get(
-                course.getMeta(Course.KEY_INPUT_PATH), "temp", Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME),
-                zos);
-        writeNavigationDocumentFile(Paths.get(
-                course.getMeta(Course.KEY_INPUT_PATH), "temp", Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME2),
-                zos);
+	public void archive(Series series, Book book, List<Path> inputFilePaths, Path tempPath, List<Path> extensionPaths) throws Exception {
+		Path output = series.getEpubFilePath(book);
+
+        // charset指定しないと日本語ばける？
+        ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(output.toFile())));
+
+        // mimetypeファイルが最初のエントリーである必要あり
+        writeMimetypeFile(tempPath.resolve("mimetype"), zos);
+        writeFile("OEBPS/", tempPath.resolve("content.opf"), zos);
+        writeFile("META-INF/", tempPath.resolve("container.xml"), zos);
+        writeFile("OEBPS/", tempPath.resolve(Process.NavigationDocument.CARDVIEW.fileName), zos);
+        writeFile("OEBPS/", tempPath.resolve(Process.NavigationDocument.NAV.fileName), zos);
 
         zos.setMethod(ZipOutputStream.DEFLATED);
         // zos.setLevel(9);
-        for (Path inputPath : inputFilePaths) {
-            String p = makePathForArchiveFile(inputPath);
-            ZipEntry entry = new ZipEntry(p);
 
-            zos.putNextEntry(entry);
-            zos.write(Files.readAllBytes(inputPath));
+        for (Path p: inputFilePaths) {
+        	writeInputFile(p, zos);
         }
-        zos.close();
-    }
-    
-    public void archive(Course course, Volume volume, List<Path> inputFilePaths, String OutputTempDir)
-            throws Exception {
 
-        String outputName = course.getMeta(Course.KEY_OUTPUT_NAME);
-        Path output = Paths.get(
-                course.getMeta().get(Course.KEY_OUTPUT_PATH),
-                (outputName != null ? outputName : "") + 
-                //course.getMeta().get(Course.KEY_COURSE_NAME) + "-vol-"
-                //        + volume.getVolume() + ".epub");
-                String.format("%02d", volume.getVolume()) + ".epub");
-        ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(
-                new FileOutputStream(output.toFile())));// charset指定しないと日本語ばける？
-
-        writeMimetypeFile(Paths.get(OutputTempDir, "mimetype"), zos); // mimetypeファイルが最初のエントリーである必要あり
-        writePackageDocumentFile(Paths.get(OutputTempDir, "content.opf"),
-                zos);
-        writeContainerFile(Paths.get(OutputTempDir, "container.xml"), zos);
-        writeNavigationDocumentFile(Paths.get(OutputTempDir, Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME), zos);
-        writeNavigationDocumentFile(Paths.get(OutputTempDir, Epub3Maker.NAVIGATION_DOCUMENT_FILE_NAME2), zos);
-
-        zos.setMethod(ZipOutputStream.DEFLATED);
-        // zos.setLevel(9);
-        for (Path inputPath : inputFilePaths) {
-            String p = makePathForArchiveFile(inputPath);
-            ZipEntry entry = new ZipEntry(p);
-
-            zos.putNextEntry(entry);
-            zos.write(Files.readAllBytes(inputPath));
+        for (Path p: extensionPaths) {
+            writeFile("", p, zos);
         }
+
         zos.close();
     }
 
-    private void writeMimetypeFile(Path path, ZipOutputStream zos)
-            throws IOException {
+    private void writeMimetypeFile(Path path, ZipOutputStream zos) throws IOException {
         ZipEntry entry = new ZipEntry(path.getFileName().toString());
         long size = Files.size(path);
         entry.setSize(size);
@@ -119,26 +83,15 @@ public class Epub3Archiver {
         zos.write(Files.readAllBytes(path));
     }
 
-    private void writePackageDocumentFile(Path path, ZipOutputStream zos)
-            throws IOException {
-        ZipEntry entry = new ZipEntry("OEBPS/" + path.getFileName().toString());
+    private void writeFile(String dir, Path path, ZipOutputStream zos) throws IOException {
+        ZipEntry entry = new ZipEntry(dir + path.getFileName().toString());
 
         zos.putNextEntry(entry);
         zos.write(Files.readAllBytes(path));
     }
 
-    private void writeNavigationDocumentFile(Path path, ZipOutputStream zos)
-            throws IOException {
-        ZipEntry entry = new ZipEntry("OEBPS/" + path.getFileName().toString());
-
-        zos.putNextEntry(entry);
-        zos.write(Files.readAllBytes(path));
-    }
-
-    private void writeContainerFile(Path path, ZipOutputStream zos)
-            throws IOException {
-        ZipEntry entry = new ZipEntry("META-INF/"
-                + path.getFileName().toString());
+    private void writeInputFile(Path path, ZipOutputStream zos) throws Exception {
+        ZipEntry entry = new ZipEntry("OEBPS/" + Util.path2str(Process.subtractBasePath(path)));
 
         zos.putNextEntry(entry);
         zos.write(Files.readAllBytes(path));
@@ -164,25 +117,5 @@ public class Epub3Archiver {
             }
         }
         return crc.getValue();
-    }
-
-    public String makePathForArchiveFile(Path inputFilePath) throws Epub3MakerException {
-        return Paths
-                .get("OEBPS")
-                .resolve(
-                		Epub3Maker.subtractBasePath(inputFilePath)).toString()
-//                        inputFilePath.subpath(inputFilePath.getNameCount() - Epub3Maker.DIRECTORY_DEPTH,
-//                                inputFilePath.getNameCount())).toString()
-                .replaceAll("\\\\", "/");
-    }
-
-    public void  gatherFiles(Course course, Volume volume, List<Path> inputFilePaths, String OutputTempDir) throws Epub3MakerException, IOException
-    {
-        for (Path inputPath : inputFilePaths) {
-        	Path outFile = Paths.get(OutputTempDir, Epub3Maker.subtractBasePath(inputPath).toString().replace("web-styles", "styles"));
-        	Path outDir = outFile.getParent();
-        	Files.createDirectories(outDir);
-        	Files.copy(inputPath, outFile);
-        }
     }
 }

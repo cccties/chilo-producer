@@ -35,7 +35,9 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 　│   │
 　│   ├─basic　＊Basicデザイン
 　│   │
-　│   └─cardview　＊Cardviewデザイン
+　│   ├─cardview　＊Cardviewデザイン
+　│   │
+　│   └─listview　＊Listviewデザイン
 　│  
 　├─chiloPro
 　│   │
@@ -43,12 +45,13 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 　│   │
 　│   └─template-series　＊シリーズディレクトリのテンプレート（このディレクトリをコピーして作成していく）
 　│   　　│  structure-books.xlsx　＊CHiLO Bookの構造ファイル
+　│   　　│  author.xlsx　＊著者情報ファイル
 　│   　　│
 　│   　　├─common　＊シリーズ内の素材を保存するディレクトリ
 　│   　　│
 　│   　　└─vol-n　＊各ブックの素材を保存するディレクトリ
 　│ 　
-　├─extension　＊CHiLO Bookオンライン版用のhtmlファイル
+　├─extension　＊CHiLO Bookをオンラインで読むためのhtmlファイル
 　│   
 　└─src　＊CHiLOBook出力用のjarファイルのソース
 　（省略）
@@ -95,7 +98,7 @@ EPUB出力用のjarファイルのソースは _src/_ に保存されていま�
 
 ### Licensing
 
-ApacheLicense2.0. ライセンスの元、提供しております。 (see [LICENSE.txt](LICENSE.txt)) 
+ApacheLicense2.0 ライセンスの元、提供しております。 (see [LICENSE.txt](LICENSE.txt)) 
 
 ### Copyright
 
@@ -138,7 +141,9 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│   │
 　│   ├─basic　＊Basic design
 　│   │
-　│   └─cardview　＊Cardview design
+　│   ├─cardview　＊Cardview design
+　│   │
+　│   └─listview　＊Listview design
 　│  
 　├─chiloPro
 　│   │
@@ -146,12 +151,13 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│   │
 　│   └─template-series　*Template of the directory of the series(copy this directory for creating).
 　│   　　│  structure-books.xlsx *Structure file of CHiLO Book
+　│   　　│  author.xlsx *Author information file
 　│   　　│
 　│   　　├─common　*Directory for saving materials utilized in the series
 　│   　　│
 　│   　　└─vol-n　*Directory for saving materials of each Book
 　│ 　
-　├─extension　＊CHiLO Bookオンライン版用のhtmlファイル
+　├─extension　＊html file to read CHiLO Book online
 　│   
 　└─src　＊The source of jar files for CHiLO Book output 
 (The rest is omitted.)
@@ -183,7 +189,7 @@ We are publicly disclosing materials for CHiLO Book.
 https://github.com/cccties/chilo001
 
 Download and copy the expanded file to _(root)/chiloPro/_ for reference when creating CHiLO Book.
-These sample materials are of those of ["Introduction to Information Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
+These sample materials are of those of ["Introduction to Internet Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
 
 ### Problems and Inquiries
 

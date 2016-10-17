@@ -1,6 +1,57 @@
 リリースノート / Release Notes
 
 /////////
+// 2.0 //
+/////////
+
+新機能追加
+• ドラッグ＆ドロップによるCHiLO Book出力
+• ページへのオーディオファイル（.mp3）埋め込み
+• CHiLO BookへのCHiLO Book Readerローディングスクリプトの埋め込み
+• Copyrightページのバージョン情報表示
+• listviewデザインの追加
+
+バグ修正
+• 表紙が存在しない場合、目次ページの後に空白のページが生成される不具合修正
+• https://から始まるクイズの埋め込みの不具合修正
+
+仕様変更
+• 言語・著者名・発行日などシリーズ毎に設定していた書籍情報をCHiLO Book毎に設定
+• series-introduction、book-summaryが設定されない場合は、「はじめにお読みください」セクションを省略
+• 著者情報（authors.xlsx）・著者画像の保存先をシリーズ内に変更
+• CHiLO Book出力コマンドの引数変更
+• [book-list]の巻数とvo-nシート数が異なる場合も、CHiLO Bookを出力
+• CHiLO Bookの出力先をシリーズ内に変更
+• [series-information]の項目名をcreatorからauthorに変更
+• [book-list]の項目名をcoverからbook-coverに変更
+• CreativeCommonsライセンス（4.0）を適用
+
+---
+
+New features added
+• Add drag and drop interaction to output CHiLO 
+• Embed audio files (.mp3) to pages
+• Embed CHiLO Reader loading script to CHiLO Book
+• Display version information on copyright page
+• Add listview design
+
+Bug fixes
+• Fault correction to not display a blank page after the table of contents page when a cover image does not exist 
+• Fault correction when embedding quiz to pages which start with https://
+
+Specification changes
+• Change the setting of the Book information such as language, author name, and date of issue from each Series to each CHiLO Book
+• When there are not inputs in "series-introduction" and "book-summary," the "README" section is omitted
+• Change the location of the author information (authors.xlsx) and author image to foloder within the series
+• Change of arguments of CHiLO Book output command
+• Output CHiLO Book even when number of books in the [book-list] and the number of vo-n sheets differ
+• Change the output destination of CHiLO Book from OutputBase to within the series
+• Change the item name of [series-information] from creator to author
+• Change the item name of [book-list] from cover to book-cover
+• Adopts CreativeCommons License (4.0)
+
+
+/////////
 // 1.2 //
 /////////
 

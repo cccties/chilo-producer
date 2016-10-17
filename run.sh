@@ -2,27 +2,29 @@
 
 usage()
 {
-	echo "usage: $0 -c <name of your directory> -s <name of the applied book template> [ -i <input dir> -o <output_dir> -f <output_name> ]"
+	echo "usage: $0 -s <name of your directory> -t <name of the applied book template> [ -i <input dir> -o <output_dir> -f <output_name> -w ]"
 	exit 0
 }
 
 
 ### parse command line options
 RUNMODE=real
-while getopts dc:s:i:o:f: OPT
+WEKO=
+BOOK_TEMPLATE="-template cardview"
+while getopts ds:t:i:o:f:w OPT
 do
         case $OPT in
 	"d" )
 		RUNMODE=dry
 		;;
-	"c" )  
-		COURSE=$OPTARG
+	"s" )  
+		SERIES=$OPTARG
 		;;
 	"i" )  
 		INPUT_DIR=$OPTARG
 		;;
-	"s" )  
-		BOOK_TEMPLATE=$OPTARG
+	"t" )  
+		BOOK_TEMPLATE="-template $OPTARG"
 		;;
 	"o" )  
 		OUTPUT_DIR=$OPTARG
@@ -30,21 +32,34 @@ do
 	"f" )
 		OUTPUT_NAME=$OPTARG
 		;;
+	"w" )
+		WEKO="-weko"
+		;;
 	"*" )
 		usage
 		;;
 	esac
 done
 
-### check parameters
+### excel file and home directory
 
-if [ X${COURSE} = X ]; then
-	echo "no course specified."
-	usage
+shift $((OPTIND - 1))
+if [ X$1 != X ]; then
+	SERIES=$1
 fi
 
-if [ X${BOOK_TEMPLATE} = X ]; then
-	echo "no template name specified."
+if type greadlink > /dev/null 2>&1; then
+	HOME_DIR="$(dirname $(greadlink -f $0))"
+elif readlink -f $0  > /dev/null 2>&1; then
+	HOME_DIR="$(dirname $(readlink -f $0))"
+else
+	HOME_DIR="$(dirname $0)"
+fi
+
+### check parameters
+
+if [ X${SERIES} = X ]; then
+	echo "no series specified."
 	usage
 fi
 
@@ -60,23 +75,11 @@ if [ X${OUTPUT_NAME} != X ]; then
 	ONAME_OPT="-output-name ${OUTPUT_NAME}"
 fi
 
-
 if [ X${RUNMODE} = Xdry ]; then
-		echo "DRY-RUN: java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}"
+	echo "DRY-RUN: java -jar ${HOME_DIR}/chilo-epub3-maker.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}"
 		
 elif [ X${RUNMODE} = Xreal ]; then
-#	if [ X${BOOK_TEMPLATE} = Xepub ]; then
-		COURSEBASE_DIR=`sed -n '/CourseBaseDir/p' chilo-epub3-maker.xml | sed -e 's/<[^>]*>//g' | tr -d '\r' | tr -d '\n'`
-		cp -R ./book_templates/${BOOK_TEMPLATE}/page_templates ./${COURSEBASE_DIR}/common/templates
-		cp -R ./book_templates/${BOOK_TEMPLATE}/styles ./${COURSEBASE_DIR}/${COURSE}/${INPUT_DIR}/common/
-		cp -R ./book_templates/${BOOK_TEMPLATE}/images ./${COURSEBASE_DIR}/common/
-		
-		java -jar ./chilo-epub3-maker.jar -course ${COURSE} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${ONAME_OPT}
-		
-		rm -rf ./${COURSEBASE_DIR}/common/templates
-		rm -rf ./${COURSEBASE_DIR}/${COURSE}/${INPUT_DIR}/common/styles
-		rm -rf ./${COURSEBASE_DIR}/common/images
-		
+	java -jar ${HOME_DIR}/chilo-epub3-maker.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}
 else
 	usage
 fi

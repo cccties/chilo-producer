@@ -23,67 +23,75 @@
 package epub3maker;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class Volume {
-    public Volume(int volume) {
-        this(volume, new ArrayList<PageSetting>());
-    }
+public class Book {
 
-    public Volume(int volume, List<PageSetting> settings) {
+    public static final String VOLUME_PREFIX = "vol-";
+
+    private int volume;
+    private List<PageSetting> pageSettings;
+    private Map<String, String> bookInfo;
+
+    public Book(int volume, Map<String, String> bookInfo) {
         this.volume = volume;
-        pageSettings = settings;
-    }
-
-    public List<PageSetting> getPageSettings() {
-        return pageSettings;
+        pageSettings = new ArrayList<PageSetting>();
+        this.bookInfo = bookInfo;
     }
 
     public int getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-    
     public String getVolumeStr() {
-    	return KEY_VOLUME_PREFIX + volume;
+    	return VOLUME_PREFIX + volume;
     }
     
+    public List<PageSetting> getPageSettings() {
+        return pageSettings;
+    }
+
+    public void addPageSetting(PageSetting p) {
+    	pageSettings.add(p);
+    }
+
+    public PageSetting getPageSetting(int num) {
+    	return pageSettings.get(num);
+    }
+
     public PageSetting getPage(int page) {
-    	for (PageSetting p : pageSettings) {
-    		if (p.getPage() == page)
+    	for (PageSetting p: pageSettings) {
+    		if (p.getPage() == page) {
     			return p;
+    		}
     	}
     	return null;
     }
     
     public int getMaxPage() { 
-    	int maxPage = 0;
-    	for (PageSetting pageSetting : pageSettings) {
-    		if (pageSetting.getPage() > maxPage)
-    			maxPage = pageSetting.getPage();
-    	}
-    	return maxPage;
-	}
-
-    private List<PageSetting> pageSettings;
-    int volume;
-    public static final String KEY_VOLUME_PREFIX = "vol-";
-
-    public String getCoverImage() {
-    	String ret = null;
-    	for (PageSetting p : pageSettings) {
-    		if (p.getPageType().equals(PageSetting.VALUE_KEY_PAGE_TYPE_COVER)) {
-    			Path tmp = p.getCoverImagePath();
-    			if (tmp != null) {
-    				ret = tmp.toString();
-    				break;
-    			}
+    	int max = 0;
+    	for (PageSetting p: pageSettings) {
+    		int tmp = p.getPage();
+    		if (tmp > max) {
+    			max = tmp;
     		}
     	}
-    	return ret;
+    	return max;
+	}
+
+    public Path getCoverImagePath() {
+    	Path ret = null;
+    	String cover = bookInfo.get(Series.KEY_BOOKLIST_BOOK_COVER);
+    	if (cover != null) {
+    		ret = Paths.get(getVolumeStr(), "images", cover);
+    	}
+        return ret;
+    }
+
+    public String get(String key){
+    	return bookInfo.get(key);
     }
 }
