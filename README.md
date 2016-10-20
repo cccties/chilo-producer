@@ -102,7 +102,7 @@ ApacheLicense2.0 ライセンスの元、提供しております。 (see [LICEN
 
 ### Copyright
 
-Copyright © 2015-2016 NPO CCC-TIES
+Copyright © 2015 NPO CCC-TIES
 
 ***
 
@@ -206,5 +206,5 @@ We offer CHiLO Producer under the license of ApacheLicense2.0. (See [LICENSE.txt
 
 ### Copyright
 
-Copyright © 2015-2016 NPO CCC-TIES
+Copyright © 2015 NPO CCC-TIES
 
