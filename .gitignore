@@ -17,4 +17,6 @@ bin/*
 
 !.gitkeep
 /bin/
-chiloPro/sample-series/
+chiloPro/
+!chiloPro/template-series
+!chiloPro/template-series_english
