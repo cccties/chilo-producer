@@ -1,5 +1,27 @@
 リリースノート / Release Notes
 
+///////////
+// 2.0.1 //
+///////////
+
+バグ修正
+• オーディオファイル埋め込みの動作を修正
+• structure-books.xlsxの項目名を修正
+• ブックテンプレートのいくつかの不具合を修正
+
+仕様変更
+• 内表紙をCHiLO Book毎に設定
+
+---
+
+Bug fixes
+• Alter the embedding behavior of the audio file
+• Change item name of structure-books.xlsx
+• Modify some problems concerning the book template
+
+Specification changes
+• Set inside cover for each CHiLO Book
+
 /////////
 // 2.0 //
 /////////
