@@ -86,6 +86,10 @@ https://github.com/cccties/chilo001
 
 なお、この素材サンプルは、[CHiLO Book Library](http://chilos.jp)で公開している[「はじめての情報ネットワーク」](http://chilos.jp/s/?id=1)の素材となっております。
 
+### CHiLO Producer ver.2への移行方法
+
+http://docs.cccties.org/creating-chilobook/migrate-to-chilo-producer-ver2/
+
 ### 課題・質問
 
 このソフトの課題、質問、及び要望はこちらにご記載ください。
@@ -190,6 +194,10 @@ https://github.com/cccties/chilo001
 
 Download and copy the expanded file to _(root)/chiloPro/_ for reference when creating CHiLO Book.
 These sample materials are of those of ["Introduction to Internet Network I"](http://chilos.jp/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp).
+
+### Migrating data to CHiLO Producer ver. 2
+
+http://docs.cccties.org/en/creating-chilobook/migrate-to-chilo-producer-ver2/
 
 ### Problems and Inquiries
 
