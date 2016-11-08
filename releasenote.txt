@@ -1,6 +1,26 @@
 リリースノート / Release Notes
 
 ///////////
+// 2.0.21 //
+///////////
+
+バグ修正
+• トピックタイトルが未記入の場合、iBooksで閲覧したときにレイアウトが崩れる
+
+仕様変更
+• [series-information]にrightの記入がない場合は、Copyright (c)の表記を省略
+• デバイスの解像度によって、解説ビデオの幅を調整 (cardview, listviewデザインのみ） 
+
+---
+
+Bug fixes
+• When topic title field is left blank, the layout may skew when browsed with iBooks
+
+Specification changes
+• When the [series-information] "right" field is left blank, the Copyright (c) notation is omitted
+• Adjust the width of explanation video according to the resolution of the device (for cardview and listview design only)
+
+///////////
 // 2.0.1 //
 ///////////
 
