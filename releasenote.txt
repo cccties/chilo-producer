@@ -1,6 +1,20 @@
 リリースノート / Release Notes
 
 ///////////
+// 2.0.3 //
+///////////
+
+仕様変更
+• 表紙画像のページを固定レイアウトに変更
+　表紙画像の推奨解像度は768x1024です。その他の解像度では、表示がはみ出てしまう可能性があります。
+
+---
+
+Specification changes
+• Changed the cover image page to "Fixed Layout" 
+　Recommended resolution for the cover image is 768x1024. With other resolutions, the display may run over the page.
+
+///////////
 // 2.0.2 //
 ///////////
 
