@@ -11,16 +11,18 @@
 
 注意
 これらの機能は最新版CHiLO Readerで閲覧したときのみ有効になります。
+なお、Youtube動画はGoogle Play、iBooksストアへの登録は対応しておりません。
 
 ---
 
 New features
 
-• Added function to embed YouTube videos
+• Added function to embed YouTube videos.
 • Added function to divide the video per page by the settings in structure-books.xlsx
 
 Note
-The new features are only valid when viewed in the latest version CHiLO Reader
+The new features are only valid when viewed in the latest version CHiLO Reader.
+YouTube videos can not be registered in Google Play and iBooks Store.
 
 ///////////
 // 2.0.3 //
