@@ -48,6 +48,8 @@ public class PageSetting {
     public static final String KEY_JAVASCRIPT_FILE = "javascript-file";
     public static final String KEY_YOUTUBE_ID = "youtube-id";
     public static final String KEY_CC = "CC";
+    public static final String KEY_CLIP_BEGIN = "clip-begin";
+    public static final String KEY_CLIP_END = "clip-end";
 
     public static final String KEY_ATTR_ATTRIBUTE = "attribute";
     public static final String KEY_ATTR_TYPE = "type";
@@ -88,6 +90,8 @@ public class PageSetting {
 
     private List<Path> objectPaths;
     private List<Path> javascriptFilePaths;
+
+    private String clipEnd;
 
     public PageSetting(int volume, int page, Map<String, List<Map<String, String>>> settings) {
         this.volume = volume;
@@ -352,6 +356,22 @@ public class PageSetting {
     	return str;
     }
     
+    public String getClipBegin()
+    {
+    	List<Map<String, String>> list = settings.get(PageSetting.KEY_CLIP_BEGIN);
+    	if (list == null)
+    		return null;
+    	return list.get(0).get(PageSetting.KEY_ATTR_VALUE);
+    }
+
+    public String getClipEnd()
+    {
+    	List<Map<String, String>> list = settings.get(PageSetting.KEY_CLIP_END);
+    	if (list == null)
+    		return null;
+    	return list.get(0).get(PageSetting.KEY_ATTR_VALUE);
+    }
+
     public String getAttribute(String key) {
     	return settings.get(key).get(0).get(PageSetting.KEY_ATTR_ATTRIBUTE);
     }

@@ -61,14 +61,15 @@ public class Process {
     static final int BOOK_SUMMARY_PAGE = 4;
     static final int DOCUMENT_START_PAGE = 10;
 
-    enum NavigationDocument {
+    enum Document {
 		CARDVIEW("cardview.xhtml","cardview.xhtml"),
-		NAV("nav.xhtml","nav.xhtml");
+		NAV("nav.xhtml","nav.xhtml"),
+		MEDIA_OVERLAY("chilo-video.smil","chilo-video.smil");
 
 		String fileName;
 		String templateFileName;
 
-		private NavigationDocument(String fileName, String templateFileName){
+		private Document(String fileName, String templateFileName){
 			this.fileName = fileName;
 			this.templateFileName = templateFileName;
 		}
@@ -79,6 +80,7 @@ public class Process {
     String lang;
     Series series;
     Book book;
+    Boolean chilo_video_created = false;
 
     public void process(Path seriesPath, boolean doWeko) throws Exception {
     	SettingReader reader = new SettingReader(seriesPath);
@@ -128,8 +130,15 @@ public class Process {
             List<PageSetting> sortedPageSettings = new ArrayList<>(book.getPageSettings());
             sortGeneratedPages(sortedPageSettings);
 
-            createNavigationDocument(sortedPageSettings, NavigationDocument.NAV);
-            createNavigationDocument(sortedPageSettings, NavigationDocument.CARDVIEW);
+            createNavigationDocument(sortedPageSettings, Document.NAV);
+            createNavigationDocument(sortedPageSettings, Document.CARDVIEW);
+
+            try {
+            	chilo_video_created = createMediaOverlay(sortedPageSettings, Document.MEDIA_OVERLAY);
+            } catch(Exception ex){
+            	log.info("createMediaOverlay throws exception");
+            	// do nothing
+            }
 
             // http://imagedrive.github.io/spec/epub301-publications.xhtml#sec-publication-resources
             createContentOpf(authorImages);
@@ -247,7 +256,7 @@ public class Process {
         Util.createDirectory(targetDirectory);
     }
 
-    private void createNavigationDocument(List<PageSetting> sortedPages, NavigationDocument doc) throws IOException {
+    private void createNavigationDocument(List<PageSetting> sortedPages, Document doc) throws IOException {
     	String last = null;
     	List<Map<String, Object>> sections = new ArrayList<Map<String, Object>>();
     	List<Map<String, Object>> topics = null;
@@ -311,6 +320,37 @@ public class Process {
     	createTemplatePage(content, doc.templateFileName, outputFilePath);
     }
 
+    private boolean createMediaOverlay(List<PageSetting> sortedPages, Document doc) throws IOException {
+    	List<Map<String, Object>> pages = new ArrayList<Map<String, Object>>();
+
+    	for (PageSetting page : sortedPages) {
+    		String begin = page.getClipBegin();
+    		if(Util.isValueValid(begin)){
+    			Map<String, Object> map = new HashMap<String, Object>();
+    			map.put("id", convert2id(page.getTextPathForArchiveFile()));
+    			map.put("text", path2str(page.getTextPathForArchiveFile()));
+    			map.put("video", page.getObject(0));
+    			map.put("youtube-id", page.getYoutubeId());
+    			map.put("clip-begin", begin);
+    			map.put("clip-end", page.getClipEnd());
+    			pages.add(map);
+    		}
+    	}
+
+    	if(pages.isEmpty()){
+    		return false;
+    	}
+
+    	Content content = new Content();
+    	content.put("pages", pages);
+    	
+    	Path outputFilePath;
+    	outputFilePath = outputTempPath.resolve(doc.fileName);
+
+    	createTemplatePage(content, doc.templateFileName, outputFilePath);
+    	return true;
+    }
+
 	private void createContentOpf(List<String> authorImages) throws Epub3MakerException, IOException, ParserConfigurationException, SAXException
     {
     	Content content = new Content();
@@ -370,11 +410,11 @@ public class Process {
             addItem(href, id, type, properties, list);
         }
 
-        final String fileName = "nav.xhtml";
-        addItem(fileName, fileName, Util.getContentType(fileName), "nav", list);
-
-        final String fileName2 = "cardview.xhtml";
-        addItem(fileName2, fileName2, Util.getContentType(fileName2), "svg", list);
+        addItem(Document.NAV.fileName, "nav", list);
+        addItem(Document.CARDVIEW.fileName, "svg", list);
+        if(chilo_video_created){
+        	addItem(Document.MEDIA_OVERLAY.fileName, null, list);
+        }
 
         for(Path p: getExtensionFiles()){
         	String name = p.getFileName().toString();
@@ -382,6 +422,10 @@ public class Process {
         }
 
         content.put("manifest-items", list);
+    }
+
+    private void addItem(String filename, String properties, List<Map<String, String>> list){
+    	addItem(filename, filename, Util.getContentType(filename), properties, list);
     }
 
     private void addItem(String href, String id, String mediaType, String properties, List<Map<String, String>> list){
@@ -437,7 +481,7 @@ public class Process {
         } else {
         	where = 0;
         }
-        items.add(where, NavigationDocument.CARDVIEW.fileName);
+        items.add(where, Document.CARDVIEW.fileName);
 
         return items;
     }
@@ -757,8 +801,11 @@ public class Process {
     	content.put("file-name", outFilePath.getFileName().toString());
     	content.put("file-basename", baseFilename(outFilePath));
     	content.put("volumes", series.getBooks().size());
-    	
-        return content;
+
+    	content.put("clip-begin", pageSetting.getClipBegin());
+    	content.put("clip-end", pageSetting.getClipEnd());
+
+    	return content;
     }
 
     private String getSetting(String key) {
@@ -773,10 +820,7 @@ public class Process {
     	String ret = book.get(Series.KEY_BOOKLIST_INSIDE_COVER);
     	if(ret == null){
     		ret = series.getMeta(Series.KEY_V2_COVER);
-			ret = commonImagePath(ret);
-		} else {
-			ret = volumeImagePath(book, ret);
-		}
+    	}
     	return ret;
     }
 
@@ -812,7 +856,7 @@ public class Process {
     	}
 
     	// SettingReader#createInsideCover で使われる
-    	content.put("cover",  getInsideCover());
+    	content.put("cover",  commonImagePath(getInsideCover()));
     }
 
     private void appendBookList(Content content) {

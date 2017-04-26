@@ -309,6 +309,7 @@ public class SettingReader extends ExcelReader {
             
             String curSection = null;
             int lastrow = sheet.getLastRowNum();
+
             for (int rownum = 1; rownum <= lastrow ; rownum++) {
             	//
                 // skip first row
@@ -572,6 +573,8 @@ public class SettingReader extends ExcelReader {
         	keyNames.add(PageSetting.KEY_JAVASCRIPT_FILE);
         	keyNames.add(PageSetting.KEY_YOUTUBE_ID);
         	keyNames.add(PageSetting.KEY_CC);
+        	keyNames.add(PageSetting.KEY_CLIP_BEGIN);
+        	keyNames.add(PageSetting.KEY_CLIP_END);
         	ver2VolKeys = keyNames.size();
         	
         	keyNames.add(PageSetting.KEY_ITEM_PROPERTY);

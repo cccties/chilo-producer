@@ -29,7 +29,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.zip.CRC32;
 import java.util.zip.ZipEntry;
@@ -40,7 +39,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class Epub3Archiver {
 
-    @SuppressWarnings("unused")
+	@SuppressWarnings("unused")
 	private static Log log = LogFactory.getLog(Epub3Archiver.class);
 
 	public void archive(Series series, Book book, List<Path> inputFilePaths, Path tempPath, List<Path> extensionPaths) throws Exception {
@@ -53,8 +52,13 @@ public class Epub3Archiver {
         writeMimetypeFile(tempPath.resolve("mimetype"), zos);
         writeFile("OEBPS/", tempPath.resolve("content.opf"), zos);
         writeFile("META-INF/", tempPath.resolve("container.xml"), zos);
-        writeFile("OEBPS/", tempPath.resolve(Process.NavigationDocument.CARDVIEW.fileName), zos);
-        writeFile("OEBPS/", tempPath.resolve(Process.NavigationDocument.NAV.fileName), zos);
+        writeFile("OEBPS/", tempPath.resolve(Process.Document.CARDVIEW.fileName), zos);
+        writeFile("OEBPS/", tempPath.resolve(Process.Document.NAV.fileName), zos);
+
+        Path mediaPath = tempPath.resolve(Process.Document.MEDIA_OVERLAY.fileName);
+    	if(Files.exists(mediaPath)){
+        	writeFile("OEBPS/", mediaPath, zos);
+        }
 
         zos.setMethod(ZipOutputStream.DEFLATED);
         // zos.setLevel(9);
