@@ -13,6 +13,10 @@
 これらの機能は最新版CHiLO Readerで閲覧したときのみ有効になります。
 なお、Youtube動画はGoogle Play、iBooksストアへの登録は対応しておりません。
 
+仕様変更
+
+• 解説ビデオのダウンロードボタンを隠す
+
 ---
 
 New features
@@ -23,6 +27,10 @@ New features
 Note
 The new features are only valid when viewed in the latest version CHiLO Reader.
 YouTube videos can not be registered in Google Play and iBooks Store.
+
+Specification changes
+
+• Hide video download button
 
 ///////////
 // 2.0.3 //
