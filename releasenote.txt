@@ -1,6 +1,18 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.1 //
+///////////
+
+バグ修正
+• basicデザインテンプレートにおける構文エラーを修正
+
+---
+
+Bug fixes
+• Fix syntax error in basic design template
+
+///////////
 // 3.0.0 //
 ///////////
 
