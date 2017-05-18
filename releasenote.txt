@@ -1,6 +1,18 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.2 //
+///////////
+
+バグ修正
+• book-list内の書籍情報のセルがロックされている
+
+---
+
+Bug fixes
+• Lock series-information cell in book-list
+
+///////////
 // 3.0.1 //
 ///////////
 
