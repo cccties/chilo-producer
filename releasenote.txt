@@ -10,7 +10,7 @@
 ---
 
 Bug fixes
-• Lock series-information cell in book-list
+• Book information cell in book-list locked
 
 ///////////
 // 3.0.1 //
