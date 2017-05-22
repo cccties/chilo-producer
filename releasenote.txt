@@ -6,11 +6,13 @@
 
 バグ修正
 • book-list内の書籍情報のセルがロックされている
+• [book-list]で指定した内表紙が表示されない
 
 ---
 
 Bug fixes
 • Book information cell in book-list locked
+• The inside cover designated in [book-list] sheet does not show
 
 ///////////
 // 3.0.1 //
