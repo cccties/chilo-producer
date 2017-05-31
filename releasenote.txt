@@ -1,6 +1,24 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.3 //
+///////////
+
+仕様変更
+• YouTubeビデオの関連動画を表示しない
+
+バグ修正
+• Excelによる動画分割を行わない場合、YouTubeビデオの再生が止まる
+
+---
+
+Specification changes
+• Suppress YouTube related video thumbnails
+
+Bug fixes
+• When Excel is not used for splitting the video, YouTube video does not play
+
+///////////
 // 3.0.2 //
 ///////////
 
