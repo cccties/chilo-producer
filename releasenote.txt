@@ -7,7 +7,7 @@
 仕様変更
 * structure-books.xlsxを開いた時、最初に[series-information]シートが開くように変更
 * publishedおよびrevisedの説明欄に日付の表記方法を追加
-* Drag & DropでCHiLO Bookを出力した場合、ポーズ処理を追加
+* Drag & DropでCHiLO Bookを出力した場合、最後にポーズ処理を追加
 * シリーズディレクトリのテンプレートにデフォルトの著者の写真を設定
 
 バグ修正
@@ -24,7 +24,7 @@ Specification changes
 
 Bug fixes
 
-* [book-list]シートの誤字を修正（日本語のみ）
+* Modified typos in [book-list] sheet (Japanese only)
 
 ///////////
 // 3.0.3 //
