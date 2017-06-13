@@ -34,6 +34,7 @@ set STR=%~dp0
 	) else if /I "%1" == "-w" (
 		call :SETWEKO
 	) else (
+		call :SETDRAGANDDROP
 		call :SETSERIES %1
 	)
 	shift
@@ -53,11 +54,15 @@ goto MAIN
 	set OUTPUTDIR=
 	set OUTPUTNAME=
 	set WEKO=
+	set DRAGANDDROP=
 	exit /b
 
 :DRYRUN
 	set RUNMODE=dry
 	exit /b
+
+:SETDRAGANDDROP
+	set DRAGANDDROP=on
 
 :SETSERIES
 	set SERIES=%1
@@ -99,4 +104,9 @@ if "%RUNMODE%"=="dry" (
 	goto ALLDONE
 
 :ALLDONE
+
+if "%DRAGANDDROP%"=="on" (
+	PAUSE
+)
+
 	call :CLEARVALS
