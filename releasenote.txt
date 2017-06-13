@@ -31,44 +31,44 @@ Bug fixes
 ///////////
 
 仕様変更
-• YouTubeビデオの関連動画を表示しない
+* YouTubeビデオの関連動画を表示しない
 
 バグ修正
-• Excelによる動画分割を行わない場合、YouTubeビデオの再生が止まる
+* Excelによる動画分割を行わない場合、YouTubeビデオの再生が止まる
 
 ---
 
 Specification changes
-• Suppress YouTube related video thumbnails
+* Suppress YouTube related video thumbnails
 
 Bug fixes
-• When Excel is not used for splitting the video, YouTube video does not play
+* When Excel is not used for splitting the video, YouTube video does not play
 
 ///////////
 // 3.0.2 //
 ///////////
 
 バグ修正
-• book-list内の書籍情報のセルがロックされている
-• [book-list]で指定した内表紙が表示されない
+* book-list内の書籍情報のセルがロックされている
+* [book-list]で指定した内表紙が表示されない
 
 ---
 
 Bug fixes
-• Book information cell in book-list locked
-• The inside cover designated in [book-list] sheet does not show
+* Book information cell in book-list locked
+* The inside cover designated in [book-list] sheet does not show
 
 ///////////
 // 3.0.1 //
 ///////////
 
 バグ修正
-• basicデザインテンプレートにおける構文エラーを修正
+* basicデザインテンプレートにおける構文エラーを修正
 
 ---
 
 Bug fixes
-• Fix syntax error in basic design template
+* Fix syntax error in basic design template
 
 ///////////
 // 3.0.0 //
@@ -76,8 +76,8 @@ Bug fixes
 
 新機能追加
 
-• Youtube動画の埋め込み機能を追加
-• structure-books.xlsxの設定によりビデオをページ毎に分割する機能の追加
+* Youtube動画の埋め込み機能を追加
+* structure-books.xlsxの設定によりビデオをページ毎に分割する機能の追加
 
 注意
 これらの機能は最新版CHiLO Readerで閲覧したときのみ有効になります。
@@ -85,14 +85,14 @@ Bug fixes
 
 仕様変更
 
-• 解説ビデオのダウンロードボタンを隠す
+* 解説ビデオのダウンロードボタンを隠す
 
 ---
 
 New features
 
-• Added function to embed YouTube videos.
-• Added function to divide the video per page by the settings in structure-books.xlsx
+* Added function to embed YouTube videos.
+* Added function to divide the video per page by the settings in structure-books.xlsx
 
 Note
 The new features are only valid when viewed in the latest version CHiLO Reader.
@@ -100,20 +100,20 @@ YouTube videos can not be registered in Google Play and iBooks Store.
 
 Specification changes
 
-• Hide video download button
+* Hide video download button
 
 ///////////
 // 2.0.3 //
 ///////////
 
 仕様変更
-• 表紙画像のページを固定レイアウトに変更
+* 表紙画像のページを固定レイアウトに変更
 　表紙画像の推奨解像度は768x1024です。その他の解像度では、表示がはみ出てしまう可能性があります。
 
 ---
 
 Specification changes
-• Changed the cover image page to "Fixed Layout" 
+* Changed the cover image page to "Fixed Layout" 
 　Recommended resolution for the cover image is 768x1024. With other resolutions, the display may run over the page.
 
 ///////////
@@ -121,92 +121,92 @@ Specification changes
 ///////////
 
 バグ修正
-• トピックタイトルが未記入の場合、iBooksで閲覧したときにレイアウトが崩れる
+* トピックタイトルが未記入の場合、iBooksで閲覧したときにレイアウトが崩れる
 
 仕様変更
-• [series-information]にrightの記入がない場合は、Copyright (c)の表記を省略
-• デバイスの解像度によって、解説ビデオの幅を調整 (cardview, listviewデザインのみ） 
+* [series-information]にrightの記入がない場合は、Copyright (c)の表記を省略
+* デバイスの解像度によって、解説ビデオの幅を調整 (cardview, listviewデザインのみ） 
 
 ---
 
 Bug fixes
-• When topic title field is left blank, the layout may skew when browsed with iBooks
+* When topic title field is left blank, the layout may skew when browsed with iBooks
 
 Specification changes
-• When the [series-information] "right" field is left blank, the Copyright (c) notation is omitted
-• Adjust the width of explanation video according to the resolution of the device (for cardview and listview design only)
+* When the [series-information] "right" field is left blank, the Copyright (c) notation is omitted
+* Adjust the width of explanation video according to the resolution of the device (for cardview and listview design only)
 
 ///////////
 // 2.0.1 //
 ///////////
 
 バグ修正
-• オーディオファイル埋め込みの動作を修正
-• structure-books.xlsxの項目名を修正
-• ブックテンプレートのいくつかの不具合を修正
+* オーディオファイル埋め込みの動作を修正
+* structure-books.xlsxの項目名を修正
+* ブックテンプレートのいくつかの不具合を修正
 
 仕様変更
-• 内表紙をCHiLO Book毎に設定
+* 内表紙をCHiLO Book毎に設定
 
 ---
 
 Bug fixes
-• Alter the embedding behavior of the audio file
-• Change item name of structure-books.xlsx
-• Modify some problems concerning the book template
+* Alter the embedding behavior of the audio file
+* Change item name of structure-books.xlsx
+* Modify some problems concerning the book template
 
 Specification changes
-• Set inside cover for each CHiLO Book
+* Set inside cover for each CHiLO Book
 
 /////////
 // 2.0 //
 /////////
 
 新機能追加
-• ドラッグ＆ドロップによるCHiLO Book出力
-• ページへのオーディオファイル（.mp3）埋め込み
-• CHiLO BookへのCHiLO Book Readerローディングスクリプトの埋め込み
-• Copyrightページのバージョン情報表示
-• listviewデザインの追加
+* ドラッグ＆ドロップによるCHiLO Book出力
+* ページへのオーディオファイル（.mp3）埋め込み
+* CHiLO BookへのCHiLO Book Readerローディングスクリプトの埋め込み
+* Copyrightページのバージョン情報表示
+* listviewデザインの追加
 
 バグ修正
-• 表紙が存在しない場合、目次ページの後に空白のページが生成される不具合修正
-• https://から始まるクイズの埋め込みの不具合修正
+* 表紙が存在しない場合、目次ページの後に空白のページが生成される不具合修正
+* https://から始まるクイズの埋め込みの不具合修正
 
 仕様変更
-• 言語・著者名・発行日などシリーズ毎に設定していた書籍情報をCHiLO Book毎に設定
-• series-introduction、book-summaryが設定されない場合は、「はじめにお読みください」セクションを省略
-• 著者情報（authors.xlsx）・著者画像の保存先をシリーズ内に変更
-• CHiLO Book出力コマンドの引数変更
-• [book-list]の巻数とvo-nシート数が異なる場合も、CHiLO Bookを出力
-• CHiLO Bookの出力先をシリーズ内に変更
-• [series-information]の項目名をcreatorからauthorに変更
-• [book-list]の項目名をcoverからbook-coverに変更
-• CreativeCommonsライセンス（4.0）を適用
+* 言語・著者名・発行日などシリーズ毎に設定していた書籍情報をCHiLO Book毎に設定
+* series-introduction、book-summaryが設定されない場合は、「はじめにお読みください」セクションを省略
+* 著者情報（authors.xlsx）・著者画像の保存先をシリーズ内に変更
+* CHiLO Book出力コマンドの引数変更
+* [book-list]の巻数とvo-nシート数が異なる場合も、CHiLO Bookを出力
+* CHiLO Bookの出力先をシリーズ内に変更
+* [series-information]の項目名をcreatorからauthorに変更
+* [book-list]の項目名をcoverからbook-coverに変更
+* CreativeCommonsライセンス（4.0）を適用
 
 ---
 
 New features added
-• Add drag and drop interaction to output CHiLO 
-• Embed audio files (.mp3) to pages
-• Embed CHiLO Reader loading script to CHiLO Book
-• Display version information on copyright page
-• Add listview design
+* Add drag and drop interaction to output CHiLO 
+* Embed audio files (.mp3) to pages
+* Embed CHiLO Reader loading script to CHiLO Book
+* Display version information on copyright page
+* Add listview design
 
 Bug fixes
-• Fault correction to not display a blank page after the table of contents page when a cover image does not exist 
-• Fault correction when embedding quiz to pages which start with https://
+* Fault correction to not display a blank page after the table of contents page when a cover image does not exist 
+* Fault correction when embedding quiz to pages which start with https://
 
 Specification changes
-• Change the setting of the Book information such as language, author name, and date of issue from each Series to each CHiLO Book
-• When there are not inputs in "series-introduction" and "book-summary," the "README" section is omitted
-• Change the location of the author information (authors.xlsx) and author image to foloder within the series
-• Change of arguments of CHiLO Book output command
-• Output CHiLO Book even when number of books in the [book-list] and the number of vo-n sheets differ
-• Change the output destination of CHiLO Book from OutputBase to within the series
-• Change the item name of [series-information] from creator to author
-• Change the item name of [book-list] from cover to book-cover
-• Adopts CreativeCommons License (4.0)
+* Change the setting of the Book information such as language, author name, and date of issue from each Series to each CHiLO Book
+* When there are not inputs in "series-introduction" and "book-summary," the "README" section is omitted
+* Change the location of the author information (authors.xlsx) and author image to foloder within the series
+* Change of arguments of CHiLO Book output command
+* Output CHiLO Book even when number of books in the [book-list] and the number of vo-n sheets differ
+* Change the output destination of CHiLO Book from OutputBase to within the series
+* Change the item name of [series-information] from creator to author
+* Change the item name of [book-list] from cover to book-cover
+* Adopts CreativeCommons License (4.0)
 
 
 /////////
@@ -214,41 +214,41 @@ Specification changes
 /////////
 
 新機能追加
-• CHiLO Bookを出力するコマンドに、ブックテンプレート選択オプションの追加
+* CHiLO Bookを出力するコマンドに、ブックテンプレート選択オプションの追加
   （ディフォルトでは、basicとcardviewの2種類のブックテンプレートが用意されています）
-• Cloud CHiLO Readerの目次項目を強調する機能に対応
+* Cloud CHiLO Readerの目次項目を強調する機能に対応
 
 仕様変更
 cardviewデザインへの対応
-• 目次ページ（cardview.xhtml）にビデオサムネイルを表示
-• 各ページに目次ページに戻るリンクを追加
-• 目次ページ（cardview.xhtml）を EPUB Navigation Document （nav.xhtml）から分離
+* 目次ページ（cardview.xhtml）にビデオサムネイルを表示
+* 各ページに目次ページに戻るリンクを追加
+* 目次ページ（cardview.xhtml）を EPUB Navigation Document （nav.xhtml）から分離
 既存ページの整理
-• 「はじめにお読みください」ページ、「シリーズの紹介」ページ、「ブック概要」ページを統合
+* 「はじめにお読みください」ページ、「シリーズの紹介」ページ、「ブック概要」ページを統合
 出力ファイル名のルール変更
-• 「シリーズ名+巻数」を「巻数」の数字だけ出力するように変更
+* 「シリーズ名+巻数」を「巻数」の数字だけ出力するように変更
 
 無効化
-• Web 版 CHiLO Book の出力を廃止
-• 「章末情報」チャプターの廃止し、「著者紹介」チャプターを新規追加
+* Web 版 CHiLO Book の出力を廃止
+* 「章末情報」チャプターの廃止し、「著者紹介」チャプターを新規追加
 
 ---
 
 New features added
-• Add option to select book template in the command to output CHiLO Book 
+* Add option to select book template in the command to output CHiLO Book 
   (There are two types of book templates, basic and cardview, available as default settings)
-• Support the function to highlight the item displayed in the TOC of Cloud CHiLO Reader
+* Support the function to highlight the item displayed in the TOC of Cloud CHiLO Reader
 
 Specification Changes
 Enable cardview design
-• Display video thumbnail to contents page (cardview.xhtml)
-• Add link to go back to contents page on each page
-• Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
+* Display video thumbnail to contents page (cardview.xhtml)
+* Add link to go back to contents page on each page
+* Separate contents page (cardview.xhtml) from EPUB Navigation Document (nav.xhtml)
 Sort existing page
-• Intergration of "READ ME" page, "Introduction" page, "Outline" page
+* Intergration of "READ ME" page, "Introduction" page, "Outline" page
 Change rules of the name of the output file
-• Change from displaying [the name of series and the volume number] to displaying only [the number] of the volume
+* Change from displaying [the name of series and the volume number] to displaying only [the number] of the volume
 
 Disable
-• Disable output of web version CHiLO Book
-• Obsolete "Addendum" section and newly add "About the Author" section
+* Disable output of web version CHiLO Book
+* Obsolete "Addendum" section and newly add "About the Author" section
