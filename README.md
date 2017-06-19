@@ -41,8 +41,6 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 　│  
 　├─chiloPro
 　│   │
-　│   ├─common　＊全体の共通ファイル群
-　│   │
 　│   └─template-series　＊シリーズディレクトリのテンプレート（このディレクトリをコピーして作成していく）
 　│   　　│  structure-books.xlsx　＊CHiLO Bookの構造ファイル
 　│   　　│  author.xlsx　＊著者情報ファイル
@@ -150,8 +148,6 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│   └─listview　＊Listview design
 　│  
 　├─chiloPro
-　│   │
-　│   ├─common *Files used in common for all.
 　│   │
 　│   └─template-series　*Template of the directory of the series(copy this directory for creating).
 　│   　　│  structure-books.xlsx *Structure file of CHiLO Book
