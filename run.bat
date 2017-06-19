@@ -61,9 +61,6 @@ goto MAIN
 	set RUNMODE=dry
 	exit /b
 
-:SETDRAGANDDROP
-	set DRAGANDDROP=on
-
 :SETSERIES
 	set SERIES=%1
 	exit /b
@@ -88,6 +85,9 @@ goto MAIN
 	set WEKO=-weko
 	exit /b
 
+:SETDRAGANDDROP
+	set DRAGANDDROP=on
+	exit /b
 
 :MAIN
 
