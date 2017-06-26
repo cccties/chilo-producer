@@ -129,7 +129,7 @@ https://youtu.be/ETXPHxJdXro
 
 1. Install Java 8(https://java.com/ja/download/). <br />※Mac users: Install JDK8 ( http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html )
 1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.
-1. 1. Download book_templates (https://github.com/cccties/book_templates) from Github and expand. Then copy the contents to  _book_templates_ directory located immediately under CHiLO Producer.
+1. Download book_templates (https://github.com/cccties/book_templates) from Github and expand. Then copy the contents to  _book_templates_ directory located immediately under CHiLO Producer.<br>
 -> For overall structure, refer to：[dir_en.md](dir_en.md)
 
 If the file has been successfully unziped, _chiloPro_ directory will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
