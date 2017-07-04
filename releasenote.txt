@@ -1,6 +1,28 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.5 //
+///////////
+
+仕様変更
+* シリーズディレクトリのテンプレートにデフォルトの内表紙を設定
+* ワークシートの保護を無効化
+
+バグ修正
+* コマンドラインでブックテンプレートを指定できない場合がある（Windowsのみ）
+* ExcelOnlineで[book-list]シートが編集できない
+
+---
+
+Specification changes
+* Set the default inside cover to the series directory template
+* Disable worksheet protection
+
+Bug fixes
+* Cannot specify book template using the command line depending on the setting (Windows only)
+* Unable to edit [book-list] sheet using ExcelOnline
+
+///////////
 // 3.0.4 //
 ///////////
 
