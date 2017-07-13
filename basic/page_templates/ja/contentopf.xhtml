@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <package xmlns="http://www.idpf.org/2007/opf"#if ($cover-image) prefix="rendition: http://www.idpf.org/vocab/rendition/#"#end unique-identifier="BookId" version="3.0" xml:lang="ja">
     <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
-        <dc:identifier id="BookId">#if ( $identifier )${identifier}#end</dc:identifier>
+        <dc:identifier id="BookId">#if ( $identifier )#if ( $identifier.indexOf('urn:uuid:') == "-1")urn:uuid:#end${identifier}#end</dc:identifier>
         <dc:title>#if ( $series-name && $vol && $book-title )$series-name 第$vol章 $book-title#end</dc:title>
         <dc:language>#if ( $language )$language#end</dc:language>
         <meta property="dcterms:modified">#if ( $update )$update#end</meta>
