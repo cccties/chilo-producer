@@ -1,6 +1,22 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.6 //
+///////////
+
+仕様変更
+* サブモジュール機能の代わりにサブツリー機能によりbook_templatesをマージする
+* UUID列のURNスキームの入力を不要にする
+* identifier列(column）に"urn:uuid:"が記載されている場合の後方互換性を確保
+
+---
+
+Specification changes
+* Merge book_templates with subtree function instead of submodule function
+* Modified identifier column to not request URN scheme input
+* Ensure backward compatibility when "urn:uuid" is contained in the identifier column
+
+///////////
 // 3.0.5 //
 ///////////
 
