@@ -20,8 +20,7 @@ https://youtu.be/aySpvTFteiQ
 ### 利用方法
 
 1. Java 8（ https://java.com/ja/download/ ）をインストールします。<br />※Macユーザーの方は、JDK8 （  http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html ） をインストールしてください。
-1. GitHubからCHiLO Producer( https://github.com/cccties/CHiLO-Producer )をダウンロードし、展開します。
-1. GitHubからbook_templates（ https://github.com/cccties/book_templates ）をダウンロード・展開し、中身をCHiLO Producer直下の _book_templates_ ディレクトリにコピーします。<br>
+1. GitHubからCHiLO Producer( https://github.com/cccties/CHiLO-Producer )をダウンロードし、展開します。<br />
 -> 全体の構成はこちらを参照：[dir.md](dir.md)
 
 CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディレクトリを開き、シリーズ毎に _chiloPro/templete-series_  をコピーしていきます。
@@ -128,8 +127,7 @@ https://youtu.be/ETXPHxJdXro
 ### How to Use CHiLO Producer
 
 1. Install Java 8(https://java.com/ja/download/). <br />※Mac users: Install JDK8 ( http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html )
-1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.
-1. Download book_templates (https://github.com/cccties/book_templates) from GitHub and expand. Then copy the contents to  _book_templates_ directory located immediately under CHiLO Producer.<br>
+1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.<br />
 -> For overall structure, refer to：[dir_en.md](dir_en.md)
 
 If the file has been successfully unziped, _chiloPro_ directory will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
