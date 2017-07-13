@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>$section</title>
+        <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../../$template/styles/document.css" rel="stylesheet" type="text/css"/>
+#if ( $youtube-id && $youtube-id != "" )
+#if ( $clip-begin && $clip-begin != "" )
+        <script>
+function onYouTubeIframeAPIReady(){
+    var CYT = window.parent.chilo.youtube;
+    var player = new YT.Player("chilo-iframe", {
+        events: {
+            'onReady': CYT.onPlayerReady,
+            'onStateChange': CYT.onStateChange
+        }
+    });
+    CYT.onAPIReady(player);
+}
+        </script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+#end
+#end
+#foreach ( $e in $javascript-file )
+#if ( $e != "" )
+        <script src="$e" type="text/javascript"></script>
+#end
+#end
+    </head>
+    <body>
+        <!--Header-->
+        <div class="subject-all">
+		#if ( $section && $section != "" )
+        <div class="subject_section">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+				#if ( $section-rect && $section-rect != "" )
+                <rect $section-rect/>
+				#end
+                <text fill="$section-fill" font-family="$section-font-family"
+					  font-size="$section-font-size" stroke="$section-stroke"
+                #if ( $section-stroke-width && $section-stroke-width != "" )
+                stroke-width="$section-stroke-width"
+                #end
+				  text-anchor="$section-text-anchor"
+					  x="$section-x" y="$section-y">$section</text>
+            </svg>
+        </div>
+		#end
+		#if ( $topic && $topic != "" )
+        <h2 class="subject_topic">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$topic-view-box" width="$topic-width">
+				#if ( $topic-rect && $topic-rect != "" )
+                <rect $topic-rect/>
+				#end
+                <text fill="$topic-fill" font-family="$topic-font-family"
+					  font-size="$topic-font-size" stroke="$topic-stroke"
+				#if ( $topic-stroke-width && $topic-stroke-width != "" )
+				stroke-width="$topic-stroke-width"
+				#end
+					  text-anchor="$topic-text-anchor"
+					  x="$topic-x" y="$topic-y">$topic</text>
+            </svg>
+        </h2>
+		#end
+		</div>
+		#if ( $community-url && $community-url != "" )
+        <div class="community">
+            <a href="#if ( $community-url.indexOf('?') != "-1")${community-url}&amp;chiloflag=1#else${community-url}?chiloflag=1#end">
+                <img src="../../$template/images/b_portal.png"/>
+            </a>
+        </div>
+		#end
+        <div style="clear:both;"/>
+
+		#if ( $youtube-id && $youtube-id != "" )
+        <div class="video youtube">
+            <iframe id="chilo-iframe" width="$video-width" height="$video-height" src="https://www.youtube.com/embed/${youtube-id}?#if ( $clip-begin && $clip-begin != "" )enablejsapi=1#else
+autoplay=1#end&amp;rel=0" frameborder="0"></iframe>
+        </div>
+		#else
+		#if ( $main && $main != "" )
+
+		#if ( $main-type == "video" )
+		    #set( $poster = "" )
+		    #if ( $video-image )
+		        #set( $poster = "$video-image" )
+		    #end
+		    #if ( $clip-begin )
+		        #set( $main = "$main#t=$clip-begin" )
+			#if ( $clip-end )
+			    #set( $main = "$main,$clip-end" )
+			#end
+		    #end
+
+        <div class="video">
+            <video id="chilo-video" style="max-width: 100%;height:auto;" controls="controls" controlslist="nodownload" poster="$poster" src="$main" width="$video-width" height="$video-height">video tag not supported</video>
+        </div>
+		#end
+
+		#if ( $main-type == "image" )
+        <div>
+            <img alt="" src="$main"/>
+        </div>
+		#end
+		#if ( $main-type == "audio" )
+        <div class="audio">
+            <audio style="max-width: 100%;" controls="controls" src="$main" >audio tag not supported</audio>
+        </div>
+        #end
+		#end
+		#end
+		
+		#if ( $text && $text != "")
+		$text
+		#end
+
+	  #if ( $cc-link && $cc-link != "" )
+	  <div class="width20 right">
+		<a href="$cc-link"> <img alt="$cc-alt" src="../../$template/images/${cc-alt}.png"/></a>
+	  </div>
+	  #end
+    </body>
+</html>

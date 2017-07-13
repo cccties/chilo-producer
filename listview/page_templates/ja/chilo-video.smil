@@ -1,0 +1,22 @@
+<smil xmlns="http://www.w3.org/ns/SMIL" version="3.0">
+    <body>
+#foreach($page in $pages)
+        <par id="$page.id">
+            <text src="$page.text"/>
+            <video
+#if($page.video)
+            src="$page.video"
+#elseif($page.youtube-id)
+            src="$page.youtube-id"
+#end
+#if($page.clip-begin)
+            clipBegin="${page.clip-begin}s"
+#end
+#if($page.clip-end)
+            clipEnd="${page.clip-end}s"
+#end
+            />
+        </par>
+#end
+    </body>
+</smil>

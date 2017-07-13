@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>Copyright</title>
+        <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+        <h1 class="copyright">Copyright</h1>
+        <div>
+
+  <p class="subtitle">Name of Series</p>
+
+  <p>$!series-name</p>
+
+  <p class="subtitle">Title</p>
+
+  <p>$!series-name Lesson $!vol $!book-title</p>
+
+  <div style="clear:both;"/>
+</div>
+        <div>
+  <p class="subtitle">Author</p>
+
+  <p>$!author-name</p>
+
+  <div style="clear:both;"/>
+
+  #if ( $publisher && $publisher != "" )
+  <p class="subtitle">Issued</p>
+
+  <p>$!publisher</p>
+  #end
+
+  #if ( $editor && $editor != "" )
+  <p class="subtitle">Edited</p>
+
+  <p>$!editor</p>
+  #end
+
+  #if ( $version && $version != "" )
+  <p class="subtitle">Version</p>
+
+  <p>$!version</p>
+  #end
+
+  <p>$!published First edition<br/>
+      #if ( $revised && $revised != "")
+      $!revised Revised edition<br/>
+      #end
+      <!--$!update Reprinted--></p>
+
+  <div style="clear:both;"/>
+
+  #if ( $rights && $rights != "" )
+  <p>Copyright &#169; $!rights</p>
+  #end
+
+</div>
+    </body>
+</html>

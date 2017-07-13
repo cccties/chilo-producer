@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+	  #if ( $section && $section != "" )
+	  <title>$section</title>
+	  #end
+      <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+		#if ( $section && $section != "" )
+        <div class="subject_cover">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+				#if ( $section-rect && $section-rect != "" )
+                <rect $section-rect/>
+				#end
+                <text fill="$section-fill" font-family="$section-font-family"
+					  font-size="$section-font-size" stroke="$section-stroke"
+                #if ( $section-stroke-width && $section-stroke-width != "" )
+                stroke-width="$section-stroke-width"
+                #end
+				  text-anchor="$section-text-anchor"
+					  x="$section-x" y="$section-y">$section</text>
+            </svg>
+        </div>
+		#end
+        <div class="community">
+                <img src="../../$template/images/space.png"/>
+        </div>
+		#if ( $cover && $cover != "")
+        <div class="l_content clear">
+            <img alt="" src="$cover"/>
+        </div>
+		#end
+    </body>
+</html>

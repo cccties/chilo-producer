@@ -1,0 +1,271 @@
+﻿/* ####################### doccument.css ######################### */
+/* インデックスページ、コピーライトページ以外の全ページで利用
+/* CHiLO Book基本色 blue #76B226 green #76B226 orange #ECA130*/
+
+
+/* ####################### タグの定義　######################### */
+h1 {
+	font-size: 0.5em;
+	color: #76B226;
+	margin-bottom: 0;
+	margin-top: 0;
+	float: left;
+}
+h2 { 
+}
+a {
+	color: #269DDC;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration: none;
+	cursor: pointer;
+	color:#76B226;
+}
+
+
+/* ####################### スタイルシート固有のクラス　######################### */
+
+/* header */
+.subject-all {
+	width: 70%;
+	float: left;
+	margin: 0 0 2em 0;
+	padding: 0em;
+/* 	line-height: 0em; */
+}
+.subject_chapter {
+/* 	line-height: 0em; */
+/* 	margin: 0em; */
+	padding: 0em;
+}
+.subject_section {
+/* 	line-height: 0em; */
+	margin: 0em;
+	padding: 0em;
+}
+.subject_cover {
+	width: 70%;
+/*	line-height: 0em; */
+	margin: 0 0 3em 0;
+	padding: 0em;
+	float: left;
+}
+.community {
+	margin-top: 0em;
+	margin-bottom: 1em;
+	margin-left:0em;
+	margin-right:0em;
+	padding: 0em;
+	float: right;
+	width: 15%;
+	line-height: 0em;
+}
+.skip {
+	margin-top: 0em;
+	margin-bottom: 1em;
+	margin-left:0em;
+	margin-right:0em;
+	padding: 0em;
+ 	width: 15%;
+	line-height: 0em;
+	float: right;
+}
+
+
+/* 本文 */
+
+/* videoタグ */
+
+.video {
+	text-align: center;
+	margin: auto;
+	clear:both;
+}
+
+.video4-3 {
+	width: 75%;
+}
+
+@media screen and (max-width:420px) { 
+
+.video4-3 {
+	width: 100%;
+}
+}
+
+/* youtube */
+
+.youtube {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom:0.5em;
+}
+
+.youtube iframe{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.youtube4-3 iframe{
+	position: absolute;
+    top: 0;
+    right: 12.5%;
+    width: 75% !important;
+    height: 100% !important;
+}
+
+
+@media screen and (max-width:420px) { 
+
+.youtube4-3 iframe{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100% !important;
+	height: 100% !important;
+	}
+}
+
+.audio {
+	text-align: center;
+	margin: auto;
+	clear:both;
+}
+
+.main{
+/*	margin-top: 1.5em;
+	margin-bottom: 1.5em; */
+	margin-left:0em;
+	margin-right:0em;
+	padding: 0em;
+}
+
+/* Nihongo Starter専用 */
+
+.part {
+	float: right;
+}
+
+.script {
+	margin-left: 18%;
+}
+
+.char {
+	float: left;
+	width: 20%;
+}
+
+.char2 {
+	float: left;
+	width: 30%;
+}
+
+.can_do1 {
+  color: #ff9259;
+  padding-top: 0.0000em;
+  padding-bottom: 0.0000em;
+  margin: 0.0000em;
+  text-align: center;
+  line-height: 0.9em;
+}
+
+.can_do2 {
+  text-align: center;
+}
+
+.lws_icon {
+	float: right;
+	width: 5%;
+}
+
+
+.subtitle1{
+	font-size: 1.6000em;
+	color: #76B226;
+ 	display:inline;
+	line-height: 60px;
+}
+
+.subtitle2 {
+	font-size:1.4000em; 
+	color: #76B226;
+	padding-top: 0.5000em;
+	padding-bottom: 0.1000em;
+	margin: 0.0000em;
+}
+
+.subtitle3 {
+	font-size:1.1000em; 
+	color: #76B226; 
+	padding-top: 0.5000em;
+	padding-bottom: 0.1000em;
+	margin: 0.0000em;
+}
+
+.center{
+	text-align: center;
+}
+
+.left{
+	float: left;
+}
+
+.padding{
+	margin-left: 18%;
+}
+
+.right{
+	float: right;
+}
+
+.padding_r{
+	margin-right: 18%;
+}
+
+div.width5 {
+	width: 5%;
+}
+div.width10 {
+	width: 10%;
+}
+div.width20 {
+	width: 20%;
+}
+div.width30 {
+	width: 30%;
+}
+
+/* oba */
+
+dl.word {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.word dt {
+	display: inline-block;
+	width: 55%;
+}
+
+.word dd {
+	display: inline-block;
+	width: 35%;
+	vertical-align: top;
+}
+
+dl.sentence {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.sentence dt {
+}
+
+.sentence dd {
+	margin-left: 2em;
+}

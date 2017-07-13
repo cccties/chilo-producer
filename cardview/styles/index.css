@@ -1,0 +1,89 @@
+﻿/* ####################### doccument.css ######################### */
+/* インデックスページ、コピーライトページで利用
+/* CHiLO Book基本色 blue #269DDC green #76B226 orange #ECA130*/
+
+/* ####################### タグの定義 ######################### */
+
+a {
+	color: #333333;
+}
+
+/* ####################### スタイルシート固有のクラス ######################### */
+
+
+.section {
+	position: relative;
+	width: 100%;
+	clear:both;
+}
+
+.topic {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    padding: 0.2em 0.2em 0em 0.2em;
+	margin-bottom: 0.8em;
+    margin-right: 0.4em;
+    margin-left: 0.4em;
+    line-height: 100%;
+    background-color: #C5E5F5;
+    box-shadow: 4px 2px 5px 0px rgba(0,0,0, 0.4);
+}
+
+.topic div {
+    background-color: #C5E5F5;
+    top: 0;
+    font-size: 0.9em;
+	padding-top: 0;
+    margin-top: 0.1em;
+    text-indent: 0em;
+    color: #000000;
+    z-index: 3;
+    overflow: hidden;
+    height: 2.35em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.topic img {
+    top: 0;
+    width: 100%!important;
+    max-width: 100%!important;
+    margin: 0em auto 0em auto;
+	padding-bottom: 0em;
+    z-index: 2;
+}
+
+.topic a {
+	display: block;
+
+}
+
+/* ####################### commonの追加スタイル ######################### */
+
+p.title {
+	font-size: 1.1em;
+    margin-bottom:1em;
+    border-bottom: dotted 2px #dddddd;
+    padding-left: 0.5em;
+}
+
+.quiz {
+	display: inline-block;
+	width: 25%;
+	padding: 0.1em;
+	margin-left:0.8em;
+	line-height: 100%;
+}
+
+.quiz_img {
+	width: 20%;
+}
+
+.svg_toc_title {
+    background-color: #76B226;
+    font-size: 1.6em;
+    color: #ffffff;
+    padding-left: 1em;
+}

@@ -1,0 +1,54 @@
+﻿
+h1 {
+	font-size: 0.5em;
+	color: #4A6EA8;
+	margin-bottom: 0;
+	margin-top: 0;
+	float: left;
+}
+
+/* Documents */
+
+li {
+	color:#444444;
+}
+
+/*
+.left {
+	float: left;
+}
+
+div.img5 {
+	width:5%;
+}
+*/
+
+/* oba */
+
+dl.word {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.word dt {
+	display: inline-block;
+	width: 55%;
+}
+
+.word dd {
+	display: inline-block;
+	width: 35%;
+	vertical-align: top;
+}
+
+dl.sentence {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.sentence dt {
+}
+
+.sentence dd {
+	margin-left: 2em;
+}

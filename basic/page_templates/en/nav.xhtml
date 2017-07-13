@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+	<title>$index</title>
+	<link href="$template/styles/common.css" rel="stylesheet" type="text/css"/>
+    <link href="$template/styles/index.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+	<nav epub:type="toc" id="toc">
+<!--	  <h1>$index</h1> -->
+	  <ol>
+	    <li><a href="cardview.xhtml" id="cardview.xhtml">$index</a></li>
+		#foreach( $section in $sections )
+		<li><a href="$section.link" id="$section.id.replace('/','-')">$section.title</a>
+		#if( $section.topics)
+		<ol>
+		#foreach( $topic in $section.topics )
+#if ( $topic && $topic.title )
+		<li><a href="$topic.link" id="$topic.id.replace('/','-')">$topic.title</a></li>
+#end
+		#end
+		</ol>
+		#end
+		</li>
+		#end
+	  </ol>
+    </nav>
+	<nav id="landmarks" epub:type="landmarks" hidden="hidden">
+      <ol>
+        <li>
+          <a epub:type="toc" href="cardview.xhtml">navi</a>
+        </li>
+      </ol>
+    </nav>
+  </body>
+</html>

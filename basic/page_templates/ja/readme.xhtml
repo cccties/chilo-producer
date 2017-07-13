@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$section</title>
+    <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+	#if ( $section && $section != "" )
+    <div class="subject_cover">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+		#if ( $section-rect && $section-rect != "" )
+        <rect $section-rect/>
+		#end
+        <text fill="$section-fill" font-family="$section-font-family"
+			  font-size="$section-font-size" stroke="$section-stroke"
+                #if ( $section-stroke-width && $section-stroke-width != "" )
+                stroke-width="$section-stroke-width"
+                #end
+				  text-anchor="$section-text-anchor"
+			  x="$section-x" y="$section-y">$section</text>
+      </svg>
+    </div>
+	#end
+
+	  <div class="skip">
+		<a href="$!document-start-page">
+          <img src="../../$template/images/skip.png"/>
+        </a>
+      </div>
+	  <div style="clear:both;"/>
+
+    <div>
+
+#if ( $!series-introduction && $!series-introduction != "" )
+
+	<p class="subtitle">シリーズの紹介</p>
+	  <p>$!series-introduction</p>
+
+#end
+
+#if ( $!book-summary && $!book-summary != "" )
+	<p class="subtitle">ブック概要</p>
+	  <p>$!book-summary</p>
+#end
+
+	  <p class="subtitle">認定バッジ獲得</p>
+
+		<ol>
+			<li>本書の課題に合格すると、合格バッジを獲得することができます。</li>
+			<li>$!series-nameシリーズ全$!volumes章の合格バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</li>
+		</ol>
+			
+  
+	</div>
+    <div>
+
+	  <div>
+		#foreach( $test in $testList )
+		<div>
+		  <p class="link_icon">・<a href="$!{test.link}">
+			  $!{test.title}を見てみる</a></p>
+		  <div class="width10 link_icon">
+			<a href="$!{test.link}">
+			  <img src="../../$template/images/b_ts.png"/> </a>
+		  </div>
+		</div>
+		#end
+	  </div>
+	  
+	  <div style="clear:both;"/>
+	  
+	</div>
+    <div>
+
+#if ( $community-url && $community-url != "" )
+	  <p class="subtitle" style="margin-top:1em;">学習コミュニティ参加</p>
+  
+	  <p>本書の学習コミュニティに参加して議論し、教えあいながらバッジ獲得を目指すことができます。</p>
+
+	  <p class="link_icon">・<a href="$!{community-url}">学習コミュニティを見てみる</a>
+      </p>
+	  <div class="width20 link_icon">
+        <a href="$!{community-url}">
+          <img src="../../$template/images/b_portal.png"/>
+        </a>
+      </div>
+#end
+	</div>
+  </body>
+</html>

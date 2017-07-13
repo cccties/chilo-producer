@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>$section</title>
+        <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../../$template/styles/document.css" rel="stylesheet" type="text/css"/>
+
+#if ( $youtube-id && $youtube-id != "" )
+#if ( $clip-begin && $clip-begin != "" )
+        <script>
+function onYouTubeIframeAPIReady(){
+    var CYT = window.parent.chilo.youtube;
+    var player = new YT.Player("chilo-iframe", {
+        events: {
+            'onReady': CYT.onPlayerReady,
+            'onStateChange': CYT.onStateChange
+        }
+    });
+    CYT.onAPIReady(player);
+}
+        </script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+#end
+#end
+#foreach ( $e in $javascript-file )
+#if ( $e != "" )
+        <script src="$e" type="text/javascript"></script>
+#end
+#end
+    </head>
+    <body>
+        <!--Header-->
+
+        <div class="svg_title" dir="ltr">
+
+		#if ( $topic && $topic != "" )
+			<h2 class="svg_title_topic">$topic</h2>
+		#else
+			<h2 class="svg_title_topic">&#160;</h2>
+		#end
+
+	  	#if ( $community-url && $community-url != "" )
+			<div class="header_btn"><a href="#if ( $community-url.indexOf('?') != "-1")${community-url}&amp;chiloflag=1#else${community-url}?chiloflag=1#end">
+	      		<img src="../../$template/images/b_portal.png"/></a>
+	      	</div>
+	    #end
+
+		#if ( $topic && $topic != "" )
+	     	<div class="header_btn">
+				<a href="../../cardview.xhtml#${file-basename}">
+	    			<img src="../../$template/images/b_pallet.png"/></a>
+	  		</div>
+	  	#else
+	     	<div class="header_btn">
+				<a href="../../cardview.xhtml">
+	    			<img src="../../$template/images/b_pallet.png"/></a>
+	  		</div>
+		#end
+
+		</div>
+      	
+		<div style="clear:both;"/>
+
+		#if ( $youtube-id && $youtube-id != "" )
+        <div class="video youtube#if ( $video-height == "240" ) video4-3 youtube4-3#end">
+            <iframe id="chilo-iframe" width="$video-width" height="$video-height" src="https://www.youtube.com/embed/${youtube-id}?#if ( $clip-begin && $clip-begin != "" )enablejsapi=1#else
+autoplay=1#end&amp;rel=0" frameborder="0"></iframe>
+        </div>
+		#else
+
+		#if ( $main && $main != "" )
+
+		#if ( $main-type == "video" )
+		    #set( $poster = "" )
+		    #if ( $video-image )
+		        #set( $poster = "$video-image" )
+		    #end
+		    #if ( $clip-begin )
+		        #set( $main = "$main#t=$clip-begin" )
+			#if ( $clip-end )
+			    #set( $main = "$main,$clip-end" )
+			#end
+		    #end
+        <div class="video#if ( $video-height == "240" ) video4-3#end">
+            <video id="chilo-video" style="width: 100%;height:auto;" controls="controls" controlslist="nodownload" poster="$poster" src="$main">video tag not supported</video>
+        </div>
+		#end
+
+		#if ( $main-type == "image" )
+        <div>
+            <img alt="" src="$main"/>
+        </div>
+		#end
+		#if ( $main-type == "audio" )
+        <div class="audio">
+            <audio style="max-width: 100%;" controls="controls" src="$main" >audio tag not supported</audio>
+        </div>
+		#end
+		#end
+		#end
+		
+		#if ( $text && $text != "")
+		<div class="main">
+		$text
+		</div>
+		#end
+
+	  #if ( $cc-link && $cc-link != "" )
+	  <div class="ccby">
+		<a href="$cc-link"> <img alt="$cc-alt" src="../../$template/images/${cc-alt}.png"/></a>
+	  </div>
+	  #end
+    </body>
+</html>
