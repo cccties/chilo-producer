@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$section</title>
+	  <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+		#if ( $section && $section != "" )
+		<div class="svg_title">
+
+        	<div class="svg_title_cover">$section</div>
+        
+			<div class="header_btn">
+				<a href="../../cardview.xhtml#${file-basename}">
+    				<img src="../../$template/images/b_pallet.png"/></a>
+  			</div>
+
+        </div>
+		#end
+      	
+		<div style="clear:both;"/>
+            
+
+    <div class="main">
+
+#if ( $!series-introduction && $!series-introduction != "" )
+
+	<h2 class="title">Introduction</h2>
+	  	<p>$!series-introduction</p>
+
+#end
+
+#if ( $!book-summary && $!book-summary != "" )
+	<h2 class="title">Outline</h2>
+	  <p>$!book-summary</p>
+#end
+
+	<h2 class="title">How to Get Certified Badges Issued</h2>
+  
+		<ol>
+			<li>When you pass the assignments of this book, a badge will be issued.</li>
+			<li>When you have received all $!volumes badges of the $!series-name series, a certified series completion badge (Big Badge) will be issued.</li>
+		</ol>
+
+
+	</div>
+
+  </body>
+</html>

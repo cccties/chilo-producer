@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$section</title>
+	  <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+		#if ( $section && $section != "" )
+		<div class="svg_title">
+
+        	<div class="svg_title_cover">$section</div>
+        
+			<div class="header_btn">
+				<a href="../../cardview.xhtml#${file-basename}">
+    				<img src="../../$template/images/b_pallet.png"/></a>
+  			</div>
+
+        </div>
+		#end
+      	
+		<div style="clear:both;"/>
+            
+
+    <div class="main">
+
+#if ( $!series-introduction && $!series-introduction != "" )
+
+	<h2 class="title">シリーズの紹介</h2>
+		<p>$!series-introduction</p>
+
+#end
+
+#if ( $!book-summary && $!book-summary != "" )
+	<h2 class="title">ブック概要</h2>
+	  <p>$!book-summary</p>
+#end
+
+	<h2 class="title">認定バッジ獲得</h2>
+
+		<ol>
+			<li>章末テストに合格すると、合格バッジを獲得することができます。</li>
+			<li>$!series-nameシリーズ全$!volumes章の合格バッジをすべて獲得すると、シリーズ修了認定バッジ(通称：大バッジ)を獲得することができます。</li>
+		</ol>
+
+
+	</div>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+    <head>
+        <title>$!section</title>
+        <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="svg_title" dir="ltr">
+
+			<h2 class="svg_title_cover">$section</h2>
+
+	  	#if ( $community-url && $community-url != "" )
+			<div class="header_btn"><a href="#if ( $community-url.indexOf('?') != "-1")${community-url}&amp;chiloflag=1#else${community-url}?chiloflag=1#end">
+	      		<img src="../../$template/images/b_portal.png"/></a>
+	      	</div>
+	    #end
+
+	     	<div class="header_btn">
+				<a href="../../cardview.xhtml#${file-basename}">
+	    			<img src="../../$template/images/b_pallet.png"/></a>
+	  		</div>
+
+		</div>
+      	
+		<div style="clear:both;"/>
+
+        <div>
+#if ( $picture && $picture != "" )
+  <div class="author_img">
+                <img alt="" src="$!picture"/>
+            </div>
+#end
+  <h2 class="title">著者</h2>
+
+  <p>$!organization<br/>
+     $!author-name #if( $author-name2 ) / $author-name2 #end</p>
+
+  <div style="clear:both;"/>
+
+  #foreach( $e in $introductionList )
+  <div>
+	#if ( $e.title != "" )
+	<h2 class="title">$e.title</h2>
+	#end
+	#if ( $e.content != "" )
+	<p> $e.content </p>
+	#end
+  </div>
+  #end
+
+		</div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+	<title>$index</title>
+	<link href="$template/styles/common.css" rel="stylesheet" type="text/css"/>
+    <link href="$template/styles/index.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+   <!-- パレット --> 
+      <div class="svg_toc_title">
+       	Contents
+      </div>
+
+		#foreach( $section in $sections )
+		<div class="section" >
+		<p class="title" id="$section.id.replace('/','-')"><a href="$section.link">$section.title</a></p>
+
+
+		#if( $section.topics)
+		#foreach( $topic in $section.topics )
+
+#if ( $topic && $topic.title )
+
+#if( $section.image-flag != "null")
+
+        <div class="topic"  id="$topic.id.replace('/','-')">
+			<a href="$topic.link">
+			#if( $topic.image-flag != "null")
+				<img src="$topic.video-image" />
+			#else
+				<img src="$template/images/no_video.png" />
+			#end
+			</a>
+			<div><a href="$topic.link">$topic.title</a></div>
+        </div>
+
+#else
+        <p class="subtitle" id="$topic.id.replace('/','-')"><a href="$topic.link">$topic.title</a></p>
+
+#end
+#end
+		#end
+		#end
+
+		</div>
+
+		#end
+
+  </body>
+</html>

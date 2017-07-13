@@ -1,0 +1,102 @@
+﻿/* ####################### doccument.css ######################### */
+/* インデックスページ、コピーライトページで利用
+/* CHiLO Book基本色 blue #269DDC green #76B226 orange #ECA130*/
+
+/* ####################### タグの定義 ######################### */
+
+a {
+	color: #333333;
+	display: block;
+}
+
+/* ####################### スタイルシート固有のクラス ######################### */
+
+
+.section {
+	position: relative;
+	width: 100%;
+	clear:both;
+}
+
+.topic {
+    display: table;
+    vertical-align: top;
+    /* width: 40%; */
+    /* margin-bottom: 0.8em; */
+    /* margin-right: 0.8em; */
+    margin-left: 1.6em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    /* line-height: 100%; */
+    /* background-color: transparent; */
+    /* box-shadow: 4px 2px 5px 0px rgba(0,0,0, 0.4); */
+    border-bottom: solid 1px #dddddd;
+}
+
+.topic div {
+    /* background-color: #C5E5F5; */
+    top: 0;
+    font-size: 0.9em;
+    padding-top: 0;
+    margin-top: 0.1em;
+    padding-left: 1em;
+    text-indent: 0em;
+    color: #000000;
+    /* z-index: 3; */
+    /* overflow: hidden; */
+    height: 2.35em;
+    display: table-cell;
+    vertical-align: middle;
+    width: 80%;
+}
+
+.topic img {
+    top: 0;
+    /* width: 100%!important; */
+    /* width: 10%; */
+    /* max-width: 100%!important; */
+    margin: 0em auto 0em auto;
+    padding-bottom: 0em;
+    z-index: 2;
+    display: table-cell;
+    border: solid 1px #dddddd;
+}
+
+.topic a {
+	display: block;
+
+}
+
+/* ####################### commonの追加スタイル ######################### */
+
+p.title {
+	font-size: 1.1em;
+	margin-top: 1em;
+	/* margin-bottom: 1em; */
+	padding-top: 0.4em;
+	border-bottom: solid 1px #dddddd;
+	padding-left: 0.5em;
+	font-weight: bold;
+	background-color: whitesmoke;
+}
+
+.quiz {
+	display: inline-block;
+	width: 25%;
+	padding: 0.1em;
+	margin-left: 1.6em;
+	margin-top: 0.8em;
+	line-height: 100%;
+}
+
+.quiz_img {
+	width: 20%;
+	display: block;
+}
+
+.svg_toc_title {
+    background-color: #76B226;
+    font-size: 1.6em;
+    color: #ffffff;
+    padding-left: 1em;
+}

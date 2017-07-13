@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package xmlns="http://www.idpf.org/2007/opf"#if ($cover-image) prefix="rendition: http://www.idpf.org/vocab/rendition/#"#end unique-identifier="BookId" version="3.0" xml:lang="ja">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:identifier id="BookId">#if ( $identifier )${identifier}#end</dc:identifier>
+        <dc:title>#if ( $series-name && $vol && $book-title )$series-name 第$vol章 $book-title#end</dc:title>
+        <dc:language>#if ( $language )$language#end</dc:language>
+        <meta property="dcterms:modified">#if ( $update )$update#end</meta>
+        <dc:date>#if ( $published )$published#end</dc:date>
+#if ( $rights )
+        <dc:rights>Copyrights &#169; $rights</dc:rights>
+#end
+        <dc:creator>#if ( $author-name )$author-name#end</dc:creator>
+#if ( $publisher )
+        <dc:publisher id="publishe">$publisher</dc:publisher>
+#end
+#if ( $cover-image )
+        <meta content="$cover-image" name="cover"/>
+#end
+    </metadata>
+
+    <manifest>
+#foreach( $e in $manifest-items )
+#if( $e != "" )
+        <item href="$e.href" id="$e.id" media-type="$e.media-type"#if ( $e.properties == "nav" ) properties="nav"#elseif ( $e.id == "cardview.xhtml" )#elseif ( $e.properties ) properties="$e.properties"#end/>
+#end
+#end
+    </manifest>
+    <spine>
+#foreach( $e in $spine-list )
+#if ( $e )
+        <itemref idref="$e"#if( $e.matches('.*001.xhtml')) properties="rendition:layout-pre-paginated"#end/>
+#end		
+#end
+    </spine>
+</package>

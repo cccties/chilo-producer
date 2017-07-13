@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$section</title>
+    <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+	#if ( $section && $section != "" )
+    <div class="subject_cover">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" viewBox="$section-view-box" width="$section-width">
+		#if ( $section-rect && $section-rect != "" )
+        <rect $section-rect/>
+		#end
+        <text fill="$section-fill" font-family="$section-font-family"
+			  font-size="$section-font-size" stroke="$section-stroke"
+                #if ( $section-stroke-width && $section-stroke-width != "" )
+                stroke-width="$section-stroke-width"
+                #end
+				  text-anchor="$section-text-anchor"
+			  x="$section-x" y="$section-y">$section</text>
+      </svg>
+    </div>
+	#end
+
+	  <div class="skip">
+		<a href="$!document-start-page">
+          <img src="../../$template/images/skip_en.png"/>
+        </a>
+      </div>
+	  <div style="clear:both;"/>
+
+    <div>
+
+#if ( $!series-introduction && $!series-introduction != "" )
+
+	<p class="subtitle">Introduction</p>
+	  <p>$!series-introduction</p>
+
+#end
+
+#if ( $!book-summary && $!book-summary != "" )
+	<p class="subtitle">Outline</p>
+	  <p>$!book-summary</p>
+#end
+
+	  <p class="subtitle">How to Get Certified Badges Issued</p>
+  
+		<ol>
+			<li>When you pass the assignments of this book, a badge will be issued.</li>
+			<li>When you have received all $!volumes badges of the $!series-name series, a certified series completion badge (Big Badge) will be issued.</li>
+		</ol>
+  
+	</div>
+    <div>
+
+	  <div>
+		#foreach( $test in $testList )
+		<div>
+		  <p class="link_icon">・<a href="$!{test.link}">
+			  See $!{test.title}</a></p>
+		  <div class="width10 link_icon">
+			<a href="$!{test.link}">
+			  <img src="../../$template/images/b_ts.png"/> </a>
+		  </div>
+		</div>
+		#end
+	  </div>
+	  
+	  <div style="clear:both;"/>
+	  
+	</div>
+    <div>
+
+#if ( $community-url && $community-url != "" )
+	  <p class="subtitle" style="margin-top:1em;">Join in the Learning Community</p>
+  
+	  <p>Join in the online learning community of this book and study along with community peers for badges.</p>
+
+	  <p class="link_icon">・<a href="$!{community-url}">See the community</a>
+      </p>
+	  <div class="width20 link_icon">
+        <a href="$!{community-url}">
+          <img src="../../$template/images/b_portal.png"/>
+        </a>
+      </div>
+#end
+	</div>
+  </body>
+</html>

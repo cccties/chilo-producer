@@ -1,0 +1,265 @@
+﻿/* ####################### common.css ######################### */
+/* 全CHiLO Book共通のCSS
+/* CHiLO Book基本色 blue #269DDC green #76B226 orange #ECA130*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* ####################### タグの定義　######################### */
+
+body{
+    word-wrap: break-word;
+    font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+p{
+    font-size:1em;
+    color:#333333;
+    padding-top: 0.3em;
+    line-height: 1.2em;
+}
+
+/* 中央左寄せ */
+.wrapper {
+	max-width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+.wrapper p {
+	text-align: left;
+}
+
+img{
+    width: 100%;
+}
+
+ul{
+	margin-left: 1.5em;
+}
+
+ol{
+	margin-left: 1.5em;
+}
+
+li{
+    font-size:1em;
+    color:#333333;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+}
+
+
+/* ####################### ヘッダー ######################### */
+
+/* セクション名・トピック名 */
+/*
+h1.section_title {
+	float: left;
+	width: 70%;
+    height: 5em;
+}
+*/
+.svg_title {
+    display: table;
+    margin-bottom: 0.5em;
+}
+/*
+h1.subject_section_title {
+    height: 1.5em;
+    margin-bottom: 0.3em;
+}
+h2.subject_topic {
+    height: 2em;
+}
+
+*/
+
+.svg_title_cover {
+    color: #76B226;
+	font-size: 1.4em; 
+	text-align: left;
+    font-weight: bold;
+    line-height: 0.9em;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.svg_title_section {
+	display: none;
+}
+
+.svg_title_topic {
+	color: #76B226;
+	font-size: 1.3em; 
+	text-align: left;
+    font-weight: lighter;
+    line-height: 0.9em;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* リンクボタン */
+
+.header_btn {
+	width: 15%;
+	margin-bottom: 1em;
+	line-height: 0em;
+	display: table-cell;
+}
+
+.header_btn a {
+	display: block;
+
+}
+
+
+
+/* ####################### タイトル ######################### */
+
+.title {
+	color:#333333;
+    padding-top: 1.2em;
+    margin-left:0.1em;
+	line-height: 1.1em;
+}
+h1.title {
+    padding-bottom: 0.5em;
+}
+h2.title{
+	font-size:1.1em;
+    color: #76B226;
+    padding-bottom: 0.1em;
+    font-weight: normal;
+}
+p.title {
+}
+.subtitle {
+	font-size: 0.95em;
+	margin-left:2em;
+	line-height: 1.5em;
+}
+
+
+/* ####################### オブジェクトの指定 ######################### */
+
+/* テキスト */
+
+.main{
+}
+/*
+h1.document-title {
+	font-size: 0.5em;
+	color: #76B226;
+	float: left;
+}
+h2.document-subtitle { 
+	font-size:1.5em; 
+	color:#76B226;
+	margin-bottom: 1em;
+	text-align: left;
+	line-height: 0.9em;
+}
+*/
+a {
+	color: #269DDC;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color:#76B226;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* ビデオ */
+
+.video {
+	text-align: center;
+	margin: auto;
+	clear:both;
+}
+
+/* 画像 */
+
+.indside_cover {
+    text-align: center;
+    width: 90%;
+    margin: 2em auto 2em auto; 
+    clear:both;
+}
+
+.quiz_btn {
+    text-align: center;
+    width: 50%;
+    padding-top: 3em;
+    margin: 1em auto 1em auto;
+    clear:both;
+}
+
+.author_img {
+	float: left;
+    width: 30%;
+}
+
+.ccby{
+	width: 20%;
+	float: right;
+}
+
+/* 画像(サイズ指定) */
+.ll_content {
+	text-align: center;
+	width: 100%;
+	margin: 2em auto 2em auto; 
+}
+.l_content {
+	text-align: center;
+	width: 90%;
+	margin: 2em auto 2em auto; 
+}
+.m_content {
+	text-align: center;
+	width: 70%;
+	margin: 1em auto 2em auto; 
+}
+.s_content {
+	text-align: center;
+	width: 50%;
+	margin: 1em auto 2em auto; 
+}
+
+
+/* ####################### 数式　######################### */
+
+.math_img {
+    position: relative;
+    bottom:5px;
+    width: 3.5%;
+    right:2px;
+    display:inline-block;
+}
+.math_sup {
+  /* 上付*/
+  font-size: 0.8em;
+  position: relative;
+  top: -0.6em;
+}
+.math_sub {
+   /* 下付 */
+  font-size: 0.8em;
+  position: relative;
+  top: 0.4em;
+  left: -0.2em;
+}
+.overline{
+    text-decoration:overline;
+}
+
+.img-middle{
+	vertical-align: middle;
+}
+
+/* Nihongo Starter */
+

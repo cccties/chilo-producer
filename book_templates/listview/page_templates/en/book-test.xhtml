@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="ja">
+  <head>
+    <title>$section</title>
+    <link href="../../$template/styles/common.css" rel="stylesheet" type="text/css"/>
+      <link href="../../$template/styles/document.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--Header-->
+        <div class="svg_title" dir="ltr">
+
+			<h2 class="svg_title_cover">$section</h2>
+
+	  	#if ( $community-url && $community-url != "" )
+			<div class="header_btn"><a href="#if ( $community-url.indexOf('?') != "-1")${community-url}&amp;chiloflag=1#else${community-url}?chiloflag=1#end">
+	      		<img src="../../$template/images/b_portal.png"/></a>
+	      	</div>
+	    #end
+
+	     	<div class="header_btn">
+				<a href="../../cardview.xhtml#${file-basename}">
+	    			<img src="../../$template/images/b_pallet.png"/></a>
+	  		</div>
+
+		</div>
+      	
+		<div style="clear:both;"/>
+
+    <!-- body -->
+
+    <div class="quiz_btn">
+	  <a href="#if ( $main.indexOf('?') != "-1")$!{main}&amp;chiloflag=1#else$!{main}?chiloflag=1#end">
+        <img alt="" src="../../$template/images/b_quiz.png"/>
+      </a>
+	</div>
+
+	#if ( $text && $text != "")
+	$text
+	#end
+
+	<div class="main">
+    	<p>Attempt the test and get the badge!</p>
+    </div>
+
+    <div>
+	  #if ( $cc-link && $cc-link != "" )
+	  <div class="ccby">
+		<a href="$cc-link"> <img alt="$cc-alt" src="../../$template/images/${cc-alt}.png"/></a>
+	  </div>
+	  #end
+	</div>
+  </body>
+</html>
