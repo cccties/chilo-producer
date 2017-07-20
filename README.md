@@ -130,7 +130,7 @@ https://youtu.be/ETXPHxJdXro
 1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.<br />
 -> For overall structure, refer to：[dir_en.md](dir_en.md)
 
-If the file has been successfully unziped, _chiloPro_ directory will be created. When creating CHiLO Books, copy _chiloPro/templete-series_ for each series.
+If the file has been successfully unziped, _chiloPro_ directory will be created. When creating CHiLO Books, copy _chiloPro/templete-series_english_ for each series.
 ```
 (root)
 　│  run.bat　＊Batch file for CHiLOBook output
