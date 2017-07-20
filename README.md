@@ -61,17 +61,17 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 1. ExcelファイルにCHiLO Bookのメタデータを記述します。
 1. CHiLO Bookを出力します。
 
-詳細はこちらをご覧ください　-> [CHiLO Bookの制作](http://docs.cccties.org/chilo-producer/01-chilo-book%E3%81%AE%E5%88%B6%E4%BD%9C/)
+詳細はこちらをご覧ください　-> [CHiLO Bookの制作](http://docs.cccties.org/creating-chilobook/production/)
 
 ### CHiLO Bookの構造
 
 CHiLO Bookを作る前に、CHiLO Bookの構造を理解しましょう。
--> [CHiLO Bookの構造](http://docs.cccties.org/chilo-producer/00-chilo-book%E3%81%AE%E6%A7%8B%E9%80%A0/)
+-> [CHiLO Bookの構造](http://docs.cccties.org/creating-chilobook/sturcture/)
 
 ### スタイルを変更する
 
 CHiLO Bookのスタイルを変更したい場合は、 _book_templates/_ のファイルを変更してください。
--> [スタイルを変更する](http://docs.cccties.org/chilo-producer/03-%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B/)
+-> [ブックテンプレートの変更](http://docs.cccties.org/creating-chilobook/changing-the-book-tamplate/)
 
 ### CHiLO Book 素材サンプル
 
@@ -147,7 +147,7 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 　│  
 　├─chiloPro
 　│   │
-　│   └─template-series　*Template of the directory of the series(copy this directory for creating).
+　│   └─template-series_english　*Template of the directory of the series(copy this directory for creating).
 　│   　　│  structure-books.xlsx *Structure file of CHiLO Book
 　│   　　│  author.xlsx *Author information file
 　│   　　│
@@ -164,21 +164,21 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 ### Workflow of creating CHiLO Books
 
 1. Prepare "resources" to embed in CHiLO Book
-1. Duplicate _chiloPro/templete-series_ and save the resources prepared in 1. above
+1. Duplicate _chiloPro/template-series_english_ and save the resources prepared in 1. above
 1. Describe the metadata of the CHiLO Book to the Excel file
 1. Output CHiLO Book
 
-+More details can be found here ->[Production of CHiLO Book](http://docs.cccties.org/en/chilo-producer/01-chilo-book%E3%81%AE%E5%88%B6%E4%BD%9C/)
++More details can be found here ->[Production of CHiLO Book](http://docs.cccties.org/en/creating-chilobook/production/)
 
 ### Structure of CHiLO Book
 
 Before the production of CHiLO Book, understand the structure of CHiLO Book.
--> [Structure of CHiLO Book](http://docs.cccties.org/en/chilo-producer/00-chilo-book%E3%81%AE%E6%A7%8B%E9%80%A0/)
+-> [Structure of CHiLO Book](http://docs.cccties.org/en/creating-chilobook/sturcture/)
 
 ### Change the style
 
 When you want to change the style of the CHiLO Book, change _book_templates/_ file
--> [Change the style](http://docs.cccties.org/chilo-producer/03-%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B/)
+-> [Changing the book tamplate](http://docs.cccties.org/en/creating-chilobook/changing-the-book-tamplate/)
 
 ### Samples of CHiLO Book material
 
@@ -209,4 +209,3 @@ We offer CHiLO Producer under the license of ApacheLicense2.0. (See [LICENSE.txt
 ### Copyright
 
 Copyright © 2015 NPO CCC-TIES
-
