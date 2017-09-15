@@ -509,6 +509,9 @@ public class SettingReader extends ExcelReader {
             	
     		if (key.equals(PageSetting.KEY_OBJECT)) {
     			value = meta.get(Series.KEY_V2_COVER);
+		    	if(value == null){
+	    			value = meta.get(Series.KEY_V2_COVER2);
+		    	}
     			pageSetting.put(PageSetting.KEY_ATTR_VALUE, value);
     			pageSetting.put(PageSetting.KEY_ATTR_TYPE, "common");
     			pageSetting.put(PageSetting.KEY_ATTR_ATTRIBUTE, "image");

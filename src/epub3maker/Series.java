@@ -50,6 +50,7 @@ public class Series {
     public static final String KEY_SERIES_NAME = "series-name";
     public static final String KEY_SERIES_INTRODUCTION = "series-introduction";
     public static final String KEY_V2_COVER = "cover";
+    public static final String KEY_V2_COVER2 = "inside-cover";
 
     public static final String KEY_BOOKLIST_VOL = "vol";
     public static final String KEY_BOOKLIST_BOOK_TITLE = "book-title";

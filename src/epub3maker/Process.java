@@ -820,6 +820,9 @@ public class Process {
     	String ret = book.get(Series.KEY_BOOKLIST_INSIDE_COVER);
     	if(ret == null){
     		ret = series.getMeta(Series.KEY_V2_COVER);
+	    	if(ret == null){
+	    		ret = series.getMeta(Series.KEY_V2_COVER2);
+	    	}
 			ret = commonImagePath(ret);
 		} else {
 			ret = volumeImagePath(book, ret);
@@ -860,6 +863,7 @@ public class Process {
 
     	// SettingReader#createInsideCover で使われる
     	content.put("cover",  getInsideCover());
+    	content.put("inside-cover",  getInsideCover());
     }
 
     private void appendBookList(Content content) {

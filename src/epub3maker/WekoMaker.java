@@ -299,8 +299,8 @@ public class WekoMaker {
 		case WEB:         ret = web(textPath); break;
 		case COVER:       ret = path2str(book.getCoverImagePath()); break;
 		case COVER2:      ret = path2str(getFileName(book.getCoverImagePath())); break;
-		case INNER_COVER: ret = commonImageFile(series.getMeta(Series.KEY_V2_COVER)); break;
-		case INNER_COVER2:ret = series.getMeta(Series.KEY_V2_COVER); break;
+		case INNER_COVER: ret = commonImageFile(series.getMeta(Series.KEY_V2_COVER)); if(ret == null){ret = commonImageFile(series.getMeta(Series.KEY_V2_COVER2));} break;
+		case INNER_COVER2:ret = series.getMeta(Series.KEY_V2_COVER); if(ret == null){ret =series.getMeta(Series.KEY_V2_COVER2);} break;
 		}
 		return ret;
 	}
