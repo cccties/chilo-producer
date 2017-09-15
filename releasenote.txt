@@ -1,6 +1,26 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.7 //
+///////////
+
+仕様変更
+* [series-information]の不要な項目を削除
+* 内表紙指定用の項目名を"inside-cover"に統一
+
+バグ修正
+* [series-information]で指定した内表紙が反映されない
+
+---
+
+Specification changes
+* Deleted an unnecessary item in [series-information]
+* Unify the item name to set inside cover to "inside-cover"
+
+Bug fixes
+* Inside cover specified in [series-information] does not apply
+
+///////////
 // 3.0.6 //
 ///////////
 
