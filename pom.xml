@@ -12,7 +12,7 @@
     <name>NPO CCC-TIES</name>
     <url>http://www.cccties.org/</url>
   </organization>
-  
+
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
