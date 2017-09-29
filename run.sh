@@ -76,10 +76,10 @@ if [ X${OUTPUT_NAME} != X ]; then
 fi
 
 if [ X${RUNMODE} = Xdry ]; then
-	echo "DRY-RUN: java -jar ${HOME_DIR}/chilo-epub3-maker-jar-with-dependencies.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}"
+	echo "DRY-RUN: java -jar ${HOME_DIR}/chilo-epub3-maker.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}"
 		
 elif [ X${RUNMODE} = Xreal ]; then
-	java -jar ${HOME_DIR}/chilo-epub3-maker-jar-with-dependencies.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}
+	java -jar ${HOME_DIR}/chilo-epub3-maker.jar -series ${SERIES} -input-path ${INPUT_DIR} -output-path ${OUTPUT_DIR} ${BOOK_TEMPLATE} ${ONAME_OPT} -home ${HOME_DIR} ${WEKO}
 else
 	usage
 fi
