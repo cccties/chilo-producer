@@ -4,7 +4,7 @@
   <groupId>org.cccties</groupId>
   <artifactId>chilo-producer</artifactId>
   <packaging>jar</packaging>
-  <version>3.0.6</version>
+  <version>3.0.8</version>
 
   <name>chilo-producer</name>
   <description>CHiLO Producer is a JAVA-based software which can output an EPUB3 format CHiLO Book using videos and text files created in advance.</description>
