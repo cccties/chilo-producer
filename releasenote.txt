@@ -1,6 +1,18 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.8 //
+///////////
+
+仕様変更
+* jarファイルのビルドに使用するツールをmavenに変更
+
+---
+
+Specification changes
+* Modify jar file building tool to maven
+
+///////////
 // 3.0.7 //
 ///////////
 
