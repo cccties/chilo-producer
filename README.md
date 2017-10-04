@@ -99,7 +99,7 @@ EPUB出力用のjarファイルのソースは _src/_ に保存されていま�
 
 ### ビルド方法
 
-以下のMavenコマンドを実行
+以下のMavenコマンドを実行します。
 ```
 mvn clean package
 ```
