@@ -97,6 +97,13 @@ http://docs.cccties.org/creating-chilobook/migrate-to-chilo-producer-ver2/
 EPUB出力用のjarファイルのソースは _src/_ に保存されています。
 -> [src](/src)
 
+### ビルド方法
+
+以下のMavenコマンドを実行
+```
+mvn clean package
+```
+
 ### Licensing
 
 ApacheLicense2.0 ライセンスの元、提供しております。 (see [LICENSE.txt](LICENSE.txt)) 
@@ -201,6 +208,13 @@ If there are any problems, questions, or requests related to this software, ente
 
 The source of jar file for EPUB output is saved in _src/_ 
 -> [src](/src)
+
+### To build
+
+Execute the following Maven command
+```
+mvn clean package
+```
 
 ### Licensing
 
