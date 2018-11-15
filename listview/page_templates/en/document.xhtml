@@ -64,7 +64,7 @@ function onYouTubeIframeAPIReady(){
 		#if ( $youtube-id && $youtube-id != "" )
         <div class="video youtube#if ( $video-height == "240" ) video4-3 youtube4-3#end">
             <iframe id="chilo-iframe" width="$video-width" height="$video-height" src="https://www.youtube.com/embed/${youtube-id}?#if ( $clip-begin && $clip-begin != "" )enablejsapi=1#else
-autoplay=1#end&amp;rel=0" frameborder="0"></iframe>
+autoplay=1#end&amp;rel=0&amp;autoplay=1" frameborder="0" allow="autoplay"></iframe>
         </div>
 		#else
 
