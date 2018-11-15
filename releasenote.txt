@@ -1,6 +1,18 @@
 リリースノート / Release Notes
 
 ///////////
+// 3.0.9 //
+///////////
+
+### バグ修正
+* 自動ページめくり有効時、YouTubeの動画が自動再生されない
+
+---
+
+### Bug fixes
+* YouTube videos do not play when auto page flip is enabled
+
+///////////
 // 3.0.8 //
 ///////////
 
