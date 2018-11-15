@@ -4,12 +4,12 @@
 // 3.0.9 //
 ///////////
 
-### バグ修正
+バグ修正
 * 自動ページめくり有効時、YouTubeの動画が自動再生されない
 
 ---
 
-### Bug fixes
+Bug fixes
 * YouTube videos do not play when auto page flip is enabled
 
 ///////////
