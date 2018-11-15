@@ -6,7 +6,7 @@ English version is [HERE](#english).
 
 CHiLO Producerは、あらかじめ作成された動画やテキストファイルからEPUB3形式のCHiLO Book を出力するJAVAベースのソフトウェアです。
 
-このソフトウェアは、[_CHiLO_](http://www.cccties.org/activities/chilo/)Ⓡ の一部として提供されています。
+このソフトウェアは、[_CHiLO_](https://www.cccties.org/activities/all-about-chilo/)Ⓡ の一部として提供されています。
 
 ### デモビデオ
 
@@ -19,7 +19,7 @@ https://youtu.be/aySpvTFteiQ
 
 ### 利用方法
 
-1. Java 8（ https://java.com/ja/download/ ）をインストールします。<br />※Macユーザーの方は、JDK8 （  http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html ） をインストールしてください。
+1. Java 8（ https://java.com/ja/download/ ）をインストールします。<br />※Macユーザーの方は、JDK8 （  https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html ） をインストールしてください。
 1. GitHubからCHiLO Producer( https://github.com/cccties/CHiLO-Producer )をダウンロードし、展開します。<br />
 -> 全体の構成はこちらを参照：[dir.md](dir.md)
 
@@ -61,17 +61,17 @@ CHiLO Bookを作成するときは、展開した先にある _chiloPro_ ディ�
 1. ExcelファイルにCHiLO Bookのメタデータを記述します。
 1. CHiLO Bookを出力します。
 
-詳細はこちらをご覧ください　-> [CHiLO Bookの制作](http://docs.cccties.org/creating-chilobook/production/)
+詳細はこちらをご覧ください　-> [CHiLO Bookの制作](https://docs.cccties.org/creating-chilobook/production/)
 
 ### CHiLO Bookの構造
 
 CHiLO Bookを作る前に、CHiLO Bookの構造を理解しましょう。
--> [CHiLO Bookの構造](http://docs.cccties.org/creating-chilobook/sturcture/)
+-> [CHiLO Bookの構造](https://docs.cccties.org/creating-chilobook/sturcture/)
 
 ### スタイルを変更する
 
 CHiLO Bookのスタイルを変更したい場合は、 _book_templates/_ のファイルを変更してください。
--> [ブックテンプレートの変更](http://docs.cccties.org/creating-chilobook/changing-the-book-tamplate/)
+-> [ブックテンプレートの変更](https://docs.cccties.org/creating-chilobook/changing-the-book-tamplate/)
 
 ### CHiLO Book 素材サンプル
 
@@ -81,11 +81,11 @@ https://github.com/cccties/chilo001
 
 ダウンロードして、展開したファイルを、 _(root)/chiloPro/_ にコピーして、CHiLO Book制作の参考にしてください。
 
-なお、この素材サンプルは、[CHiLO Book Library](http://chilos.jp)で公開している[「はじめての情報ネットワーク」](http://chilos.jp/s/?id=1)の素材となっております。
+なお、この素材サンプルは、[CHiLO Book Library](https://chilos.jp)で公開している[「はじめての情報ネットワーク」](https://chilos.jp/s/?id=1)の素材となっております。
 
 ### CHiLO Producer ver.2への移行方法
 
-http://docs.cccties.org/creating-chilobook/migrate-to-chilo-producer-ver2/
+https://docs.cccties.org/creating-chilobook/migrate-to-chilo-producer-ver2/
 
 ### 課題・質問
 
@@ -120,7 +120,7 @@ Copyright © 2015 NPO CCC-TIES
 
 CHiLO Producer is a JAVA-based software which can output an EPUB3 format CHiLO Book using videos and text files created in advance. 
 
-This software is provided as a part of [_CHiLO_](http://www.cccties.org/en/activities/chilo/)Ⓡ.
+This software is provided as a part of [_CHiLO_](https://www.cccties.org/en/activities/all-about-chilo/)Ⓡ.
 
 ### Demo Video
 
@@ -133,7 +133,7 @@ https://youtu.be/ETXPHxJdXro
 
 ### How to Use CHiLO Producer
 
-1. Install Java 8(https://java.com/ja/download/). <br />※Mac users: Install JDK8 ( http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html )
+1. Install Java 8(https://java.com/ja/download/). <br />※Mac users: Install JDK8 ( https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html )
 1. Download CHiLO Producer( https://github.com/cccties/CHiLO-Producer ) from GitHub and unzip.<br />
 -> For overall structure, refer to：[dir_en.md](dir_en.md)
 
@@ -175,17 +175,17 @@ If the file has been successfully unziped, _chiloPro_ directory will be created.
 1. Describe the metadata of the CHiLO Book to the Excel file
 1. Output CHiLO Book
 
-+More details can be found here ->[Production of CHiLO Book](http://docs.cccties.org/en/creating-chilobook/production/)
++More details can be found here ->[Production of CHiLO Book](https://docs.cccties.org/en/creating-chilobook/production/)
 
 ### Structure of CHiLO Book
 
 Before the production of CHiLO Book, understand the structure of CHiLO Book.
--> [Structure of CHiLO Book](http://docs.cccties.org/en/creating-chilobook/sturcture/)
+-> [Structure of CHiLO Book](https://docs.cccties.org/en/creating-chilobook/sturcture/)
 
 ### Change the style
 
 When you want to change the style of the CHiLO Book, change _book_templates/_ file
--> [Changing the book tamplate](http://docs.cccties.org/en/creating-chilobook/changing-the-book-tamplate/)
+-> [Changing the book tamplate](https://docs.cccties.org/en/creating-chilobook/changing-the-book-tamplate/)
 
 ### Samples of CHiLO Book material
 
@@ -194,11 +194,11 @@ We are publicly disclosing materials for CHiLO Book.
 https://github.com/cccties/chilo001
 
 Download and copy the expanded file to _(root)/chiloPro/_ for reference when creating CHiLO Book.
-These sample materials are of those of ["Introduction to Internet Network I"](http://chilos.jp/en/s/?id=1) available for free of charge at [CHiLO Book Library](http://chilos.jp/en/).
+These sample materials are of those of ["Introduction to Internet Network I"](https://chilos.jp/en/s/?id=1) available for free of charge at [CHiLO Book Library](https://chilos.jp/en/).
 
 ### Migrating data to CHiLO Producer ver. 2
 
-http://docs.cccties.org/en/creating-chilobook/migrate-to-chilo-producer-ver2/
+https://docs.cccties.org/en/creating-chilobook/migrate-to-chilo-producer-ver2/
 
 ### Problems and Inquiries
 
